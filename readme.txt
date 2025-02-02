@@ -9,8 +9,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
 == Description ==  
-Easily create smooth scrolling marquees with the **Advanced Marquee Effect** for Elementor.  
-Customize speed, style, and content with text or icons.  
+Easily create smooth scrolling marquees with the **Advanced Marquee Effect** for Elementor.  Customize speed, style, and content with text, html or icons.
 
 == Installation ==  
 1. Upload the plugin files to the `/wp-content/plugins/advanced-marquee-effect/` directory, or install the plugin directly from the WordPress plugin repository.  
