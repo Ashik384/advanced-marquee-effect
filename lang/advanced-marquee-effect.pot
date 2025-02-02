@@ -1,0 +1,110 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Marquee Effect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-02 13:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.1\n"
+"X-Domain: advanced-marquee-effect"
+
+#: widgets/ame-marquee-text-widget.php:45
+#: widgets/ame-marquee-text-widget.php:69
+msgid "#"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:55
+#: widgets/ame-marquee-text-widget.php:72
+msgid ""
+"<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+"</p>"
+msgstr ""
+
+#. Name of the plugin
+msgid "Advanced Marquee Effect"
+msgstr ""
+
+#. Description of the plugin
+msgid "Advanced Marquee Effect for Elementor Plugin"
+msgstr ""
+
+#: advanced-marquee-effect.php:83
+msgid "AME Marquee Effect"
+msgstr ""
+
+#. Author of the plugin
+msgid "Ashikul Islam"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:150
+msgid "Background Color"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:46
+msgid "Enter your URL"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/mdashikul/"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:193
+msgid "Icon Gap"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:33
+#: widgets/ame-marquee-text-widget.php:53
+msgid "Marquee Content"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:63
+msgid "Marquee Items"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:11
+msgid "Marquee Text"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:163
+msgid "Padding"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:182
+msgid "Separator color"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:94
+msgid "Separator Icon"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:105
+msgid "Separator Icon Size"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:82
+msgid "Speed (Seconds)"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:120
+msgid "Style"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:138
+msgid "Text Color"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:130
+msgid "Typography"
+msgstr ""
+
+#: widgets/ame-marquee-text-widget.php:43
+msgid "URL"
+msgstr ""

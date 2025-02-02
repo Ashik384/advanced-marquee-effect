@@ -1,0 +1,66 @@
+.ame-marquee-text_section {
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Wrapper for scrolling effect */
+.ame-marquee-text_wrap {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Scrolling text container */
+.ame-marquee-text_content {
+    display: flex;
+    gap: 20px;
+    flex: 0 0 auto;
+    min-width: 100%;
+    animation: marquee 10s linear infinite;
+}
+
+/* Individual marquee items */
+.ame-marquee-text_item {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    border-radius: 8px;
+    line-height: 1;
+}
+
+/* Reset padding and margin for all child elements */
+.ame-marquee-text_item * {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove text decoration from links */
+.ame-marquee-text_content a {
+    text-decoration: none !important;
+}
+
+.ame-marquee-text_content a:hover {
+    text-decoration: none !important;
+}
+
+/* Separator icon styling */
+.ame_marquee_text_separator__icon {
+    display: flex;
+}
+
+/* Scrolling animation */
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
