@@ -1,4 +1,4 @@
-=== Advanced Marquee Effect ===
+=== Advanced Marquee Effect For Elementor Plugin ===
 Contributors: mdashikul  
 Tags: marquee, scrolling text, ticker, animation, Elementor  
 Requires at least: 5.0  
@@ -26,6 +26,13 @@ Yes, you can add icons using Elementor’s built-in icon picker.
 
 = Is the marquee responsive? =  
 Yes, the marquee is fully responsive and adapts to different screen sizes.  
+
+== Screenshots ==
+
+1. Marquee Elementor Widget
+2. Marquee Style Settings
+3. Marquee Content Settings
+4. Marquee Control Settings
 
 == Changelog ==  
 
