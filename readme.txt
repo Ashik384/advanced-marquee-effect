@@ -8,14 +8,12 @@ Stable tag: 1.0.1
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
-Create stunning, smooth, and customizable scrolling text marquees effect in Elementor with advanced features like speed, direction, style, and icon support.
+Create stunning, smooth, and customizable scrolling marquees effect in Elementor with advanced features like speed, direction, style, and icon support.
 
 == Description ==  
 The **Advanced Marquee Effect for Elementor** plugin provides a powerful and highly customizable solution for adding dynamic **scrolling text marquees** and **smooth marquee carousels** to your Elementor-powered website. With comprehensive control over speed, direction, style, and content, this plugin enables you to effortlessly create engaging **text ticker effects** using simple text, HTML, or icons.
 
-Featuring a dedicated **Text Marquee Effect Widget** for Elementor, this plugin simplifies the process of integrating eye-catching marquee animations into your pages. Designed for ease of use, the widget allows you to implement and customize marquee effects with just a few clicks, eliminating the need for complex coding.
-
-Fully responsive and optimized for all screen sizes, the **Advanced Marquee Effect for Elementor** plugin ensures a seamless and professional user experience across devices. With its flexibility and robust functionality, this plugin enhances user engagement and boosts the visual appeal of your website.
+Featuring a dedicated **Text Marquee Effect Widget** for Elementor, this plugin simplifies the process of integrating eye-catching marquee animations into your website. Designed for ease of use, the widget allows you to implement and customize marquee effects with just a few clicks, eliminating the need for complex coding.
 
 **Key Features:**
 - Create smooth scrolling text, HTML, or icons
