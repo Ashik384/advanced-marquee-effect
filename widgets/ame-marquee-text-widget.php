@@ -77,6 +77,19 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
+            'ame_marquee_text_direction',
+            [
+                'label' => __( 'Marquee Direction', 'advanced-marquee-effect' ),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'left_to_right' => __( 'Left to Right', 'advanced-marquee-effect' ),
+                    'right_to_left' => __( 'Right to Left', 'advanced-marquee-effect' ),
+                ],
+                'default' => 'right_to_left',
+            ]
+        );
+
+        $this->add_control(
             'ame_marquee_text_speed',
             [
                 'label' => __( 'Speed (Seconds)', 'advanced-marquee-effect' ),
@@ -205,7 +218,8 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         $ame_marquee_text_speed = $settings['ame_marquee_text_speed']; 
-
+        $marquee_direction = $settings['ame_marquee_text_direction'] == 'right_to_left' ? 'marquee-text-right-to-left' : 'marquee-text-left-to-right';
+         
         ?>
 
         <div class="ame-marquee-text_section">
@@ -213,7 +227,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
                 <?php if (!empty($settings['ame_marquee_text_list'])) : ?>
                     
                     <!-- Marquee content -->
-                    <div class="ame-marquee-text_content" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
+                    <div class="ame-marquee-text_content <?php echo esc_attr( $marquee_direction ); ?>" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
                         <?php foreach ($settings['ame_marquee_text_list'] as $item): ?>
 
                             <div class="ame-marquee-text_item" style="<?php echo esc_attr('gap: ' . $settings['ame_marquee_text_separator_icon_gap'] . 'px;'); ?>">
@@ -231,7 +245,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
                     </div>
 
                     <!-- Duplicate content for smooth scrolling -->
-                    <div class="ame-marquee-text_content" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
+                    <div class="ame-marquee-text_content <?php echo esc_attr( $marquee_direction ); ?>" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
                         <?php foreach ($settings['ame_marquee_text_list'] as $item): ?>
                             <div class="ame-marquee-text_item" style="<?php echo esc_attr('gap: ' . $settings['ame_marquee_text_separator_icon_gap'] . 'px;'); ?>">
                                 <div class="ame_marquee_text_separator__icon" style="<?php echo esc_attr('width: ' . $settings['ame_marquee_text_separator_icon_size'] . 'px; height: ' . $settings['ame_marquee_text_separator_icon_size'] . 'px;'); ?>">
