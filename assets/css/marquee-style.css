@@ -18,7 +18,6 @@
     gap: 20px;
     flex: 0 0 auto;
     min-width: 100%;
-    animation: marquee 10s linear infinite;
 }
 
 /* Individual marquee items */
@@ -55,8 +54,27 @@
     display: flex;
 }
 
-/* Scrolling animation */
-@keyframes marquee {
+/* Left to Right Marquee */
+.ame-marquee-text_content.marquee-text-left-to-right {
+    animation: marquee-text-left-to-right linear infinite;
+}
+/* Left to Right */
+@keyframes marquee-text-left-to-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Right to Left Marquee */
+.ame-marquee-text_content.marquee-text-right-to-left {
+    animation: marquee-text-right-to-left linear infinite;
+}
+
+/* Right to Left */
+@keyframes marquee-text-right-to-left {
     from {
         transform: translateX(0);
     }

@@ -4,12 +4,14 @@ Tags: marquee, scrolling text, ticker, animation, Elementor
 Requires at least: 5.0  
 Tested up to: 6.7  
 Requires PHP: 7.0  
-Stable tag: 1.0.0  
+Stable tag: 1.0.1 
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
+Short Description: Easily create smooth, customizable scrolling marquees with the Advanced Marquee Effect for Elementor.
+
 == Description ==  
-Easily create smooth scrolling marquees with the **Advanced Marquee Effect** for Elementor.  Customize speed, style, and content with text, html or icons.
+Easily create smooth scrolling marquees with the **Advanced Marquee Effect** for Elementor.  Customize speed, direction, style, and content with text, html, or icons.
 
 == Installation ==  
 1. Upload the plugin files to the `/wp-content/plugins/advanced-marquee-effect/` directory, or install the plugin directly from the WordPress plugin repository.  
@@ -36,10 +38,12 @@ Yes, the marquee is fully responsive and adapts to different screen sizes.
 
 == Changelog ==  
 
+= 1.0.1 =  
+* Added: Marquee direction option to scroll from left to right or right to left.
+
 = 1.0.0 =  
 * Initial release.  
 
 == Upgrade Notice ==  
 = 1.0.0 =  
 First release – enjoy smooth scrolling marquees in Elementor!  
-
