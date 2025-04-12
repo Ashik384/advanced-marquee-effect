@@ -48,7 +48,7 @@ final class Advanced_Marquee_Effect {
         add_action( 'elementor/widgets/register', [ $this, 'ame_register_widget' ] );
 
         // Enqueue Styles
-        add_action( 'wp_enqueue_scripts', [ $this, 'ame_enqueue_styles' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'ame_enqueue_scripts' ] );
 
         // Add Elementor Category
         add_action('elementor/elements/categories_registered', array($this, 'ame_widget_category'));
@@ -69,8 +69,13 @@ final class Advanced_Marquee_Effect {
             return; // Stop if Elementor is not loaded
         }
 
+        // Register Marquee Text
         require_once( __DIR__ . '/widgets/ame-marquee-text-widget.php' );
         $widgets_manager->register( new \AME_Marquee_Text_Widget() );
+
+        // Register Marquee Image
+        require_once( __DIR__ . '/widgets/ame-marquee-image-widget.php' );
+        $widgets_manager->register( new \AME_Marquee_Image_Widget() );
     }
 
     /**
@@ -88,8 +93,14 @@ final class Advanced_Marquee_Effect {
     /**
      * Enqueue Styles
      */
-    public function ame_enqueue_styles() {
-        wp_register_style( 'ame-marquee-text-style', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-style.css', [], self::VERSION );
+    public function ame_enqueue_scripts() {
+        wp_register_style( 'ame-marquee-text', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-text.css', [], self::VERSION );
+
+
+        wp_register_style( 'ame-marquee-image', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-image.css', [], self::VERSION );
+
+        wp_register_script('ame-marquee-script', plugin_dir_url( __FILE__ ) . 'assets/js/marquee-script.js', [], self::VERSION, true );
+
     }
 }
 
