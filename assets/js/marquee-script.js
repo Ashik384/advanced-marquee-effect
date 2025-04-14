@@ -8,12 +8,13 @@
 
         var $marquee_speed = $marquee.data('marquee-speed');
         var $marquee_direction = $marquee.data('marquee-direction');
+        var $marquee_reverse = $marquee.data('marquee-reverse');
 
         var $swiperWrapper = $marquee.find('.swiper-wrapper');
         var $slides = $swiperWrapper.find('.ame-marquee__item');
 
         // 👇 Clone slides if less than or equal to 3 for smooth scrolling
-        if ($slides.length > 0 && $slides.length <= 3) {
+        if ($slides.length > 0 && $slides.length <= 4) {
             var cloneCount = Math.ceil(8 / $slides.length);
             for (var i = 0; i < cloneCount; i++) {
                 $slides.each(function () {
@@ -25,16 +26,14 @@
         // ✅ Initialize Swiper after cloning
         new Swiper($marquee[0], {
             loop: true,
-            slidesPerView: 'auto',
+            slidesPerView: 'auto', // 👈 This is essential
             spaceBetween: 20,
             speed: $marquee_speed,
             direction: $marquee_direction,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
+            autoplay: false,
             allowTouchMove: false,
+            freeMode: true, // 👈 Enables continuous non-snapping flow
+            freeModeMomentum: false, // 👈 Prevents snapping in free mode
             breakpoints: {
                 320: { spaceBetween: 10 },
                 640: { spaceBetween: 15 },

@@ -1,6 +1,5 @@
 .ame-marquee {
-    width: 100%;
-    height: 400px; /* Accommodates images + captions/descriptions */
+    width: 100%; 
     overflow: hidden;
 }
 .ame-marquee__wrapper {
@@ -18,27 +17,37 @@
     align-items: center;
     padding: 10px;
     box-sizing: border-box;
+    height: auto !important;
 }
+
 .ame-marquee__image-wrapper {
     width: 320px;
     height: 250px;
 }
  
 .ame-marquee__image img {
-    width: 300px;
+    width: 250px;
     height: 100%;
     object-fit: cover;
     loading: lazy; /* MarqueeAddons-inspired lazy loading */
 }
 
+
 .ame-marquee__caption-wrapper {
-    margin-top: 10px;
-    max-width: 300px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.ame-marquee__caption-wrapper p {
+    margin: 0;
     text-align: center;
 }
+ 
 .ame-marquee__caption,
 .ame-marquee__description {
-    margin: 5px 0;
     font-size: 14px;
     line-height: 1.4;
     color: #333;
