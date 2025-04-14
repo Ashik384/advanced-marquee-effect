@@ -15,11 +15,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
     box-sizing: border-box;
     height: auto !important;
 }
-
+.ame-marquee__item_inner a {
+    text-decoration: none !important;
+}
 .ame-marquee__image-wrapper {
     width: 320px;
     height: 250px;

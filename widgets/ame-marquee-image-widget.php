@@ -106,6 +106,14 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control( 
+            'ame_marquee_settings',
+            [
+                'label' => esc_html__('Marquee Settings', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        ); 
 
         $this->add_control(
             'ame_marquee_image_speed',
@@ -116,6 +124,19 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'max' => 90000,
                 'step' => 1,
                 'default' => 3000,
+            ]
+        );
+
+        // marquee reverse 
+        $this->add_control(
+            'ame_marquee_image_reverse',
+            [
+                'label' => __('Reverse', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'advanced-marquee-effect'),
+                'label_off' => __('No', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'no',
             ]
         );
 
@@ -130,19 +151,6 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'default' => 'no',
             ]
         );
-        // marquee reverse 
-        $this->add_control(
-            'ame_marquee_image_reverse',
-            [
-                'label' => __('Reverse', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => __('Yes', 'advanced-marquee-effect'),
-                'label_off' => __('No', 'advanced-marquee-effect'),
-                'return_value' => 'yes',
-                'default' => 'no',
-            ]
-        );
-
 
         $this->add_responsive_control(
             'ame_marquee_height',
@@ -196,7 +204,20 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
-        );  
+        );
+
+        $this->add_control(
+			'ame_marquee_image_spacing',
+			[
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'label' => esc_html__( 'Image Spacing (in px)', 'advanced-marquee-effect' ),
+				'placeholder' => '0',
+				'min' => 0,
+				'max' => 100,
+				'step' => 1,
+				'default' => 16,
+			]
+		);
 
         // Border Radius
         $this->add_responsive_control(
@@ -286,6 +307,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
         $ame_marquee_images = $settings['ame_marquee_images'];
+ 
 
         if (empty($ame_marquee_images)) {
             return;
@@ -295,8 +317,12 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         <div class="ame-marquee" aria-label="Image marquee carousel"
             data-marquee-speed="<?php echo esc_attr($settings['ame_marquee_image_speed']) ?>"
             data-marquee-direction="<?php echo esc_attr($settings['ame_marquee_image_vertical']) === 'yes' ? 'vertical' : 'horizontal' ?>"
-            data-marquee-reverse="<?php echo esc_attr($settings['ame_marquee_image_reverse']) === 'yes' ? 'true' : 'false' ?>">
+            data-marquee-reverse="<?php echo esc_attr($settings['ame_marquee_image_reverse']) === 'yes' ? 'true' : 'false' ?>"
+            data-marquee-image-space="<?php echo esc_attr($settings['ame_marquee_image_spacing'])?>" >
+            
             <div class="swiper-wrapper">
+
+            
                 <?php foreach ($ame_marquee_images as $index => $image_item) :
                     $image = $image_item['ame_marquee_image'];
                     $attachment_id = isset($image['id']) ? $image['id'] : null;
@@ -312,35 +338,38 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     $description = $attachment_id ? get_post_field('post_content', $attachment_id) : '';
                 ?>
                     <div class="swiper-slide ame-marquee__item">
-                        <div class="ame-marquee__image">
-                            <?php if (!empty($marquee_url['url'])) : ?><a href="<?php echo esc_url($marquee_url['url']); ?>"> <?php endif; ?>
-                                <img src="<?php echo esc_url($image_url); ?>"
-                                    alt="<?php echo esc_attr($image_item['ame_marquee_image']['alt'] ?? 'Marquee image ' . ($index + 1)); ?>"
-                                    loading="lazy">
-                                <?php if (!empty($marquee_url['url'])) : ?> </a> <?php endif; ?>
-                        </div>
-
-                        <?php if (!empty($caption) || !empty($description)) : ?>
-                            <?php if (!empty($marquee_url['url'])) : ?>
-                                <a href="<?php echo esc_url($marquee_url['url']); ?>">
-                                <?php endif; ?>
-                                <div class="ame-marquee__caption-wrapper">
-                                    <?php if (!empty($caption)) : ?>
-                                        <p class="ame-marquee__caption" aria-label="Image Caption">
-                                            <?php echo wp_kses_post($caption); ?>
-                                        </p>
-                                    <?php endif; ?>
-
-                                    <?php if (!empty($description)) : ?>
-                                        <p class="ame-marquee__description" aria-label="Image Description">
-                                            <?php echo wp_kses_post($description); ?>
-                                        </p>
-                                    <?php endif; ?>
-
-                                </div>
+                        <div class="ame-marquee__item_inner">
+                            <div class="ame-marquee__image">
                                 <?php if (!empty($marquee_url['url'])) : ?>
-                                </a> <?php endif; ?>
-                        <?php endif; ?>
+                                    <a href="<?php echo esc_url($marquee_url['url']); ?>"  data-elementor-open-lightbox="yes" src="<?php echo esc_url($image_url); ?>"> <?php endif; ?>
+                                    <img src="<?php echo esc_url($image_url); ?>"
+                                        alt="<?php echo esc_attr($image_item['ame_marquee_image']['alt'] ?? 'Marquee image ' . ($index + 1)); ?>"
+                                        loading="lazy">
+                                    <?php if (!empty($marquee_url['url'])) : ?> </a> <?php endif; ?>
+                            </div>
+
+                            <?php if (!empty($caption) || !empty($description)) : ?>
+                                <?php if (!empty($marquee_url['url'])) : ?>
+                                    <a href="<?php echo esc_url($marquee_url['url']); ?>">
+                                    <?php endif; ?>
+                                    <div class="ame-marquee__caption-wrapper">
+                                        <?php if (!empty($caption)) : ?>
+                                            <p class="ame-marquee__caption" aria-label="Image Caption">
+                                                <?php echo wp_kses_post($caption); ?>
+                                            </p>
+                                        <?php endif; ?>
+
+                                        <?php if (!empty($description)) : ?>
+                                            <p class="ame-marquee__description" aria-label="Image Description">
+                                                <?php echo wp_kses_post($description); ?>
+                                            </p>
+                                        <?php endif; ?>
+
+                                    </div>
+                                    <?php if (!empty($marquee_url['url'])) : ?>
+                                    </a> <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
