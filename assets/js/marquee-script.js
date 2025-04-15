@@ -22,8 +22,9 @@ function initializeMarqueeSwiper($marquee, settings) {
         loop: true,
         slidesPerView: 'auto',
         allowTouchMove: false,
-        freeMode: true,
-        freeModeMomentum: false
+        freeMode: false,
+        freeModeMomentum: false,
+        autoplay: settings.autoplay || false
     }, settings));
 
     if ($marquee.data('marquee-pause-on-hover') === true || $marquee.data('marquee-pause-on-hover') === 'true') {
@@ -47,14 +48,13 @@ function AmeMarqueeImage($scope) {
     var $marquee = $scope.find('.ame-marquee__wrapper');
 
     var settings = {
-        spaceBetween: $marquee.data('marquee-image-space'),
-        speed: $marquee.data('marquee-speed'),
-        direction: $marquee.data('marquee-direction'),
-
         autoplay: {
             delay: 0, 
             reverseDirection: $marquee.data('marquee-reverse')
-        }
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
     };
 
     initializeMarqueeSwiper($marquee, settings);
