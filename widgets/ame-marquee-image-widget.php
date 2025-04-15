@@ -124,7 +124,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'label_on' => esc_html__('Show', 'advanced-marquee-effect'),
                 'label_off' => esc_html__('Hide', 'advanced-marquee-effect'),
                 'return_value' => 'yes',
-                'default' => 'yes',
+                'default' => '',
             ]
         );
 
