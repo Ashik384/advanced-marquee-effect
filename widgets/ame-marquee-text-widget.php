@@ -8,7 +8,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
     }
 
     public function get_title() {
-        return __( 'Marquee Text', 'advanced-marquee-effect' );
+        return __( 'AME Marquee Text', 'advanced-marquee-effect' );
     }
 
     public function get_icon() {
@@ -23,7 +23,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
         return ['ame', 'marquee', 'animation', 'marquee text', 'running'];
     }
     public function get_style_depends() {
-        return ['ame-marquee-text-style'];
+        return ['ame-marquee-text'];
     }
 
     protected function _register_controls() {
