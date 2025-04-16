@@ -181,7 +181,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'ame_marquee_image_vertical',
             [
-                'label' => __('Vertical', 'advanced-marquee-effect'),
+                'label' => __('Vertical Scroll', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'advanced-marquee-effect'),
                 'label_off' => __('No', 'advanced-marquee-effect'),
