@@ -30,12 +30,12 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        return ['ame-marquee-image'];
+        return ['ame-marquee-image', 'ame-swiper'];
     }
 
     public function get_script_depends()
     {
-        return ['ame-marquee-script'];
+        return ['ame-marquee-script', 'ame-swiper'];
     }
 
     protected function _register_controls()
@@ -199,7 +199,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'range' => [
                     'px' => [
                         'min' => 0,
-                        'max' => 1000,
+                        'max' => 600,
                     ],
                 ],
                 'devices' => ['desktop', 'tablet', 'mobile'],
@@ -301,7 +301,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'min' => 0,
                 'max' => 100,
                 'step' => 1,
-                'default' => 8,
+                'default' => 16,
             ]
         );
 
@@ -337,7 +337,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                     'px' => [
                         'min' => 1,
-                        'max' => 320,
+                        'max' => 280,
                     ],
                     'em' => [
                         'min' => 1,
@@ -350,7 +350,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 320,
+                    'size' => 280,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__item' => 'width: {{SIZE}}{{UNIT}};',
@@ -412,6 +412,37 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'ame_marquee_image_width',
+            [
+                'label' => esc_html__('Image Width', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'vw'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 280,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'vw' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 280,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item_inner img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'ame_marquee_image_height',
             [
@@ -437,8 +468,8 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'default' => [
-                    'unit' => 'px',
-                    'size' => 280,
+                    'unit' => '%',
+                    'size' => 100,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__item_inner img' => 'height: {{SIZE}}{{UNIT}};',
@@ -543,11 +574,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             data-marquee-image-space="<?php echo esc_attr($settings['ame_marquee_item_spacing']) ?>"
             data-marquee-pause-on-hover="<?php echo $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false' ?>">
 
-            <div class="swiper-wrapper ame-marquee__items 
-                <?php echo $ame_marquee_direction; ?>
-                ame-align-v-<?php echo $ame_alignment_vertical; ?>
-                ame-align-h-<?php echo $ame_alignment_horizontal; ?> ">
-
+            <div class="swiper-wrapper ame-marquee__items <?php echo $ame_marquee_direction; ?> ame-align-v-<?php echo $ame_alignment_vertical; ?> ame-align-h-<?php echo $ame_alignment_horizontal; ?> ">
                 <?php foreach ($ame_marquee_images as $image_item) :
                     $image = $image_item['ame_marquee_image'];
 
