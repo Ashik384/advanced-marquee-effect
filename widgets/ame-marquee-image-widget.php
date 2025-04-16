@@ -264,7 +264,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'default' => 'center',
-                'toggle' => true,
+                'toggle' => false,
             ]
         );
 
@@ -288,7 +288,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'default' => 'center',
-                'toggle' => true,
+                'toggle' => false,
             ]
         );
 
@@ -553,89 +553,87 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
     }
 
     protected function render()
-    {
-        $settings = $this->get_settings_for_display();
-        $ame_marquee_images = $settings['ame_marquee_images'];
-        $ame_marquee_direction = $settings['ame_marquee_image_vertical'] === 'yes' ? 'vertical' : 'horizontal';
-        $ame_alignment_vertical = $settings['ame_marquee_vertical_align'];
-        $ame_alignment_horizontal = $settings['ame_marquee_horizontal_align'];
-        $ame_content_alignment = $settings['ame_marquee_content_alignment'];
-        $lazy_load_enabled = ! empty($settings['ame_marquee_lazy_load']) && $settings['ame_marquee_lazy_load'] === 'yes';
+{
+    $settings = $this->get_settings_for_display();
 
-        if (empty($ame_marquee_images)) {
-            return;
-        }
-?>
+    // Extract and sanitize settings
+    $image_items          = $settings['ame_marquee_images'] ?? [];
+    $scroll_direction     = $settings['ame_marquee_image_vertical'] === 'yes' ? 'vertical' : 'horizontal';
+    $vertical_alignment   = $settings['ame_marquee_vertical_align'] ?? 'center';
+    $horizontal_alignment = $settings['ame_marquee_horizontal_align'] ?? 'center';
+    $content_alignment    = $settings['ame_marquee_content_alignment'] ?? 'center';
+    $enable_lazy_load     = !empty($settings['ame_marquee_lazy_load']) && $settings['ame_marquee_lazy_load'] === 'yes';
+    $show_text_details    = $settings['ame_marquee_show_caption_description'] === 'yes';
+    $scroll_speed         = $settings['ame_marquee_speed'] ?? '30';
+    $is_reversed          = $settings['ame_marquee_image_reverse'] === 'yes' ? 'true' : 'false';
+    $item_spacing         = $settings['ame_marquee_item_spacing'] ?? '10';
+    $pause_on_hover       = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
 
-        <div class="ame-marquee__wrapper" aria-label="<?php esc_attr_e( 'Image marquee carousel', 'advanced-marquee-effect' ); ?>"
-            data-marquee-speed="<?php echo esc_attr($settings['ame_marquee_speed']) ?>"
-            data-marquee-direction="<?php echo esc_attr($ame_marquee_direction) ?>"
-            data-marquee-reverse="<?php echo esc_attr($settings['ame_marquee_image_reverse']) === 'yes' ? 'true' : 'false' ?>"
-            data-marquee-image-space="<?php echo esc_attr($settings['ame_marquee_item_spacing']) ?>"
-            data-marquee-pause-on-hover="<?php echo $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false' ?>">
-
-            <div class="swiper-wrapper ame-marquee__items <?php echo $ame_marquee_direction; ?> ame-align-v-<?php echo $ame_alignment_vertical; ?> ame-align-h-<?php echo $ame_alignment_horizontal; ?> ">
-                <?php foreach ($ame_marquee_images as $image_item) :
-                    $image = $image_item['ame_marquee_image'];
-
-                    if (is_array($image) && isset($image['url'])) {
-                        $image_url = !empty($image['url']) ? $image['url'] : '';
-                        $image_alt = !empty($image['alt']) ? $image['alt'] : '';
-                    }
-                    // Get link
-                    $marquee_url = $image_item['ame_marquee_link'];
-                    $is_external = !empty($marquee_url['is_external']);
-                    $nofollow = !empty($marquee_url['nofollow']);
-                    $target = $is_external ? ' target="_blank"' : '';
-                    $rel = $nofollow ? ' rel="nofollow"' : '';
-
-                    // Get caption/description only if ID is valid
-                    $attachment_id = isset($image['id']) ? $image['id'] : null;
-                    $caption = !empty($attachment_id) ? wp_get_attachment_caption($attachment_id) : '';
-                    $description = !empty($attachment_id) ? get_post_field('post_content', $attachment_id) : ''; 
-                ?>
-                    <div class="swiper-slide ame-marquee__item" role="group">
-                        <div class="ame-marquee__item_inner ame-align-<?php echo $ame_content_alignment; ?>">
-                        <div class="ame-marquee__image">
-                            <?php if (!empty($marquee_url['url'])) : ?>
-                                <a href="<?php echo esc_url($marquee_url['url']); ?>" <?php echo $target; ?><?php echo $rel; ?>>
-                            <?php endif; ?>
-                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>"
-                                    <?php if ($lazy_load_enabled) : ?> loading="lazy" <?php endif; ?>>
-                            <?php if (!empty($marquee_url['url'])) : ?>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                            <?php if ('yes' === $settings['ame_marquee_show_caption_description']) : ?>
-                                <?php if (!empty($caption) || !empty($description)) : ?>
-                                    <?php if (!empty($marquee_url['url'])) : ?>
-                                        <a href="<?php echo esc_url($marquee_url['url']); ?>" <?php echo $target; ?><?php echo $rel; ?>>
-                                        <?php endif; ?>
-                                        <div class="ame-marquee__details">
-                                            <?php if (!empty($caption)) : ?>
-                                                <p class="ame-marquee__caption" aria-label="<?php esc_attr_e( 'Image Caption', 'advanced-marquee-effect' ); ?>">
-                                                    <?php echo wp_kses_post($caption); ?>
-                                                </p>
-                                            <?php endif; ?>
-
-                                            <?php if (!empty($description)) : ?>
-                                                <p class="ame-marquee__description" aria-label="<?php esc_attr_e( 'Image Description', 'advanced-marquee-effect' ); ?>">
-                                                    <?php echo wp_kses_post($description); ?>
-                                                </p>
-                                            <?php endif; ?>
-                                        </div>
-                                        <?php if (!empty($marquee_url['url'])) : ?>
-                                        </a> <?php endif; ?>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-
-            </div>
-        </div>
-
-<?php
+    if (empty($image_items)) {
+        return;
     }
+    ?>
+
+    <div class="ame-marquee__wrapper"
+        aria-label="<?php echo esc_attr__('Image marquee carousel', 'advanced-marquee-effect'); ?>"
+        data-marquee-speed="<?php echo esc_attr($scroll_speed); ?>"
+        data-marquee-direction="<?php echo esc_attr($scroll_direction); ?>"
+        data-marquee-reverse="<?php echo esc_attr($is_reversed); ?>"
+        data-marquee-image-space="<?php echo esc_attr($item_spacing); ?>"
+        data-marquee-pause-on-hover="<?php echo esc_attr($pause_on_hover); ?>">
+
+        <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}"); ?>">
+            <?php foreach ($image_items as $item) :
+                $image_data     = $item['ame_marquee_image'] ?? [];
+                $image_url      = $image_data['url'] ?? '';
+                $image_alt      = $image_data['alt'] ?? '';
+                $image_id       = $image_data['id'] ?? null;
+                $image_caption  = $image_id ? wp_get_attachment_caption($image_id) : '';
+                $image_content  = $image_id ? get_post_field('post_content', $image_id) : '';
+
+                $link_data      = $item['ame_marquee_link'] ?? [];
+                $has_link       = !empty($link_data['url']);
+                $link_url       = $has_link ? esc_url($link_data['url']) : '';
+                $link_target    = !empty($link_data['is_external']) ? ' target="_blank"' : '';
+                $link_rel       = !empty($link_data['nofollow']) ? ' rel="nofollow"' : '';
+                ?>
+
+                <div class="swiper-slide ame-marquee__item" role="listitem">
+                    <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
+                        <div class="ame-marquee__image">
+                            <?php if ($has_link) : ?>
+                                <a href="<?php echo $link_url; ?>" <?php echo $link_target . $link_rel; ?>>
+                            <?php endif; ?>
+
+                            <img src="<?php echo esc_url($image_url); ?>"
+                                alt="<?php echo esc_attr($image_alt); ?>"
+                                <?php echo $enable_lazy_load ? 'loading="lazy"' : ''; ?> />
+
+                            <?php if ($has_link) : ?></a><?php endif; ?>
+                        </div>
+
+                        <?php if ($show_text_details && (!empty($image_caption) || !empty($image_content))) : ?>
+                            <?php if ($has_link) : ?><a href="<?php echo $link_url; ?>" <?php echo $link_target . $link_rel; ?>><?php endif; ?>
+                                <div class="ame-marquee__details">
+                                    <?php if (!empty($image_caption)) : ?>
+                                        <p class="ame-marquee__caption" aria-label="<?php echo esc_attr__('Image Caption', 'advanced-marquee-effect'); ?>">
+                                            <?php echo wp_kses_post($image_caption); ?>
+                                        </p>
+                                    <?php endif; ?>
+                                    <?php if (!empty($image_content)) : ?>
+                                        <p class="ame-marquee__description" aria-label="<?php echo esc_attr__('Image Description', 'advanced-marquee-effect'); ?>">
+                                            <?php echo wp_kses_post($image_content); ?>
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
+                            <?php if ($has_link) : ?></a><?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <?php
 }
-?>
+} ?>
