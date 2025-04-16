@@ -100,7 +100,7 @@ final class Advanced_Marquee_Effect {
         
 
         wp_register_script( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/js/swiper-bundle.min.js', [], self::VERSION, true );
-        wp_register_script('ame-marquee-script', plugin_dir_url( __FILE__ ) . 'assets/js/marquee-script.js', ['ame-swiper', 'jquery'], time(), true );
+        wp_register_script('ame-marquee-script', plugin_dir_url( __FILE__ ) . 'assets/js/marquee-script.js', ['ame-swiper', 'jquery'], self::VERSION, true );
 
     }
 }
