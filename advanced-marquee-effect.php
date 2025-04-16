@@ -3,8 +3,8 @@
  * Plugin Name: Advanced Marquee Effect
  * Description: Easily create smooth scrolling marquees with the Advanced Marquee Effect for Elementor. Customize speed, Style and content with text, or icons
  * Author: Ashikul Islam
- * Version: 1.0.2
- * Tested up to: 6.7
+ * Version: 1.0.3
+ * Tested up to: 6.8
  * Text Domain: advanced-marquee-effect
  * Domain Path: /lang/
  * Author URI: https://profiles.wordpress.org/mdashikul/
@@ -20,7 +20,7 @@ final class Advanced_Marquee_Effect {
     /**
      * Plugin Version
      */
-    const VERSION = '1.0.2';
+    const VERSION = '1.0.3';
 
     /**
      * Singleton Instance
