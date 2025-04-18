@@ -30,7 +30,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        return ['ame-testimonials-marquee', 'ame-swiper'];
+        return ['ame-marquee', 'ame-swiper'];
     }
 
     public function get_script_depends()
@@ -239,6 +239,37 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_responsive_control(
+            'ame_marquee_horizontal_align',
+            [
+                'label' => esc_html__('Horizontal Alignment', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'top' => [
+                        'title' => esc_html__('Top', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-top',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-middle',
+                    ],
+                    'bottom' => [
+                        'title' => esc_html__('Bottom', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-bottom',
+                    ],
+                    'stretch' => [
+                        'title' => esc_html__('Stretch', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-stretch',
+                    ],
+                ],
+                'condition' => [
+                    'ame_marquee_vertical!' => 'no',
+                ],
+                'default' => 'center',
+                'toggle' => false,
+            ]
+        );
+
+        $this->add_responsive_control(
             'ame_marquee_vertical_align',
             [
                 'label' => esc_html__('Vertical Alignment', 'advanced-marquee-effect'),
@@ -257,15 +288,18 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                         'icon' => 'eicon-h-align-right',
                     ],
                 ],
+                'condition' => [
+                    'ame_marquee_vertical' => 'yes',
+                ],
                 'default' => 'center',
                 'toggle' => false,
             ]
         );
 
         $this->add_responsive_control(
-            'ame_marquee_horizontal_align',
+            'ame_marquee_alignment',
             [
-                'label' => esc_html__('Horizontal Alignment', 'advanced-marquee-effect'),
+                'label' => esc_html__('Alignment Item', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'top' => [
@@ -281,25 +315,43 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                         'icon' => 'eicon-v-align-bottom',
                     ],
                 ],
-                'default' => 'center',
+                'condition' => [
+                    'ame_marquee_vertical!' => 'yes',
+                ],
+                'default' => 'top',
                 'toggle' => false,
             ]
         );
 
-        $this->add_control(
-            'ame_marquee_equal_height',
-            [
-                'label' => esc_html__('Equal Height Slides', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
-                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
-                'return_value' => 'yes',
-                'default' => 'no',
-                'condition' => [
-                    'ame_marquee_vertical!' => 'yes', // Only show for horizontal marquee
-                ],
-            ]
-        );
+        // $this->add_control(
+        //     'ame_marquee_equal_height',
+        //     [
+        //         'label' => esc_html__('Equal Height Slides', 'advanced-marquee-effect'),
+        //         'type' => \Elementor\Controls_Manager::SWITCHER,
+        //         'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+        //         'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+        //         'return_value' => 'yes',
+        //         'default' => 'no',
+        //         'condition' => [
+        //             'ame_marquee_vertical!' => 'yes', // Only show for horizontal marquee
+        //         ],
+        //     ]
+        // );
+
+        // $this->add_control(
+        //     'ame_marquee_center',
+        //     [
+        //         'label' => esc_html__('Content Center', 'advanced-marquee-effect'),
+        //         'type' => \Elementor\Controls_Manager::SWITCHER,
+        //         'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+        //         'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+        //         'return_value' => 'yes',
+        //         'default' => 'no',
+        //         'condition' => [
+        //             'ame_marquee_equal_height' => 'yes',  
+        //         ],
+        //     ]
+        // );
 
         $this->add_control(
             'ame_marquee_item_spacing',
@@ -572,13 +624,15 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
         $is_reversed          = $settings['ame_marquee_reverse'] === 'yes' ? 'true' : 'false';
         $item_spacing         = $settings['ame_marquee_item_spacing'] ?? '10';
         $pause_on_hover       = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
+        // $center_content       = $settings['ame_marquee_center'] === 'yes' && $settings['ame_marquee_equal_height'] === 'yes' ? ' ame-center-content' : '';
+        $aliment_item        = $settings['ame_marquee_alignment'] ?? 'top';
 
         if (empty($testimonials)) {
             return;
         }
         ?>
 
-        <div class="ame-marquee__wrapper"
+        <div class="ame-marquee__wrapper ame-testimonial-marquee"
             aria-label="<?php echo esc_attr__('Testimonials marquee carousel', 'advanced-marquee-effect'); ?>"
             data-marquee-speed="<?php echo esc_attr($scroll_speed); ?>"
             data-marquee-direction="<?php echo esc_attr($scroll_direction); ?>"
@@ -586,7 +640,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
             data-marquee-image-space="<?php echo esc_attr($item_spacing); ?>"
             data-marquee-pause-on-hover="<?php echo esc_attr($pause_on_hover); ?>">
 
-            <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}" . ($settings['ame_marquee_equal_height'] === 'yes' && $scroll_direction === 'horizontal' ? ' ame-equal-height' : '')); ?>">
+            <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}"); ?>">
                 <?php foreach ($testimonials as $testimonial) :
                     $content      = $testimonial['ame_testimonial_content'] ?? '';
                     $author       = $testimonial['ame_testimonial_author'] ?? '';
@@ -596,7 +650,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                     $image_alt    = $image_data['alt'] ?? $author;
                     ?>
 
-                    <div class="swiper-slide ame-marquee__item" role="listitem">
+                    <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
                         <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
                             <?php if (!empty($image_url)) : ?>
                                 <div class="ame-marquee__author-image">

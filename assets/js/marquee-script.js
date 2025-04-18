@@ -45,7 +45,7 @@ function initializeMarqueeSwiper($marquee, settings) {
 }
 
 function AmeMarqueeImage($scope) {
-    var $marquee = $scope.find('.ame-marquee__selector-image');
+    var $marquee = $scope.find('.ame-image-marquee');
 
     var settings = {
         autoplay: {
@@ -61,7 +61,7 @@ function AmeMarqueeImage($scope) {
 }
 
 function AmeMarqueePost($scope) {
-    var $marquee = $scope.find('.ame-marquee__selector-post');
+    var $marquee = $scope.find('.ame-post-marquee');
 
     var settings = {
         autoplay: {
@@ -77,7 +77,7 @@ function AmeMarqueePost($scope) {
 }
 
 function AmeMarqueeTestimonials($scope) {
-    var $marquee = $scope.find('.ame-marquee__wrapper');
+    var $marquee = $scope.find('.ame-testimonial-marquee');
 
     var settings = {
         autoplay: {

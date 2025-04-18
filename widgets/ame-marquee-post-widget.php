@@ -30,7 +30,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        return ['ame-marquee-post', 'ame-swiper'];
+        return ['ame-marquee', 'ame-swiper'];
     }
 
     public function get_script_depends()
@@ -231,26 +231,14 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_responsive_control(
-            'ame_marquee_vertical_align',
+            'ame_marquee_item_background',
             [
-                'label' => esc_html__('Vertical Alignment', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => esc_html__('Left', 'advanced-marquee-effect'),
-                        'icon' => 'eicon-h-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__('Center', 'advanced-marquee-effect'),
-                        'icon' => 'eicon-h-align-center',
-                    ],
-                    'right' => [
-                        'title' => esc_html__('Right', 'advanced-marquee-effect'),
-                        'icon' => 'eicon-h-align-right',
-                    ],
+                'label' => esc_html__('Background Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item' => 'background-color: {{VALUE}};',
                 ],
-                'default' => 'center',
-                'toggle' => false,
             ]
         );
 
@@ -272,26 +260,87 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
                         'title' => esc_html__('Bottom', 'advanced-marquee-effect'),
                         'icon' => 'eicon-v-align-bottom',
                     ],
+                    'stretch' => [
+                        'title' => esc_html__('Stretch', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-stretch',
+                    ],
+                ],
+                'condition' => [
+                    'ame_marquee_post_vertical!' => 'yes',
+                ],
+                'default' => 'stretch',
+                'toggle' => false,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_marquee_vertical_align',
+            [
+                'label' => esc_html__('Vertical Alignment', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-h-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-h-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-h-align-right',
+                    ],
+                ],
+                'condition' => [
+                    'ame_marquee_post_vertical' => 'yes',
+                ],
+                'default' => 'center',
+                'toggle' => false,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_marquee_alignment',
+            [
+                'label' => esc_html__('Alignment Item', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'top' => [
+                        'title' => esc_html__('Top', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-top',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-middle',
+                    ],
+                    'bottom' => [
+                        'title' => esc_html__('Bottom', 'advanced-marquee-effect'),
+                        'icon' => 'eicon-v-align-bottom',
+                    ],
+                ],
+                'condition' => [
+                    'ame_marquee_post_vertical!' => 'yes',
                 ],
                 'default' => 'top',
                 'toggle' => false,
             ]
         );
 
-        $this->add_control(
-            'ame_marquee_equal_height',
-            [
-                'label' => esc_html__('Equal Height Slides', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
-                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
-                'return_value' => 'yes',
-                'default' => 'no',
-                'condition' => [
-                    'ame_marquee_post_vertical!' => 'yes', // Only show for horizontal marquee
-                ],
-            ]
-        );
+        // $this->add_control(
+        //     'ame_marquee_equal_height',
+        //     [
+        //         'label' => esc_html__('Equal Height Slides', 'advanced-marquee-effect'),
+        //         'type' => \Elementor\Controls_Manager::SWITCHER,
+        //         'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+        //         'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+        //         'return_value' => 'yes',
+        //         'default' => 'no',
+        //         'condition' => [
+        //             'ame_marquee_post_vertical!' => 'yes', // Only show for horizontal marquee
+        //         ],
+        //     ]
+        // );
 
         $this->add_responsive_control(
             'ame_marquee_details_gap',
@@ -616,6 +665,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         $item_spacing = $settings['ame_marquee_item_spacing'] ?? '10';
         $pause_on_hover = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
         $lazy_load = $settings['ame_marquee_lazy_load'] === 'yes';
+        $aliment_item        = $settings['ame_marquee_alignment'] ?? 'top';
 
         // Query posts
         $args = [
@@ -631,7 +681,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         }
         ?>
 
-        <div class="ame-marquee__wrapper ame-marquee__selector-post"
+        <div class="ame-marquee__wrapper ame-post-marquee"
             aria-label="<?php echo esc_attr__('Post marquee carousel', 'advanced-marquee-effect'); ?>"
             data-marquee-speed="<?php echo esc_attr($scroll_speed); ?>"
             data-marquee-direction="<?php echo esc_attr($scroll_direction); ?>"
@@ -639,9 +689,9 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
             data-marquee-image-space="<?php echo esc_attr($item_spacing); ?>"
             data-marquee-pause-on-hover="<?php echo esc_attr($pause_on_hover); ?>">
 
-            <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}" . ($settings['ame_marquee_equal_height'] === 'yes' && $scroll_direction === 'horizontal' ? ' ame-equal-height' : '')); ?>">    
+            <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}"); ?>">    
             <?php while ($query->have_posts()) : $query->the_post(); ?>
-                    <div class="swiper-slide ame-marquee__item" role="listitem">
+                    <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
                         <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
                             <a href="<?php echo esc_url(get_permalink()); ?>" class="ame-marquee__link">
                                 <div class="ame-marquee__image">

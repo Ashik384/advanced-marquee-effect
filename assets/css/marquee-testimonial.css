@@ -1,61 +1,4 @@
-/* Existing styles from post marquee */
-.ame-marquee__wrapper {
-    overflow: hidden;
-    position: relative;
-}
 
-.ame-marquee__items {
-    display: flex;
-}
-
-.ame-marquee__items.horizontal {
-    flex-direction: row;
-}
-
-.ame-marquee__items.vertical {
-    flex-direction: column;
-}
-
-.ame-marquee__item {
-    flex: 0 0 auto;
-    box-sizing: border-box;
-}
-
-.ame-marquee__items.ame-equal-height {
-    align-items: stretch;
-}
-
-.ame-marquee__items.ame-equal-height .ame-marquee__item {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-}
-
-.ame-marquee__items.ame-equal-height .ame-marquee__item_inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.ame-marquee__details {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-.ame-marquee__title {
-    margin: 0 0 10px 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.ame-marquee__excerpt {
-    margin-top: 0;
-    max-height: 3em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 /* New styles for testimonial marquee */
 .ame-marquee__item.ame-testimonial--default,
@@ -149,4 +92,8 @@
 /* Support equal height when enabled */
 .ame-marquee__items.ame-equal-height {
     align-items: stretch;
+}
+
+.ame-center-content {
+    justify-content: center;
 }
