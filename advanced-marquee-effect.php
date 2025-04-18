@@ -76,6 +76,10 @@ final class Advanced_Marquee_Effect {
         // Register Marquee Image
         require_once( __DIR__ . '/widgets/ame-marquee-image-widget.php' );
         $widgets_manager->register( new \AME_Marquee_Image_Widget() );
+
+        // Register Marquee Post
+        require_once( __DIR__ . '/widgets/ame-marquee-post-widget.php' );
+        $widgets_manager->register( new \AME_Marquee_Post_Widget() );
     }
 
     /**
@@ -97,6 +101,7 @@ final class Advanced_Marquee_Effect {
         wp_register_style( 'ame-marquee-text', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-text.css', [], self::VERSION );
         wp_register_style( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/css/swiper-bundle.min.css', [], self::VERSION );
         wp_register_style( 'ame-marquee-image', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-image.css', ['ame-swiper'], self::VERSION );
+        wp_register_style( 'ame-marquee-post', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-post.css', ['ame-swiper'], self::VERSION );
         
 
         wp_register_script( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/js/swiper-bundle.min.js', [], self::VERSION, true );

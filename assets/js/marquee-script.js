@@ -45,7 +45,23 @@ function initializeMarqueeSwiper($marquee, settings) {
 }
 
 function AmeMarqueeImage($scope) {
-    var $marquee = $scope.find('.ame-marquee__wrapper');
+    var $marquee = $scope.find('.ame-marquee__selector-image');
+
+    var settings = {
+        autoplay: {
+            delay: 0, 
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
+function AmeMarqueePost($scope) {
+    var $marquee = $scope.find('.ame-marquee__selector-post');
 
     var settings = {
         autoplay: {
@@ -64,6 +80,12 @@ $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-image.default',
         AmeMarqueeImage
+    );
+
+    // Hook for post marquee widget
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-marquee-post.default',
+        AmeMarqueePost
     );
 });
 
