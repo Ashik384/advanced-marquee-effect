@@ -76,6 +76,22 @@ function AmeMarqueePost($scope) {
     initializeMarqueeSwiper($marquee, settings);
 }
 
+function AmeMarqueeTestimonials($scope) {
+    var $marquee = $scope.find('.ame-marquee__wrapper');
+
+    var settings = {
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
 $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-image.default',
@@ -87,6 +103,12 @@ $(window).on('elementor/frontend/init', function () {
         'frontend/element_ready/ame-marquee-post.default',
         AmeMarqueePost
     );
+
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-testimonials-marquee.default',
+        AmeMarqueeTestimonials
+    );
+
 });
 
 })(jQuery);
