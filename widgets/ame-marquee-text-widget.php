@@ -23,7 +23,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
         return ['ame', 'marquee', 'animation', 'marquee text', 'running'];
     }
     public function get_style_depends() {
-        return ['ame-marquee-text'];
+        return ['ame-marquee-style'];
     }
 
     protected function _register_controls() {

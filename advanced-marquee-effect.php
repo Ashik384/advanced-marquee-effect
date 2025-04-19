@@ -3,7 +3,7 @@
  * Plugin Name: Advanced Marquee Effect
  * Description: Easily create smooth scrolling marquees with the Advanced Marquee Effect for Elementor. Customize speed, Style and content with text, or icons
  * Author: Ashikul Islam
- * Version: 1.0.3
+ * Version: 1.0.4
  * Tested up to: 6.8
  * Text Domain: advanced-marquee-effect
  * Domain Path: /lang/
@@ -20,7 +20,7 @@ final class Advanced_Marquee_Effect {
     /**
      * Plugin Version
      */
-    const VERSION = '1.0.3';
+    const VERSION = '1.0.4';
 
     /**
      * Singleton Instance
@@ -76,6 +76,14 @@ final class Advanced_Marquee_Effect {
         // Register Marquee Image
         require_once( __DIR__ . '/widgets/ame-marquee-image-widget.php' );
         $widgets_manager->register( new \AME_Marquee_Image_Widget() );
+
+        // Register Marquee Post
+        require_once( __DIR__ . '/widgets/ame-marquee-post-widget.php' );
+        $widgets_manager->register( new \AME_Marquee_Post_Widget() );
+
+        // Register Testimonial Marquee
+        require_once( __DIR__ . '/widgets/ame-marquee-testimonial-widget.php' );
+        $widgets_manager->register( new \AME_Testimonial_Marquee_Widget() );
     }
 
     /**
@@ -94,11 +102,9 @@ final class Advanced_Marquee_Effect {
      * Enqueue Styles
      */
     public function ame_enqueue_scripts() {
-        wp_register_style( 'ame-marquee-text', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-text.css', [], self::VERSION );
         wp_register_style( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/css/swiper-bundle.min.css', [], self::VERSION );
-        wp_register_style( 'ame-marquee-image', plugin_dir_url( __FILE__ ) . 'assets/css/marquee-image.css', ['ame-swiper'], self::VERSION );
+        wp_register_style( 'ame-marquee-style', plugin_dir_url( __FILE__ ) . 'assets/css/ame-marquee.css', ['ame-swiper'], self::VERSION );
         
-
         wp_register_script( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/js/swiper-bundle.min.js', [], self::VERSION, true );
         wp_register_script('ame-marquee-script', plugin_dir_url( __FILE__ ) . 'assets/js/marquee-script.js', ['ame-swiper', 'jquery'], self::VERSION, true );
 

@@ -1,21 +1,21 @@
 <?php
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
+class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
 {
     public function get_name()
     {
-        return 'ame-marquee-image';
+        return 'ame-marquee-post';
     }
 
     public function get_title()
     {
-        return __('AME Marquee Image', 'advanced-marquee-effect');
+        return __('AME Marquee Post', 'advanced-marquee-effect');
     }
 
     public function get_icon()
     {
-        return 'eicon-slider-album';
+        return 'eicon-post-slider';
     }
 
     public function get_categories()
@@ -25,7 +25,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
 
     public function get_keywords()
     {
-        return ['ame', 'marquee', 'animation', 'marquee text', 'running', 'image', 'marquee image'];
+        return ['ame', 'marquee', 'animation', 'post', 'blog', 'carousel'];
     }
 
     public function get_style_depends()
@@ -48,64 +48,111 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $repeater = new \Elementor\Repeater();
-
-        $repeater->add_control(
-            'ame_marquee_image',
+        $this->add_control(
+            'post_type',
             [
-                'label' => esc_html__('Image', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
+                'label' => __('Post Type', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT2,
+                'options' => $this->get_post_types(),
+                'default' => 'post',
+                'multiple' => false,
             ]
         );
 
-        $repeater->add_control(
-            'ame_marquee_link',
+        $this->add_control(
+            'ame_posts_orderby',
             [
-                'label' => esc_html__('Image Link', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::URL,
-                'placeholder' => esc_html__('https://your-link.com', 'advanced-marquee-effect'),
-                'show_external' => true,
-                'default' => [
-                    'url' => '',
-                    'is_external' => true,
-                    'nofollow' => true,
+                'label' => esc_html__('Order By', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'date' => esc_html__('Date', 'advanced-marquee-effect'),
+                    'title' => esc_html__('Title', 'advanced-marquee-effect'),
+                    'modified' => esc_html__('Modified Date', 'advanced-marquee-effect'),
+                    'rand' => esc_html__('Random', 'advanced-marquee-effect'),
+                    'ID' => esc_html__('Post ID', 'advanced-marquee-effect'),
+                    'menu_order' => esc_html__('Menu Order', 'advanced-marquee-effect'),
+                ],
+                'default' => 'date',
+            ]
+        );
+
+        $this->add_control(
+            'ame_posts_order',
+            [
+                'label' => esc_html__('Order', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'DESC' => esc_html__('Descending', 'advanced-marquee-effect'),
+                    'ASC' => esc_html__('Ascending', 'advanced-marquee-effect'),
+                ],
+                'default' => 'DESC',
+                'condition' => [
+                    'ame_posts_orderby!' => 'rand',
                 ],
             ]
         );
 
         $this->add_control(
-            'ame_marquee_images',
+            'posts_per_page',
             [
-                'label' => esc_html__('Marquee Images', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
-                'default' => [
-                    [
-                        'ame_marquee_image' => [
-                            'url' => \Elementor\Utils::get_placeholder_image_src(),
-                            'alt' => 'Image'
-                        ],
-                    ],
-                    [
-                        'ame_marquee_image' => [
-                            'url' => \Elementor\Utils::get_placeholder_image_src(),
-                            'alt' => 'Image'
-                        ],
-                    ],
-                    [
-                        'ame_marquee_image' => [
-                            'url' => \Elementor\Utils::get_placeholder_image_src(),
-                            'alt' => 'Image'
-                        ],
-                    ],
-                ],
-                'title_field' => '{{{ ame_marquee_image.alt || "Image" }}}',
+                'label' => __('Number of Posts', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'default' => 6,
+                'min' => 1,
+                'max' => 25,
             ]
         );
 
+        $this->add_control(
+            'ame_marquee_title_length',
+            [
+                'label' => esc_html__('Title Length (Words)', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 200,
+                'step' => 1,
+                'default' => 50,
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_show_excerpt',
+            [
+                'label' => esc_html__('Show Excerpt', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('Hide', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_excerpt_length',
+            [
+                'label' => esc_html__('Excerpt Length (Words)', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 500,
+                'step' => 1,
+                'default' => 20,
+                'condition' => [
+                    'ame_marquee_show_excerpt' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_lazy_load',
+            [
+                'label' => esc_html__('Lazy Load Images', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'yes', // Enabled by default to maintain current behavior
+            ]
+        );
 
         $this->add_control(
             'ame_marquee_settings',
@@ -113,18 +160,6 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 'label' => esc_html__('Marquee Settings', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
-            'ame_marquee_show_caption_description',
-            [
-                'label' => esc_html__('Caption & Description', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Show', 'advanced-marquee-effect'),
-                'label_off' => esc_html__('Hide', 'advanced-marquee-effect'),
-                'return_value' => 'yes',
-                'default' => '',
             ]
         );
 
@@ -152,9 +187,8 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        // marquee reverse 
         $this->add_control(
-            'ame_marquee_image_reverse',
+            'ame_marquee_post_reverse',
             [
                 'label' => __('Reverse', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -166,20 +200,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'ame_marquee_lazy_load',
-            [
-                'label' => esc_html__('Lazy Load Images', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
-                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
-                'return_value' => 'yes',
-                'default' => '',
-            ]
-        );
-
-
-        $this->add_control(
-            'ame_marquee_image_vertical',
+            'ame_marquee_post_vertical',
             [
                 'label' => __('Vertical Scroll', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -202,7 +223,6 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                         'max' => 600,
                     ],
                 ],
-                'devices' => ['desktop', 'tablet', 'mobile'],
                 'default' => [
                     'size' => 600,
                     'unit' => 'px',
@@ -219,14 +239,14 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     '{{WRAPPER}} .ame-marquee__wrapper' => 'height: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
-                    'ame_marquee_image_vertical' => 'yes',
+                    'ame_marquee_post_vertical' => 'yes',
                 ]
             ]
         );
 
         $this->end_controls_section();
 
-        // style tab 
+        // Style Tab
         $this->start_controls_section(
             'section_style',
             [
@@ -236,7 +256,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'ame_marquee_image_style',
+            'ame_marquee_post_style',
             [
                 'label' => esc_html__('Marquee Card', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
@@ -277,7 +297,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                 ],
             ]
         );
-
+        
         $this->add_responsive_control(
             'ame_marquee_item_background',
             [
@@ -314,7 +334,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'ame_marquee_image_vertical!' => 'yes',
+                    'ame_marquee_post_vertical!' => 'yes',
                 ],
                 'default' => 'stretch',
                 'toggle' => false,
@@ -341,7 +361,7 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'ame_marquee_image_vertical' => 'yes',
+                    'ame_marquee_post_vertical' => 'yes',
                 ],
                 'default' => 'center',
                 'toggle' => false,
@@ -368,14 +388,48 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'ame_marquee_image_vertical!' => 'yes',
+                    'ame_marquee_post_vertical!' => 'yes',
                 ],
-                
                 'default' => 'top',
                 'toggle' => false,
             ]
         );
- 
+
+        $this->add_responsive_control(
+            'ame_marquee_details_gap',
+            [
+                'label' => esc_html__('Gap Between Title and Excerpt', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                        'step' => 1,
+                    ],
+                    'em' => [
+                        'min' => 0,
+                        'max' => 5,
+                        'step' => 0.1,
+                    ],
+                    'rem' => [
+                        'min' => 0,
+                        'max' => 5,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_excerpt' => 'yes', // Only show if excerpt is enabled
+                ],
+            ]
+        );
 
         $this->add_control(
             'ame_marquee_item_spacing',
@@ -421,7 +475,6 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        
         $this->add_group_control(
             \Elementor\Group_Control_Border::get_type(),
             [
@@ -527,9 +580,8 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
                     '{{WRAPPER}} .ame-marquee__item_inner img' => 'height: {{SIZE}}{{UNIT}};',
                 ],
             ]
-        ); 
+        );
 
-        // Border Radius
         $this->add_responsive_control(
             'ame_image_border_radius',
             [
@@ -542,11 +594,10 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
             ]
         );
 
-
         $this->add_control(
-            'ame_caption_heading',
+            'ame_title_heading',
             [
-                'label' => esc_html__('Caption', 'advanced-marquee-effect'),
+                'label' => esc_html__('Title', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -555,27 +606,27 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'ame_caption_typography',
+                'name' => 'ame_title_typography',
                 'label' => esc_html__('Typography', 'advanced-marquee-effect'),
-                'selector' => '{{WRAPPER}} .ame-marquee__caption',
+                'selector' => '{{WRAPPER}} .ame-marquee__title',
             ]
         );
 
         $this->add_control(
-            'ame_caption_color',
+            'ame_title_color',
             [
                 'label' => esc_html__('Text Color', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__caption' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ame-marquee__title' => 'color: {{VALUE}};',
                 ],
             ]
         );
 
         $this->add_control(
-            'ame_description_heading',
+            'ame_excerpt_heading',
             [
-                'label' => esc_html__('Description', 'advanced-marquee-effect'),
+                'label' => esc_html__('Excerpt', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
@@ -584,19 +635,19 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
-                'name' => 'ame_description_typography',
+                'name' => 'ame_excerpt_typography',
                 'label' => esc_html__('Typography', 'advanced-marquee-effect'),
-                'selector' => '{{WRAPPER}} .ame-marquee__description',
+                'selector' => '{{WRAPPER}} .ame-marquee__excerpt',
             ]
         );
 
         $this->add_control(
-            'ame_description_color',
+            'ame_excerpt_color',
             [
                 'label' => esc_html__('Text Color', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__description' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ame-marquee__excerpt' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -604,89 +655,100 @@ class AME_Marquee_Image_Widget extends \Elementor\Widget_Base
         $this->end_controls_section();
     }
 
-    protected function render()
-{
-    $settings = $this->get_settings_for_display();
-
-    // Extract and sanitize settings
-    $image_items          = $settings['ame_marquee_images'] ?? [];
-    $scroll_direction     = $settings['ame_marquee_image_vertical'] === 'yes' ? 'vertical' : 'horizontal';
-    $vertical_alignment   = $settings['ame_marquee_vertical_align'] ?? 'center';
-    $horizontal_alignment = $settings['ame_marquee_horizontal_align'] ?? 'center';
-    $content_alignment    = $settings['ame_marquee_content_alignment'] ?? 'center';
-    $enable_lazy_load     = !empty($settings['ame_marquee_lazy_load']) && $settings['ame_marquee_lazy_load'] === 'yes';
-    $show_text_details    = $settings['ame_marquee_show_caption_description'] === 'yes';
-    $scroll_speed         = $settings['ame_marquee_speed'] ?? '30';
-    $is_reversed          = $settings['ame_marquee_image_reverse'] === 'yes' ? 'true' : 'false';
-    $item_spacing         = $settings['ame_marquee_item_spacing'] ?? '10';
-    $pause_on_hover       = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
-    $aliment_item        = $settings['ame_marquee_alignment'] ?? 'top';
-
-    if (empty($image_items)) {
-        return;
+    protected function get_post_types()
+    {
+        $post_types = get_post_types(['public' => true], 'objects');
+        $options = [];
+        foreach ($post_types as $post_type) {
+            $options[$post_type->name] = $post_type->labels->singular_name;
+        }
+        return $options;
     }
-    ?>
 
-    <div class="ame-marquee__wrapper ame-image-marquee"
-        aria-label="<?php echo esc_attr__('Image marquee carousel', 'advanced-marquee-effect'); ?>"
-        data-marquee-speed="<?php echo esc_attr($scroll_speed); ?>"
-        data-marquee-direction="<?php echo esc_attr($scroll_direction); ?>"
-        data-marquee-reverse="<?php echo esc_attr($is_reversed); ?>"
-        data-marquee-image-space="<?php echo esc_attr($item_spacing); ?>"
-        data-marquee-pause-on-hover="<?php echo esc_attr($pause_on_hover); ?>">
+    protected function render()
+    {
+        $settings = $this->get_settings_for_display();
 
-        <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}"); ?>">
-            <?php foreach ($image_items as $item) :
-                $image_data     = $item['ame_marquee_image'] ?? [];
-                $image_url      = $image_data['url'] ?? '';
-                $image_alt      = $image_data['alt'] ?? '';
-                $image_id       = $image_data['id'] ?? null;
-                $image_caption  = $image_id ? wp_get_attachment_caption($image_id) : '';
-                $image_content  = $image_id ? get_post_field('post_content', $image_id) : '';
+        // Extract and sanitize settings
+        $post_type = $settings['post_type'] ?? 'post';
+        $posts_per_page = $settings['posts_per_page'] ?? 6;
+        $orderby = $settings['ame_posts_orderby'] ?? 'date';
+        $order = $settings['ame_posts_order'] ?? 'DESC';
+        $scroll_direction = $settings['ame_marquee_post_vertical'] === 'yes' ? 'vertical' : 'horizontal';
+        $vertical_alignment = $settings['ame_marquee_vertical_align'] ?? 'center';
+        $horizontal_alignment = $settings['ame_marquee_horizontal_align'] ?? 'center';
+        $content_alignment = $settings['ame_marquee_content_alignment'] ?? 'center';
+        $title_length = isset($settings['ame_marquee_title_length']) ? (int)$settings['ame_marquee_title_length'] : 50;
+        $show_excerpt = $settings['ame_marquee_show_excerpt'] === 'yes';
+        $excerpt_length = isset($settings['ame_marquee_excerpt_length']) ? (int)$settings['ame_marquee_excerpt_length'] : 20;
+        $scroll_speed = $settings['ame_marquee_speed'] ?? '30';
+        $is_reversed = $settings['ame_marquee_post_reverse'] === 'yes' ? 'true' : 'false';
+        $item_spacing = $settings['ame_marquee_item_spacing'] ?? '10';
+        $pause_on_hover = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
+        $lazy_load = $settings['ame_marquee_lazy_load'] === 'yes';
+        $aliment_item        = $settings['ame_marquee_alignment'] ?? 'top';
 
-                $link_data      = $item['ame_marquee_link'] ?? [];
-                $has_link       = !empty($link_data['url']);
-                $link_url       = $has_link ? esc_url($link_data['url']) : '';
-                $link_target    = !empty($link_data['is_external']) ? ' target="_blank"' : '';
-                $link_rel       = !empty($link_data['nofollow']) ? ' rel="nofollow"' : '';
-                ?>
+        // Query posts
+        $args = [
+            'post_type' => $post_type,
+            'posts_per_page' => $posts_per_page,
+            'post_status' => 'publish',
+            'orderby' => $orderby,
+            'order' => $order,
+        ];
 
-                <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
-                    <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
-                        <div class="ame-marquee__image">
-                            <?php if ($has_link) : ?>
-                                <a href="<?php echo $link_url; ?>" <?php echo $link_target . $link_rel; ?>>
-                            <?php endif; ?>
+        $query = new \WP_Query($args);
 
-                            <img src="<?php echo esc_url($image_url); ?>"
-                                alt="<?php echo esc_attr($image_alt); ?>"
-                                <?php echo $enable_lazy_load ? 'loading="lazy"' : ''; ?> />
+        if (!$query->have_posts()) {
+            return;
+        }
+        ?>
 
-                            <?php if ($has_link) : ?></a><?php endif; ?>
-                        </div>
+        <div class="ame-marquee__wrapper ame-post-marquee"
+            aria-label="<?php echo esc_attr__('Post marquee carousel', 'advanced-marquee-effect'); ?>"
+            data-marquee-speed="<?php echo esc_attr($scroll_speed); ?>"
+            data-marquee-direction="<?php echo esc_attr($scroll_direction); ?>"
+            data-marquee-reverse="<?php echo esc_attr($is_reversed); ?>"
+            data-marquee-image-space="<?php echo esc_attr($item_spacing); ?>"
+            data-marquee-pause-on-hover="<?php echo esc_attr($pause_on_hover); ?>">
 
-                        <?php if ($show_text_details && (!empty($image_caption) || !empty($image_content))) : ?>
-                            <?php if ($has_link) : ?><a href="<?php echo $link_url; ?>" <?php echo $link_target . $link_rel; ?>><?php endif; ?>
-                                <div class="ame-marquee__details">
-                                    <?php if (!empty($image_caption)) : ?>
-                                        <p class="ame-marquee__caption" aria-label="<?php echo esc_attr__('Image Caption', 'advanced-marquee-effect'); ?>">
-                                            <?php echo wp_kses_post($image_caption); ?>
-                                        </p>
+            <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}"); ?>">    
+            <?php while ($query->have_posts()) : $query->the_post(); ?>
+                    <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
+                        <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
+                            <a href="<?php echo esc_url(get_permalink()); ?>" class="ame-marquee__link">
+                                <div class="ame-marquee__image">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('medium', [
+                                            'class' => 'ame-marquee__thumbnail',
+                                            'loading' => $lazy_load ? 'lazy' : 'eager',
+                                            'alt' => get_the_title(),
+                                        ]); ?>
+                                    <?php else : ?>
+                                        <img src="<?php echo esc_url(\Elementor\Utils::get_placeholder_image_src()); ?>"
+                                            alt="<?php echo esc_attr(get_the_title()); ?>"
+                                            loading="<?php echo $lazy_load ? 'lazy' : 'eager'; ?>" />
                                     <?php endif; ?>
-                                    <?php if (!empty($image_content)) : ?>
-                                        <p class="ame-marquee__description" aria-label="<?php echo esc_attr__('Image Description', 'advanced-marquee-effect'); ?>">
-                                            <?php echo wp_kses_post($image_content); ?>
+                                </div>
+
+                                <div class="ame-marquee__details">
+                                    <h3 class="ame-marquee__title">
+                                        <?php echo wp_kses_post(wp_trim_words(get_the_title(), $title_length)); ?>
+                                    </h3>
+                                    <?php if ($show_excerpt && get_the_excerpt()) : ?>
+                                        <p class="ame-marquee__excerpt" aria-label="<?php echo esc_attr__('Post Excerpt', 'advanced-marquee-effect'); ?>">
+                                            <?php echo wp_kses_post(wp_trim_words(get_the_excerpt(), $excerpt_length)); ?>
                                         </p>
                                     <?php endif; ?>
                                 </div>
-                            <?php if ($has_link) : ?></a><?php endif; ?>
-                        <?php endif; ?>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endwhile; wp_reset_postdata(); ?>
+            </div>
         </div>
-    </div>
 
-    <?php
+        <?php
+    }
 }
-} ?>
+?>

@@ -1,0 +1,322 @@
+/* === Shared Styles for All Marquee Widgets === */
+.ame-marquee__wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ame-marquee__items {
+    display: flex;
+    transition-timing-function: linear !important;
+    transition-delay: 0s !important;
+    will-change: transform;
+}
+
+/* .ame-marquee__items.ame-equal-height {
+    display: flex;
+    align-items: stretch;
+} */
+
+.ame-marquee__item {
+    width: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: auto !important;
+    padding: 8px;
+    background-color: #fff;
+}
+
+.ame-marquee__item.ame-center-content {
+    justify-content: center;
+}
+
+.ame-marquee__item_inner a {
+    text-decoration: none !important;
+}
+
+.ame-marquee__image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.ame-marquee__details {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.ame-marquee__details p {
+    margin: 0;
+}
+
+.ame-marquee__caption {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    font-weight: bold;
+}
+
+.ame-marquee__description {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.ame-align-left {
+    text-align: left;
+}
+
+.ame-align-center {
+    text-align: center;
+}
+
+.ame-align-right {
+    text-align: right;
+}
+
+
+.ame-aliment-top {
+    justify-content: flex-start;
+}
+
+.ame-aliment-center {
+    justify-content: center;
+}
+
+.ame-aliment-bottom {    
+    justify-content: flex-end;
+}
+
+
+.vertical.ame-align-v-left {
+    align-items: flex-start;
+}
+
+.vertical.ame-align-v-center {
+    align-items: center;
+}
+
+.vertical.ame-align-v-right {
+    align-items: flex-end;
+}
+
+.horizontal.ame-align-h-top {
+    align-items: flex-start;
+}
+
+.horizontal.ame-align-h-center {
+    align-items: center;
+}
+
+.horizontal.ame-align-h-bottom {
+    align-items: flex-end;
+}
+.horizontal.ame-align-h-stretch {
+    align-items: stretch;
+}
+
+/* === Image Marquee Widget Specific Styles === */
+.ame-marquee-image .ame-marquee__item {
+    /* No unique styles required; inherits shared styles */
+}
+
+/* === Post Marquee Widget Specific Styles === */
+.ame-marquee-post .ame-marquee__item {
+    /* No unique styles required; inherits shared styles */
+}
+
+/* === Testimonials Marquee Widget Specific Styles === */
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--default,
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--modern,
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--bubble {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ame-marquee-testimonials .ame-marquee__image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.ame-marquee-testimonials .ame-marquee__details {
+    font-size: 14px;
+    color: #666;
+}
+
+.ame-marquee-testimonials .ame-marquee__rating {
+    display: flex;
+    margin: 0 0 10px 0;
+}
+
+.ame-marquee-testimonials .ame-marquee__star {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.ame-marquee-testimonials .ame-marquee__star--filled {
+    color: #f39c12;
+}
+
+.ame-marquee-testimonials .ame-marquee__author {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.ame-marquee-testimonials .ame-marquee__designation {
+    font-size: 12px;
+    color: #999;
+}
+
+.ame-marquee__author-image img {
+    object-fit: cover;
+    border: 1px solid #000000;
+    padding: 2px;
+}
+
+.ame-marquee__author-image {
+    margin-bottom: 8px;
+}
+.ame-marquee__testimonial-content .ame-marquee__testimonial-text {
+    margin-bottom: 8px;
+}
+.ame-marquee__testimonial-content .ame-marquee__author-name {
+    margin-bottom: 8px;
+}
+.ame-marquee__testimonial-content .ame-marquee__author-title {
+    margin-bottom: 0;
+}
+
+/* Testimonials Modern Design Style */
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--modern {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--modern .ame-marquee__title {
+    color: #2c3e50;
+}
+
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--modern .ame-marquee__details {
+    color: #34495e;
+}
+
+/* Testimonials Bubble Design Style */
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--bubble {
+    background: #fff;
+    border: none;
+    border-radius: 20px;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 10px solid transparent;
+    border-top-color: #fff;
+}
+
+.ame-marquee-testimonials .ame-marquee__item.ame-testimonial--bubble .ame-marquee__image img {
+    border: 2px solid #3498db;
+}
+
+/* === Marquee Text Widget Specific Styles === */
+.ame-marquee-text_section {
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Wrapper for scrolling effect */
+.ame-marquee-text_wrap {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Scrolling text container */
+.ame-marquee-text_content {
+    display: flex;
+    gap: 20px;
+    flex: 0 0 auto;
+    min-width: 100%;
+}
+
+/* Individual marquee items */
+.ame-marquee-text_item {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    border-radius: 8px;
+    line-height: 1;
+}
+
+/* Reset padding and margin for all child elements */
+.ame-marquee-text_item * {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove text decoration from links */
+.ame-marquee-text_content a {
+    text-decoration: none !important;
+}
+
+.ame-marquee-text_content a:hover {
+    text-decoration: none !important;
+}
+
+/* Separator icon styling */
+.ame_marquee_text_separator__icon {
+    display: flex;
+}
+
+/* Left to Right Marquee */
+.ame-marquee-text_content.marquee-text-left-to-right {
+    animation: marquee-text-left-to-right linear infinite;
+}
+/* Left to Right */
+@keyframes marquee-text-left-to-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Right to Left Marquee */
+.ame-marquee-text_content.marquee-text-right-to-left {
+    animation: marquee-text-right-to-left linear infinite;
+}
+
+/* Right to Left */
+@keyframes marquee-text-right-to-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
