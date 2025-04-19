@@ -310,7 +310,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
+        $this->add_control(
             'ame_marquee_horizontal_align',
             [
                 'label' => esc_html__('Horizontal Alignment', 'advanced-marquee-effect'),
@@ -341,7 +341,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
+        $this->add_control(
             'ame_marquee_vertical_align',
             [
                 'label' => esc_html__('Vertical Alignment', 'advanced-marquee-effect'),
@@ -368,7 +368,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
+        $this->add_control(
             'ame_marquee_alignment',
             [
                 'label' => esc_html__('Alignment Item', 'advanced-marquee-effect'),
