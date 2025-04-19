@@ -89,6 +89,23 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'ame_testimonial_rating',
+            [
+                'label' => esc_html__('Rating', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    '0' => esc_html__('No Rating', 'advanced-marquee-effect'),
+                    '1' => esc_html__('1 Star', 'advanced-marquee-effect'),
+                    '2' => esc_html__('2 Stars', 'advanced-marquee-effect'),
+                    '3' => esc_html__('3 Stars', 'advanced-marquee-effect'),
+                    '4' => esc_html__('4 Stars', 'advanced-marquee-effect'),
+                    '5' => esc_html__('5 Stars', 'advanced-marquee-effect'),
+                ],
+                'default' => '5',
+            ]
+        );
+
         $this->add_control(
             'ame_testimonials',
             [
@@ -103,6 +120,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                         'ame_testimonial_image' => [
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
                         ],
+                        'ame_testimonial_rating' => '5',
                     ],
                     [
                         'ame_testimonial_content' => esc_html__('Fantastic service and quality!', 'advanced-marquee-effect'),
@@ -111,6 +129,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                         'ame_testimonial_image' => [
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
                         ],
+                        'ame_testimonial_rating' => '4',
                     ],
                 ],
                 'title_field' => '{{{ ame_testimonial_author }}}',
@@ -238,6 +257,18 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        // Background Color 
+        $this->add_control(
+            'ame_marquee_background_color',
+            [
+                'label' => esc_html__('Background Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
         $this->add_responsive_control(
             'ame_marquee_horizontal_align',
             [
@@ -262,7 +293,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                     ],
                 ],
                 'condition' => [
-                    'ame_marquee_vertical!' => 'no',
+                    'ame_marquee_vertical!' => 'yes',
                 ],
                 'default' => 'center',
                 'toggle' => false,
@@ -465,6 +496,115 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'ame_testimonial_ratting_style',
+            [
+                'label' => esc_html__('Star Style', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        
+        $this->add_control(
+            'ame_rating_filled_star_color',
+            [
+                'label' => esc_html__('Filled Star Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#f39c12',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__rating .icon-element.eicon-star' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_rating_empty_star_color',
+            [
+                'label' => esc_html__('Empty Star Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#cccccc',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__rating .icon-element.eicon-star-o' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_rating_star_size',
+            [
+                'label' => esc_html__('Star Size', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 50,
+                    ],
+                    'em' => [
+                        'min' => 0.5,
+                        'max' => 3,
+                    ],
+                    'rem' => [
+                        'min' => 0.5,
+                        'max' => 3,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 16,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__rating .icon-element' => 'font-size: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_rating_star_gap',
+            [
+                'label' => esc_html__('Rating Gap', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 20,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__testimonial-content' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        
+        $this->add_responsive_control(
+            'ame_rating_star_item_spacing',
+            [
+                'label' => esc_html__('Star Spacing', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 20,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 2,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__rating i' => 'margin-right: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
             'ame_testimonial_text_style',
             [
                 'label' => esc_html__('Testimonial Text', 'advanced-marquee-effect'),
@@ -525,6 +665,33 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__author-image img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_author_image_spacing',
+            [
+                'label' => esc_html__('Author Image Gap', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 100,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__author-image' => 'margin-bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -609,6 +776,17 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
         $this->end_controls_section();
     }
 
+    private function render_testimonial_rating($ame_testimonial_rating) {
+        if ($ame_testimonial_rating === '0') {
+            return; // Don't render if no rating
+        }
+        echo '<div class="ame-marquee__rating" aria-label="' . esc_attr(sprintf(__('%s out of 5 stars', 'advanced-marquee-effect'), $ame_testimonial_rating)) . '">';
+        for ($i = 1; $i <= 5; $i++) {
+            echo ($i <= $ame_testimonial_rating) ? '<i class="icon-element eicon-star" aria-hidden="true"></i>' : '<i class="icon-element eicon-star-o" aria-hidden="true"></i>';
+        }
+        echo '</div>';
+    }
+
     protected function render()
     {
         $settings = $this->get_settings_for_display();
@@ -626,6 +804,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
         $pause_on_hover       = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
         // $center_content       = $settings['ame_marquee_center'] === 'yes' && $settings['ame_marquee_equal_height'] === 'yes' ? ' ame-center-content' : '';
         $aliment_item        = $settings['ame_marquee_alignment'] ?? 'top';
+ 
 
         if (empty($testimonials)) {
             return;
@@ -648,6 +827,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                     $image_data   = $testimonial['ame_testimonial_image'] ?? [];
                     $image_url    = $image_data['url'] ?? '';
                     $image_alt    = $image_data['alt'] ?? $author;
+
                     ?>
 
                     <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
@@ -659,6 +839,8 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                                         <?php echo $enable_lazy_load ? 'loading="lazy"' : ''; ?> />
                                 </div>
                             <?php endif; ?>
+
+                            <?php $this->render_testimonial_rating($testimonial['ame_testimonial_rating']); ?>
 
                             <div class="ame-marquee__testimonial-content">
                                 <?php if (!empty($content)) : ?>
