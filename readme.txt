@@ -11,11 +11,11 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Create smooth, customizable scrolling marquees in Elementor with options for speed, direction, style, and icons.
 
 == Description ==  
-Enhance your Elementor-powered website with dynamic scrolling effects using the Advanced Marquee Effect for Elementor plugin. This tool allows you to create smooth, customizable marquees for text, images, and logos—ideal for announcements, news tickers, client showcases, and more. With full control over speed, direction, and style, you can effortlessly add engaging scrolling content without any coding.
+Marquee Effects is a powerful, lightweight Elementor-compatible plugin that helps you add smooth, continuous scrolling effects to your website – without any coding required! Whether you're displaying text marquees, image/logo sliders, blog post tickers, or testimonial carousels, this plugin makes it effortless to create engaging, dynamic content for promotions, announcements, and brand showcases.
 
-Built with performance and flexibility in mind, it gives you full control over animation speed, direction, pause on hover, spacing, and styling—all within Elementor's visual builder.
+Built with performance and flexibility in mind, it gives you full control over animation speed, direction, alignment, lazy-load, pause on hover, spacing, and styling—all within Elementor's visual builder.
 
-= Marquee Text Scrolling Effect = 
+= Marquee Text Effect / Continuous Scrolling Text = 
 * Create smooth scrolling text, HTML, or icons
 * Customize speed, direction, and style of your marquee
 * Fully responsive design that adapts to all screen sizes
@@ -23,7 +23,7 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Add multiple marquee effects to your page with various styles
 * Works great for announcements, promotions, and news ticker effects
 
-= Image / Logo Marquee Scrolling Effect =
+= Image / Logo Marquee Effect / Continuous Scrolling Image / Logo =
 * Create image carousels or logo sliders with smooth horizontal or vertical scrolling
 * Upload multiple images or brand logos using a simple repeater field
 * Add custom links, alt tags, and lazy loading for SEO and performance optimization
@@ -32,6 +32,27 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Display image captions and descriptions with full styling control
 * Easily customize card layout, image styling, hover effects, and spacing using Elementor controls
 * Perfect for showcasing partner logos, client brands, press features, sponsor carousels, or product highlights
+
+= Post Marquee Effect / Continuous Scrolling Post =
+* Create smooth, scrolling post post marquee
+* Select custom post types and order for targeted content display
+* Add concise titles and excerpts with SEO-friendly styling
+* Enable lazy loading for images to boost page speed and SEO
+* Control scrolling speed, direction, reverse, and pause-on-hover
+* Responsive design with adjustable container/image sizes and vertical scroll heights
+* Style typography, colors, alignment, and spacing for readability
+* Perfect for showcasing blog posts, news, or portfolio highlights
+
+= Testimonial Marquee Effect / Continuous Testimonial Scrolling =
+* Create smooth, scrolling testimonial carousels
+* Add testimonials with author names, titles, and images via repeater field
+* Enable lazy loading for images to enhance page speed and SEO
+* Control scrolling speed, direction, reverse, and pause-on-hover
+* Responsive design with adjustable container sizes and vertical scroll heights
+* Style star ratings, typography, colors, and alignment for readability
+* Customize card spacing, padding, borders, and image styling for visual appeal
+* Perfect for showcasing client feedback, reviews, or endorsements
+
 
 == Installation ==  
 1. Upload the plugin files to the `/wp-content/plugins/advanced-marquee-effect/` directory, or install the plugin directly from the WordPress plugin repository.  

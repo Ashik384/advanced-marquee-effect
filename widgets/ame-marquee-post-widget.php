@@ -60,15 +60,49 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'ame_posts_orderby',
+            [
+                'label' => esc_html__('Order By', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'date' => esc_html__('Date', 'advanced-marquee-effect'),
+                    'title' => esc_html__('Title', 'advanced-marquee-effect'),
+                    'modified' => esc_html__('Modified Date', 'advanced-marquee-effect'),
+                    'rand' => esc_html__('Random', 'advanced-marquee-effect'),
+                    'ID' => esc_html__('Post ID', 'advanced-marquee-effect'),
+                    'menu_order' => esc_html__('Menu Order', 'advanced-marquee-effect'),
+                ],
+                'default' => 'date',
+            ]
+        );
+
+        $this->add_control(
+            'ame_posts_order',
+            [
+                'label' => esc_html__('Order', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'DESC' => esc_html__('Descending', 'advanced-marquee-effect'),
+                    'ASC' => esc_html__('Ascending', 'advanced-marquee-effect'),
+                ],
+                'default' => 'DESC',
+                'condition' => [
+                    'ame_posts_orderby!' => 'rand',
+                ],
+            ]
+        );
+
+        $this->add_control(
             'posts_per_page',
             [
                 'label' => __('Number of Posts', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::NUMBER,
                 'default' => 6,
                 'min' => 1,
-                'max' => 20,
+                'max' => 25,
             ]
         );
+
         $this->add_control(
             'ame_marquee_title_length',
             [
@@ -638,6 +672,8 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         // Extract and sanitize settings
         $post_type = $settings['post_type'] ?? 'post';
         $posts_per_page = $settings['posts_per_page'] ?? 6;
+        $orderby = $settings['ame_posts_orderby'] ?? 'date';
+        $order = $settings['ame_posts_order'] ?? 'DESC';
         $scroll_direction = $settings['ame_marquee_post_vertical'] === 'yes' ? 'vertical' : 'horizontal';
         $vertical_alignment = $settings['ame_marquee_vertical_align'] ?? 'center';
         $horizontal_alignment = $settings['ame_marquee_horizontal_align'] ?? 'center';
@@ -657,6 +693,8 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
             'post_type' => $post_type,
             'posts_per_page' => $posts_per_page,
             'post_status' => 'publish',
+            'orderby' => $orderby,
+            'order' => $order,
         ];
 
         $query = new \WP_Query($args);
