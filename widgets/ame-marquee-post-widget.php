@@ -30,7 +30,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        return ['ame-marquee', 'ame-swiper'];
+        return ['ame-marquee-style', 'ame-swiper'];
     }
 
     public function get_script_depends()
@@ -231,6 +231,40 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_responsive_control(
+            'ame_marquee_container_width',
+            [
+                'label' => esc_html__('Container Width', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['%', 'px', 'em', 'vw'],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 280,
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'vw' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 280,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        
+        $this->add_responsive_control(
             'ame_marquee_item_background',
             [
                 'label' => esc_html__('Background Color', 'advanced-marquee-effect'),
@@ -327,21 +361,6 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        // $this->add_control(
-        //     'ame_marquee_equal_height',
-        //     [
-        //         'label' => esc_html__('Equal Height Slides', 'advanced-marquee-effect'),
-        //         'type' => \Elementor\Controls_Manager::SWITCHER,
-        //         'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
-        //         'label_off' => esc_html__('No', 'advanced-marquee-effect'),
-        //         'return_value' => 'yes',
-        //         'default' => 'no',
-        //         'condition' => [
-        //             'ame_marquee_post_vertical!' => 'yes', // Only show for horizontal marquee
-        //         ],
-        //     ]
-        // );
-
         $this->add_responsive_control(
             'ame_marquee_details_gap',
             [
@@ -406,40 +425,6 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'ame_marquee_container_width',
-            [
-                'label' => esc_html__('Container Width', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['%', 'px', 'em', 'vw'],
-                'range' => [
-                    '%' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                    'px' => [
-                        'min' => 1,
-                        'max' => 280,
-                    ],
-                    'em' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                    'vw' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 280,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__item' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );

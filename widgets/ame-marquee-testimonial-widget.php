@@ -1,7 +1,7 @@
 <?php
 if (! defined('ABSPATH')) exit; // Exit if accessed directly
 
-class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
+class AME_Testimonial_Marquee_Widget extends \Elementor\Widget_Base
 {
     public function get_name()
     {
@@ -30,7 +30,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
 
     public function get_style_depends()
     {
-        return ['ame-marquee', 'ame-swiper'];
+        return ['ame-marquee-style', 'ame-swiper'];
     }
 
     public function get_script_depends()
@@ -257,6 +257,40 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_responsive_control(
+            'ame_marquee_container_width',
+            [
+                'label' => esc_html__('Container Width', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['%', 'px', 'em', 'vw'],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 400,
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'vw' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 350,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         // Background Color 
         $this->add_control(
             'ame_marquee_background_color',
@@ -354,36 +388,6 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        // $this->add_control(
-        //     'ame_marquee_equal_height',
-        //     [
-        //         'label' => esc_html__('Equal Height Slides', 'advanced-marquee-effect'),
-        //         'type' => \Elementor\Controls_Manager::SWITCHER,
-        //         'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
-        //         'label_off' => esc_html__('No', 'advanced-marquee-effect'),
-        //         'return_value' => 'yes',
-        //         'default' => 'no',
-        //         'condition' => [
-        //             'ame_marquee_vertical!' => 'yes', // Only show for horizontal marquee
-        //         ],
-        //     ]
-        // );
-
-        // $this->add_control(
-        //     'ame_marquee_center',
-        //     [
-        //         'label' => esc_html__('Content Center', 'advanced-marquee-effect'),
-        //         'type' => \Elementor\Controls_Manager::SWITCHER,
-        //         'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
-        //         'label_off' => esc_html__('No', 'advanced-marquee-effect'),
-        //         'return_value' => 'yes',
-        //         'default' => 'no',
-        //         'condition' => [
-        //             'ame_marquee_equal_height' => 'yes',  
-        //         ],
-        //     ]
-        // );
-
         $this->add_control(
             'ame_marquee_item_spacing',
             [
@@ -412,40 +416,6 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'ame_marquee_container_width',
-            [
-                'label' => esc_html__('Container Width', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['%', 'px', 'em', 'vw'],
-                'range' => [
-                    '%' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                    'px' => [
-                        'min' => 1,
-                        'max' => 400,
-                    ],
-                    'em' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                    'vw' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 350,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__item' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -695,6 +665,30 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
                 ],
             ]
         );
+        
+        $this->add_responsive_control(
+            'ame_marquee_author_border_radius',
+            [
+                'label' => esc_html__('Border Radius', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__author-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'ame_author_image_border_type!' => '',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'ame_marquee_author_border',
+                'label' => esc_html__('Container Border', 'advanced-marquee-effect'),
+                'selector' => '{{WRAPPER}} .ame-marquee__author-image img',
+            ]
+        );
 
         $this->add_responsive_control(
             'ame_author_image_border_radius',
@@ -802,8 +796,7 @@ class AME_Testimonials_Marquee_Widget extends \Elementor\Widget_Base
         $is_reversed          = $settings['ame_marquee_reverse'] === 'yes' ? 'true' : 'false';
         $item_spacing         = $settings['ame_marquee_item_spacing'] ?? '10';
         $pause_on_hover       = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
-        // $center_content       = $settings['ame_marquee_center'] === 'yes' && $settings['ame_marquee_equal_height'] === 'yes' ? ' ame-center-content' : '';
-        $aliment_item        = $settings['ame_marquee_alignment'] ?? 'top';
+        $aliment_item         = $settings['ame_marquee_alignment'] ?? 'top';
  
 
         if (empty($testimonials)) {

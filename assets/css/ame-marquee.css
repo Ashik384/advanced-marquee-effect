@@ -179,6 +179,8 @@
 
 .ame-marquee__author-image img {
     object-fit: cover;
+    border: 1px solid #000000;
+    padding: 2px;
 }
 
 .ame-marquee__author-image {
@@ -231,4 +233,90 @@
 
 .ame-marquee-testimonials .ame-marquee__item.ame-testimonial--bubble .ame-marquee__image img {
     border: 2px solid #3498db;
+}
+
+/* === Marquee Text Widget Specific Styles === */
+.ame-marquee-text_section {
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Wrapper for scrolling effect */
+.ame-marquee-text_wrap {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Scrolling text container */
+.ame-marquee-text_content {
+    display: flex;
+    gap: 20px;
+    flex: 0 0 auto;
+    min-width: 100%;
+}
+
+/* Individual marquee items */
+.ame-marquee-text_item {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    border-radius: 8px;
+    line-height: 1;
+}
+
+/* Reset padding and margin for all child elements */
+.ame-marquee-text_item * {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove text decoration from links */
+.ame-marquee-text_content a {
+    text-decoration: none !important;
+}
+
+.ame-marquee-text_content a:hover {
+    text-decoration: none !important;
+}
+
+/* Separator icon styling */
+.ame_marquee_text_separator__icon {
+    display: flex;
+}
+
+/* Left to Right Marquee */
+.ame-marquee-text_content.marquee-text-left-to-right {
+    animation: marquee-text-left-to-right linear infinite;
+}
+/* Left to Right */
+@keyframes marquee-text-left-to-right {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Right to Left Marquee */
+.ame-marquee-text_content.marquee-text-right-to-left {
+    animation: marquee-text-right-to-left linear infinite;
+}
+
+/* Right to Left */
+@keyframes marquee-text-right-to-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
