@@ -143,7 +143,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
                 'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
                 'label_off' => esc_html__('No', 'advanced-marquee-effect'),
                 'return_value' => 'yes',
-                'default' => 'yes',
+                'default' => 'no',
                 'description' => esc_html__('Show or hide the ticker label.', 'advanced-marquee-effect'),
             ]
         );
@@ -215,7 +215,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
             [
                 'label' => __( 'Background Color', 'advanced-marquee-effect' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#F1F0FF',
+                'default' => '#f7f6ff',
                 'selectors' => [
 					'{{WRAPPER}} .ame-marquee-text_section' => 'background: {{VALUE}}',
 				],
