@@ -90,6 +90,19 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
         );
 
         $this->add_control(
+            'ame_marquee_text_stop_on_hover',
+            [
+                'label' => esc_html__('Stop Scrolling on Hover', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'description' => esc_html__('Pause the marquee scrolling when hovering over it.', 'advanced-marquee-effect'),
+            ]
+        );
+
+        $this->add_control(
             'ame_marquee_text_speed',
             [
                 'label' => __( 'Speed (Seconds)', 'advanced-marquee-effect' ),
@@ -112,17 +125,57 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
 				]
 			]
 		);
+
         $this->add_control(
-			'ame_marquee_text_separator_icon_size',
-			[
-				'label' => esc_html__( 'Separator Icon Size', 'advanced-marquee-effect' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
-				'min' => 0,
-				'max' => 1000,
-				'step' => 1,
-				'default' => 16,
-			]
-		);
+            'ame_ticker_label_heading',
+            [
+                'label' => esc_html__('Ticker Label', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'ame_ticker_label_enable',
+            [
+                'label' => esc_html__('Enable Ticker Label', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'description' => esc_html__('Show or hide the ticker label.', 'advanced-marquee-effect'),
+            ]
+        );
+
+        $this->add_control(
+            'ame_ticker_label_icon',
+            [
+                'label' => esc_html__('Label Icon', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::ICONS,
+                'default' => [
+                    'value' => 'fas fa-bullhorn',
+                    'library' => 'fa-solid',
+                ],
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_ticker_label_text',
+            [
+                'label' => esc_html__('Label Text', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__(' Breaking News', 'advanced-marquee-effect'),
+                'placeholder' => esc_html__('Enter label text', 'advanced-marquee-effect'),
+                'label_block' => true,
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -162,7 +215,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
             [
                 'label' => __( 'Background Color', 'advanced-marquee-effect' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => 'rgba(255, 255, 255, 0.1)',
+                'default' => '#F1F0FF',
                 'selectors' => [
 					'{{WRAPPER}} .ame-marquee-text_section' => 'background: {{VALUE}}',
 				],
@@ -188,6 +241,26 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'ame_icon_label_heading',
+            [
+                'label' => esc_html__('Separator Style', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+			'ame_marquee_text_separator_icon_size',
+			[
+				'label' => esc_html__( 'Separator Icon Size', 'advanced-marquee-effect' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'min' => 0,
+				'max' => 1000,
+				'step' => 1,
+				'default' => 16,
+			]
+		);
 
         $this->add_control(
 			'ame_marquee_text_separator_color',
@@ -212,22 +285,159 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
 			]
 		);
 
+        $this->add_control(
+            'ame_ticker_label_section',
+            [
+                'label' => esc_html__('Ticker Style', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_marquee_ticker_padding',
+            [
+                'label' => __( 'Padding', 'advanced-marquee-effect' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'default' => [
+                    'top' => 8,
+                    'right' => 16,
+                    'bottom' => 8,
+                    'left' => 16,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-ticker-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_ticker_bg_color',
+            [
+                'label' => __( 'Background Color', 'advanced-marquee-effect' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#000',
+                'selectors' => [
+					'{{WRAPPER}} .ame-ticker-label' => 'background: {{VALUE}}',
+				],
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'ame_ticker_label_icon_color',
+            [
+                'label' => esc_html__('Icon Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-ticker-label__icon svg path, {{WRAPPER}} .ame-ticker-label__icon i' => 'fill: {{VALUE}}; color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'ame_ticker_label_icon_size',
+            [
+                'label' => esc_html__('Icon Size', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em', 'rem'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 100,
+                    ],
+                    'em' => [
+                        'min' => 0.5,
+                        'max' => 5,
+                    ],
+                    'rem' => [
+                        'min' => 0.5,
+                        'max' => 5,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 24,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-ticker-label__icon' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_control(
+            'ame_ticker_label_text_color',
+            [
+                'label' => esc_html__('Text Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#fff',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-ticker-label__text' => 'color: {{VALUE}}',
+                ],
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'ame_ticker_label_text_typography',
+                'label' => esc_html__('Text Typography', 'advanced-marquee-effect'),
+                'selector' => '{{WRAPPER}} .ame-ticker-label__text',
+                'default' => [
+                    'font_size' => [
+                        'unit' => 'px',
+                        'size' => 16,
+                    ],
+                ],
+                'condition' => [
+                    'ame_ticker_label_enable' => 'yes',
+                ]
+            ]
+        );
+
         $this->end_controls_section();
     }
 
     protected function render() {
         $settings = $this->get_settings_for_display();
-        $ame_marquee_text_speed = $settings['ame_marquee_text_speed']; 
         $marquee_direction = $settings['ame_marquee_text_direction'] == 'right_to_left' ? 'marquee-text-right-to-left' : 'marquee-text-left-to-right';
-         
+        $ame_marquee_text_speed = $settings['ame_marquee_text_speed'];
+        $ame_pushed_on_hover = isset($settings['ame_marquee_text_stop_on_hover']) && $settings['ame_marquee_text_stop_on_hover'] === 'yes' ? 'ame-push-on-hover' : '';
+        
         ?>
 
         <div class="ame-marquee-text_section">
+            <?php if ($settings['ame_ticker_label_enable'] == 'yes'): ?>
+            <div class="ame-ticker-label">
+                <div class="ame-ticker-inner">
+                    <div class="ame-ticker-label__icon">
+                        <?php \Elementor\Icons_Manager::render_icon($settings['ame_ticker_label_icon'], ['aria-hidden' => 'true']); ?>
+                    </div>
+                    <p class="ame-ticker-label__text"><?php echo wp_kses_post($settings['ame_ticker_label_text']); ?></p>
+                </div>
+            </div>
+            <?php endif; ?>
             <div class="ame-marquee-text_wrap">
                 <?php if (!empty($settings['ame_marquee_text_list'])) : ?>
                     
                     <!-- Marquee content -->
-                    <div class="ame-marquee-text_content <?php echo esc_attr( $marquee_direction ); ?>" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
+                    <div class="ame-marquee-text_content <?php echo esc_attr( $marquee_direction . ' ' .  $ame_pushed_on_hover ); ?>" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
                         <?php foreach ($settings['ame_marquee_text_list'] as $item): ?>
 
                             <div class="ame-marquee-text_item" style="<?php echo esc_attr('gap: ' . $settings['ame_marquee_text_separator_icon_gap'] . 'px;'); ?>">
@@ -245,7 +455,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
                     </div>
 
                     <!-- Duplicate content for smooth scrolling -->
-                    <div class="ame-marquee-text_content <?php echo esc_attr( $marquee_direction ); ?>" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
+                    <div class="ame-marquee-text_content <?php echo esc_attr( $marquee_direction . ' ' .  $ame_pushed_on_hover ); ?>" style="animation-duration: <?php echo esc_attr($ame_marquee_text_speed); ?>s">
                         <?php foreach ($settings['ame_marquee_text_list'] as $item): ?>
                             <div class="ame-marquee-text_item" style="<?php echo esc_attr('gap: ' . $settings['ame_marquee_text_separator_icon_gap'] . 'px;'); ?>">
                                 <div class="ame_marquee_text_separator__icon" style="<?php echo esc_attr('width: ' . $settings['ame_marquee_text_separator_icon_size'] . 'px; height: ' . $settings['ame_marquee_text_separator_icon_size'] . 'px;'); ?>">

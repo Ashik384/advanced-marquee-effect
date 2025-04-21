@@ -292,11 +292,37 @@
     display: flex;
 }
 
+/* ticker label */
+.ame-ticker-label {
+    position: absolute;
+    background: rgb(33, 9, 50);
+    line-height: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ame-ticker-inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+    gap: 8px;
+}
+.ame-ticker-label p {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
 /* Left to Right Marquee */
 .ame-marquee-text_content.marquee-text-left-to-right {
     animation: marquee-text-left-to-right linear infinite;
 }
-/* Left to Right */
+
 @keyframes marquee-text-left-to-right {
     from {
         transform: translateX(-100%);
@@ -319,4 +345,8 @@
     to {
         transform: translateX(-100%);
     }
+}
+
+.ame-marquee-text_wrap:hover .ame-push-on-hover {
+    animation-play-state: paused;
 }
