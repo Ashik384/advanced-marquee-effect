@@ -1,10 +1,10 @@
 === Advanced Marquee Effect For Elementor Plugin ===
 Contributors: mdashikul  
-Tags: text marquee, scrolling text, marquee effect, elementor marquee, ticker
+Tags: elementor marquee, scrolling text, logo slider, testimonial carousel, news ticker
 Requires at least: 5.0  
 Tested up to: 6.8 
 Requires PHP: 7.0  
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -22,6 +22,7 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Easy integration with Elementor, no coding required
 * Add multiple marquee effects to your page with various styles
 * Works great for announcements, promotions, and news ticker effects
+* Create News Ticker and customize settings.
 
 = Image / Logo Marquee Effect / Continuous Scrolling Image / Logo =
 * Create image carousels or logo sliders with smooth horizontal or vertical scrolling
@@ -102,6 +103,9 @@ Yes, the **pause on hover** feature is available. When users hover over the marq
 9. Testimonial Marquee Style Settings
 
 == Changelog ==  
+
+= 1.0.5 =  
+* Improved: Text marquee feature, introduced news ticker
 
 = 1.0.4 =  
 * Introduced: Post Marquee Scrolling Effect widget.
