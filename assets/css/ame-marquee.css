@@ -350,3 +350,37 @@
 .ame-marquee-text_wrap:hover .ame-push-on-hover {
     animation-play-state: paused;
 }
+
+
+/* === Marquee Team Members Widget Specific Styles === */
+.ame-marquee__member-content h2, .ame-marquee__member-content h3, .ame-marquee__member-content p {
+    margin-bottom: 8px;
+}
+
+.ame-marquee__past-exp {
+    margin-top: 24px;
+}
+.ame-team-marquee .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.ame-team-marquee .social-icons .social-icon {
+    display: flex;
+    width: 32px;
+    background: #bde8fd;
+    padding: 8px;
+    height: 32px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+.ame-team-marquee .social-icons .social-icon svg {
+    transition: all 0.3s ease-in-out;
+}
+.ame-team-marquee .social-icons .social-icon:hover svg{
+    transform: scale(1.1);
+}

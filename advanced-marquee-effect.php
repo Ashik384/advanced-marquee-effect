@@ -84,6 +84,10 @@ final class Advanced_Marquee_Effect {
         // Register Testimonial Marquee
         require_once( __DIR__ . '/widgets/ame-marquee-testimonial-widget.php' );
         $widgets_manager->register( new \AME_Testimonial_Marquee_Widget() );
+
+        // Register Team Marquee
+        require_once( __DIR__ . '/widgets/ame-marquee-team-widget.php' );
+        $widgets_manager->register( new \AME_Marquee_Team_Widget() );
     }
 
     /**
