@@ -96,7 +96,10 @@ function AmeMarqueeTeams($scope) {
     var $marquee = $scope.find('.ame-team-marquee');
 
     var settings = {
-        autoplay: false,
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
         spaceBetween: $marquee.data('marquee-image-space'),
         speed: $marquee.data('marquee-speed'),
         direction: $marquee.data('marquee-direction'),

@@ -353,13 +353,26 @@
 
 
 /* === Marquee Team Members Widget Specific Styles === */
-.ame-marquee__member-content h2, .ame-marquee__member-content h3, .ame-marquee__member-content p {
-    margin-bottom: 8px;
+.ame-marquee__member-content h2, .ame-marquee__member-content h5, .ame-marquee__member-content p {
+    margin-bottom: 4px;
+}
+.ame-team-marquee .ame-marquee__member-name {
+    font-size: 24px;
 }
 
-.ame-marquee__past-exp {
-    margin-top: 24px;
+.ame-team-marquee .ame-marquee__member-designation {
+    font-size: 16px;
 }
+.ame-team-marquee .ame-marquee__past-exp h5 {
+    font-size: 16px;
+}
+.ame-team-marquee .ame-marquee__past-exp {
+    margin-top: 16px;
+}
+.ame-team-marquee .ame-marquee__member-image img {
+    object-fit: cover;
+}
+
 .ame-team-marquee .social-icons {
     display: flex;
     align-items: center;
@@ -370,7 +383,7 @@
 .ame-team-marquee .social-icons .social-icon {
     display: flex;
     width: 32px;
-    background: #bde8fd;
+    background: #efefef;
     padding: 8px;
     height: 32px;
     text-align: center;
@@ -383,4 +396,14 @@
 }
 .ame-team-marquee .social-icons .social-icon:hover svg{
     transform: scale(1.1);
+}
+
+.ame-align-left .social-icons {
+    justify-content: flex-start;
+}
+.ame-align-center .social-icons {
+    justify-content: center;
+}
+.ame-align-right .social-icons {
+    justify-content: flex-end;
 }

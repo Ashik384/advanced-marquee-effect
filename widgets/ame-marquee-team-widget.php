@@ -87,7 +87,7 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
             ]
-        );
+        );  
 
         $repeater->add_control(
             'ame_team_member_show_past_exp',
@@ -106,7 +106,7 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Past Experience Title', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('EMBEDDED EXPERT', 'advanced-marquee-effect'),
+                'default' => esc_html__('Past Experience', 'advanced-marquee-effect'),
                 'condition' => [
                     'ame_team_member_show_past_exp' => 'yes',
                 ],
@@ -118,10 +118,19 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Experience Details', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('20+ Years of Experience', 'advanced-marquee-effect'),
+                'default' => esc_html__('5+ Years of Experience', 'advanced-marquee-effect'),
                 'condition' => [
                     'ame_team_member_show_past_exp' => 'yes',
                 ],
+            ]
+        );
+
+        $repeater->add_control(
+            'ame_team_social_icons',
+            [
+                'label' => esc_html__('Social Icons', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -132,7 +141,9 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => esc_html__('https://linkedin.com', 'advanced-marquee-effect'),
                 'default' => [
-                    'url' => '',
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
@@ -161,7 +172,9 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => esc_html__('https://twitter.com', 'advanced-marquee-effect'),
                 'default' => [
-                    'url' => '',
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
@@ -190,7 +203,9 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => esc_html__('https://facebook.com', 'advanced-marquee-effect'),
                 'default' => [
-                    'url' => '',
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
@@ -219,7 +234,9 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => esc_html__('https://instagram.com', 'advanced-marquee-effect'),
                 'default' => [
-                    'url' => '',
+                    'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
@@ -250,15 +267,15 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'default' => [
                     [
                         'ame_team_member_name' => esc_html__('John Doe', 'advanced-marquee-effect'),
-                        'ame_team_member_designation' => esc_html__('Manager', 'advanced-marquee-effect'),
+                        'ame_team_member_designation' => esc_html__('Software Engineering', 'advanced-marquee-effect'),
                         'ame_team_member_description' => esc_html__('Lorem ipsum dolor sit amet.', 'advanced-marquee-effect'),
                         'ame_team_member_image' => [
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
                         ],
                     ],
                     [
-                        'ame_team_member_name' => esc_html__('Jane Smith', 'advanced-marquee-effect'),
-                        'ame_team_member_designation' => esc_html__('Developer', 'advanced-marquee-effect'),
+                        'ame_team_member_name' => esc_html__('David Chen', 'advanced-marquee-effect'),
+                        'ame_team_member_designation' => esc_html__('Product Designer', 'advanced-marquee-effect'),
                         'ame_team_member_description' => esc_html__('Consectetur adipiscing elit.', 'advanced-marquee-effect'),
                         'ame_team_member_image' => [
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -432,7 +449,7 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__item' => 'background-color: {{VALUE}};',
                 ],
-                'default' => '#F8C7C7',
+                'default' => '#fafafa',
             ]
         );
 
@@ -714,6 +731,29 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'ame_member_name_space',
+            [
+                'label' => esc_html__('Spacing', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__member-name' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+
+        $this->add_control(
             'ame_member_designation_style',
             [
                 'label' => esc_html__('Designation', 'advanced-marquee-effect'),
@@ -837,8 +877,8 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'size_units' => ['px'],
                 'range' => [
                     'px' => [
-                        'min' => 10,
-                        'max' => 50,
+                        'min' => 1,
+                        'max' => 100,
                     ],
                 ],
                 'default' => [
@@ -969,8 +1009,21 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                         $social_links[$platform] = [
                             'platform' => $platform,
                             'url'      => $member["ame_team_member_{$platform}"]['url'] ?? '',
+                            'is_external' => $member["ame_team_member_{$platform}"]['is_external'] ?? false,
+                            'nofollow' => $member["ame_team_member_{$platform}"]['nofollow'] ?? false,
                             'icon'     => $member["ame_team_member_{$platform}_icon"] ?? [],
                         ];
+                    }
+
+                    // get target and dofflow 
+                    $target = $nofollow = '';
+                    foreach ($social_links as $social_link) {
+                        if ($social_link['is_external']) {
+                            $target = 'target="_blank" ';
+                        }
+                        if ($social_link['nofollow']) {
+                            $nofollow = 'rel="nofollow" ';
+                        }
                     }
                      
                     ?>
@@ -1013,10 +1066,8 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
 
                                 <div class="social-icons">
                                     <?php foreach ( $social_links as $social ) : ?>
-                                        <?php if ( ! empty( $social['url'] ) && ! empty( $social['icon'] ) ) : ?>
-                                            <?php var_dump( $social['url'] ); ?>
-
-                                            <a href="<?php echo esc_url( $social['url'] ); ?>" class="social-icon" target="_blank" rel="noopener noreferrer">
+                                        <?php if ( ! empty( $social['url'] ) && ! empty( $social['icon'] ) ) : ?> 
+                                            <a href="<?php echo esc_url( $social['url'] ); ?>" class="social-icon" <?php echo $target . $nofollow; ?>>
                                                 <?php \Elementor\Icons_Manager::render_icon( $social['icon'], [ 'aria-hidden' => 'true' ], false ); ?>
                                             </a>
                                         <?php endif; ?>
