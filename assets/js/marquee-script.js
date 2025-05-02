@@ -92,6 +92,22 @@ function AmeMarqueeTestimonials($scope) {
     initializeMarqueeSwiper($marquee, settings);
 }
 
+function AmeMarqueeTeams($scope) {
+    var $marquee = $scope.find('.ame-team-marquee');
+
+    var settings = {
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
 $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-image.default',
@@ -107,6 +123,11 @@ $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-testimonials-marquee.default',
         AmeMarqueeTestimonials
+    );
+
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-team-marquee.default',
+        AmeMarqueeTeams
     );
 
 });
