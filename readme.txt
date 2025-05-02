@@ -119,7 +119,7 @@ Yes, the **pause on hover** feature is available. When users hover over the marq
 
 = 1.0.6 =  
 * Introduced: Team members marquee widget
-* New settings to hide image in post marquee
+* New settings to hide the image in the post marquee
 
 = 1.0.5 =  
 * Improved: Text marquee feature, introduced news ticker
