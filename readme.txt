@@ -4,7 +4,7 @@ Tags: elementor marquee, scrolling text, logo slider, testimonial carousel, news
 Requires at least: 5.0  
 Tested up to: 6.8 
 Requires PHP: 7.0  
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -15,7 +15,7 @@ Marquee Effects is a powerful, lightweight Elementor-compatible plugin that help
 
 Built with performance and flexibility in mind, it gives you full control over animation speed, direction, alignment, lazy-load, pause on hover, spacing, and styling—all within Elementor's visual builder.
 
-= Marquee Text Effect / Continuous Scrolling Text = 
+= Marquee Text Effect / Continuous Scrolling Text / Continuous Carousel Loop = 
 * Create smooth scrolling text, HTML, or icons
 * Customize speed, direction, and style of your marquee
 * Fully responsive design that adapts to all screen sizes
@@ -24,7 +24,7 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Works great for announcements, promotions, and news ticker effects
 * Create News Ticker and customize settings.
 
-= Image / Logo Marquee Effect / Continuous Scrolling Image / Logo =
+= Image & Logo Marquee Effect / Continuous Scrolling Image Carousel Loop =
 * Create image carousels or logo sliders with smooth horizontal or vertical scrolling
 * Upload multiple images or brand logos using a simple repeater field
 * Add custom links, alt tags, and lazy loading for SEO and performance optimization
@@ -34,7 +34,7 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Easily customize card layout, image styling, hover effects, and spacing using Elementor controls
 * Perfect for showcasing partner logos, client brands, press features, sponsor carousels, or product highlights
 
-= Post Marquee Effect / Continuous Scrolling Post =
+= Post Marquee Effect / Continuous Scrolling Post / Post Carousel Loop =
 * Create smooth, scrolling post post marquee
 * Select custom post types and order for targeted content display
 * Add concise titles and excerpts with SEO-friendly styling
@@ -44,7 +44,7 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Style typography, colors, alignment, and spacing for readability
 * Perfect for showcasing blog posts, news, or portfolio highlights
 
-= Testimonial Marquee Effect / Continuous Testimonial Scrolling =
+= Testimonial Marquee Effect / Continuous Testimonial Scrolling / Testimonial Carousel Loop =
 * Create smooth, scrolling testimonial carousels
 * Add testimonials with author names, titles, and images via repeater field
 * Enable lazy loading for images to enhance page speed and SEO
@@ -53,6 +53,18 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Style star ratings, typography, colors, and alignment for readability
 * Customize card spacing, padding, borders, and image styling for visual appeal
 * Perfect for showcasing client feedback, reviews, or endorsements
+
+= Team Members Marquee Effect / Continuous Scrolling Team Members / Team Members Carousel Loop =
+* Smooth scrolling team member carousel with Elementor repeater field
+* Add names, designations, bios, images, and past experience details
+* Customizable social media links (LinkedIn, Twitter, etc.) with icons, target (_blank/_self), and rel attributes (nofollow, noopener)
+* Control scrolling speed, direction (horizontal/vertical), reverse, and pause-on-hover
+* Lazy loading for images to boost page speed and SEO
+* Responsive design with adjustable heights, widths, and layouts for all devices
+* Style cards with padding, spacing, borders, and background colors
+* Typography customization for all text elements
+* Align content and adjust spacing for professional presentation
+* Ideal for showcasing teams, contributors, or professional profiles
 
 
 == Installation ==  
@@ -101,8 +113,13 @@ Yes, the **pause on hover** feature is available. When users hover over the marq
 7. Logo / Image Marquee Style Settings
 8. Post Marquee Style Settings
 9. Testimonial Marquee Style Settings
+10. Team Members Marquee Settings
 
 == Changelog ==  
+
+= 1.0.6 =  
+* Introduced: Team members marquee widget
+* New settings to hide image in post marquee
 
 = 1.0.5 =  
 * Improved: Text marquee feature, introduced news ticker
