@@ -74,7 +74,7 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                 'label' => esc_html__('Description', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'rows' => 5,
-                'default' => esc_html__('Lorem ipsum dolor sit amet.', 'advanced-marquee-effect'),
+                'default' => esc_html__('Drives project success.', 'advanced-marquee-effect'),
             ]
         );
 
@@ -268,7 +268,7 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                     [
                         'ame_team_member_name' => esc_html__('John Doe', 'advanced-marquee-effect'),
                         'ame_team_member_designation' => esc_html__('Software Engineering', 'advanced-marquee-effect'),
-                        'ame_team_member_description' => esc_html__('Lorem ipsum dolor sit amet.', 'advanced-marquee-effect'),
+                        'ame_team_member_description' => esc_html__('Builds scalable web apps.', 'advanced-marquee-effect'),
                         'ame_team_member_image' => [
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
                         ],
@@ -276,7 +276,7 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                     [
                         'ame_team_member_name' => esc_html__('David Chen', 'advanced-marquee-effect'),
                         'ame_team_member_designation' => esc_html__('Product Designer', 'advanced-marquee-effect'),
-                        'ame_team_member_description' => esc_html__('Consectetur adipiscing elit.', 'advanced-marquee-effect'),
+                        'ame_team_member_description' => esc_html__('Connects users with technology', 'advanced-marquee-effect'),
                         'ame_team_member_image' => [
                             'url' => \Elementor\Utils::get_placeholder_image_src(),
                         ],
@@ -646,10 +646,44 @@ class AME_Marquee_Team_Widget extends \Elementor\Widget_Base
                     'size' => 120,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__member-image img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ame-marquee__member-image img' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
+
+        $this->add_responsive_control(
+            'ame_member_image_height',
+            [
+                'label' => esc_html__('Image Height', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['%', 'px', 'em', 'vw'],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'px' => [
+                        'min' => 1,
+                        'max' => 320,
+                    ],
+                    'em' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                    'vw' => [
+                        'min' => 1,
+                        'max' => 100,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 120,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__member-image img' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        ); 
 
         $this->add_control(
             'ame_member_image_spacing',

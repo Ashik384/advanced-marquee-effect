@@ -110,7 +110,7 @@ class AME_Marquee_Text_Widget extends \Elementor\Widget_Base {
                 'min' => 1,
                 'max' => 1000,
                 'step' => 1,
-                'default' => 10,
+                'default' => 15,
             ]
         );
 

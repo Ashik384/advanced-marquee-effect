@@ -118,7 +118,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         $this->add_control(
             'ame_marquee_show_excerpt',
             [
-                'label' => esc_html__('Show Excerpt', 'advanced-marquee-effect'),
+                'label' => esc_html__('Display Excerpt', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label_on' => esc_html__('Show', 'advanced-marquee-effect'),
                 'label_off' => esc_html__('Hide', 'advanced-marquee-effect'),
@@ -139,6 +139,18 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
                 'condition' => [
                     'ame_marquee_show_excerpt' => 'yes',
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_show_image',
+            [
+                'label' => esc_html__('Display Image', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('Hide', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'yes',
             ]
         );
 
@@ -680,6 +692,7 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
         $content_alignment = $settings['ame_marquee_content_alignment'] ?? 'center';
         $title_length = isset($settings['ame_marquee_title_length']) ? (int)$settings['ame_marquee_title_length'] : 50;
         $show_excerpt = $settings['ame_marquee_show_excerpt'] === 'yes';
+        $show_image = $settings['ame_marquee_show_image'] === 'yes';
         $excerpt_length = isset($settings['ame_marquee_excerpt_length']) ? (int)$settings['ame_marquee_excerpt_length'] : 20;
         $scroll_speed = $settings['ame_marquee_speed'] ?? '30';
         $is_reversed = $settings['ame_marquee_post_reverse'] === 'yes' ? 'true' : 'false';
@@ -717,19 +730,21 @@ class AME_Marquee_Post_Widget extends \Elementor\Widget_Base
                     <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
                         <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
                             <a href="<?php echo esc_url(get_permalink()); ?>" class="ame-marquee__link">
-                                <div class="ame-marquee__image">
-                                    <?php if (has_post_thumbnail()) : ?>
-                                        <?php the_post_thumbnail('medium', [
-                                            'class' => 'ame-marquee__thumbnail',
-                                            'loading' => $lazy_load ? 'lazy' : 'eager',
-                                            'alt' => get_the_title(),
-                                        ]); ?>
-                                    <?php else : ?>
-                                        <img src="<?php echo esc_url(\Elementor\Utils::get_placeholder_image_src()); ?>"
-                                            alt="<?php echo esc_attr(get_the_title()); ?>"
-                                            loading="<?php echo $lazy_load ? 'lazy' : 'eager'; ?>" />
-                                    <?php endif; ?>
-                                </div>
+                                <?php if ($show_image && $post_type === 'post') : ?>
+                                    <div class="ame-marquee__image">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('medium', [
+                                                'class' => 'ame-marquee__thumbnail',
+                                                'loading' => $lazy_load ? 'lazy' : 'eager',
+                                                'alt' => get_the_title(),
+                                            ]); ?>
+                                        <?php else : ?>
+                                            <img src="<?php echo esc_url(\Elementor\Utils::get_placeholder_image_src()); ?>"
+                                                alt="<?php echo esc_attr(get_the_title()); ?>"
+                                                loading="<?php echo $lazy_load ? 'lazy' : 'eager'; ?>" />
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="ame-marquee__details">
                                     <h3 class="ame-marquee__title">
