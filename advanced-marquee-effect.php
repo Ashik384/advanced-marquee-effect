@@ -88,6 +88,10 @@ final class Advanced_Marquee_Effect {
         // Register Team Marquee
         require_once( __DIR__ . '/widgets/ame-marquee-team-widget.php' );
         $widgets_manager->register( new \AME_Marquee_Team_Widget() );
+
+        // Register CTA Cards Marquee
+        require_once( __DIR__ . '/widgets/ame-marquee-cta-cards-widget.php' );
+        $widgets_manager->register( new \AME_CTA_Cards_Marquee_Widget() );
     }
 
     /**
@@ -108,7 +112,7 @@ final class Advanced_Marquee_Effect {
     public function ame_enqueue_scripts() {
         wp_register_style( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/css/swiper-bundle.min.css', [], self::VERSION );
         wp_register_style( 'ame-marquee-style', plugin_dir_url( __FILE__ ) . 'assets/css/ame-marquee.css', ['ame-swiper'], self::VERSION );
-        
+
         wp_register_script( 'ame-swiper', plugin_dir_url( __FILE__ ) . 'assets/js/swiper-bundle.min.js', [], self::VERSION, true );
         wp_register_script('ame-marquee-script', plugin_dir_url( __FILE__ ) . 'assets/js/marquee-script.js', ['ame-swiper', 'jquery'], self::VERSION, true );
 

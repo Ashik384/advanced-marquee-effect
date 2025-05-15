@@ -34,7 +34,7 @@ function initializeMarqueeSwiper($marquee, settings) {
                 swiper.setTranslate(swiper.getTranslate()); // Immediate stop
             }
         });
-    
+
         $marquee.on('mouseleave', function () {
             if (swiper && swiper.autoplay) {
                 swiper.slideTo(swiper.activeIndex); // Resume from exact place
@@ -49,7 +49,7 @@ function AmeMarqueeImage($scope) {
 
     var settings = {
         autoplay: {
-            delay: 0, 
+            delay: 0,
             reverseDirection: $marquee.data('marquee-reverse')
         },
         spaceBetween: $marquee.data('marquee-image-space'),
@@ -65,7 +65,7 @@ function AmeMarqueePost($scope) {
 
     var settings = {
         autoplay: {
-            delay: 0, 
+            delay: 0,
             reverseDirection: $marquee.data('marquee-reverse')
         },
         spaceBetween: $marquee.data('marquee-image-space'),
@@ -108,6 +108,22 @@ function AmeMarqueeTeams($scope) {
     initializeMarqueeSwiper($marquee, settings);
 }
 
+function AmeMarqueeCTA($scope) {
+    var $marquee = $scope.find('.ame-cta-marquee');
+
+    var settings = {
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
 $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-image.default',
@@ -128,6 +144,11 @@ $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-team-marquee.default',
         AmeMarqueeTeams
+    );
+
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-cta-marquee.default',
+        AmeMarqueeCTA
     );
 
 });
