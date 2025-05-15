@@ -407,3 +407,25 @@
 .ame-align-right .social-icons {
     justify-content: flex-end;
 }
+
+/* === Marquee Call to Action Widget Specific Styles === */
+.ame-marquee__cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #efefef;
+    color: #2c3e50;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.ame-marquee__cta-icon img {
+    object-fit: cover;
+}
+.ame-marquee__cta-icon.ame-icon svg {
+    border: 1px solid #878787;
+    border-radius: 50px;
+}
+
+.ame-marquee__cta-content h4, .ame-marquee__cta-content p {
+    margin: 0;
+}

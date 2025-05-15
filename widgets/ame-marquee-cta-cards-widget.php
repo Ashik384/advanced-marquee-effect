@@ -105,8 +105,7 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
             'ame_cta_description',
             [
                 'label' => esc_html__('Description', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
-                'rows' => 5,
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'default' => esc_html__('This is a compelling call to action description.', 'advanced-marquee-effect'),
             ]
         );
@@ -176,6 +175,30 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
+            'ame_marquee_show_button',
+            [
+                'label' => esc_html__('Show Button', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_show_icon_image',
+            [
+                'label' => esc_html__('Show Icon/Image', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'advanced-marquee-effect'),
+                'label_off' => esc_html__('No', 'advanced-marquee-effect'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ] 
+        );
+
+        $this->add_control(
             'ame_marquee_speed',
             [
                 'label' => __('Speed (in ms)', 'advanced-marquee-effect'),
@@ -205,9 +228,7 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'label' => __('Reverse', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'advanced-marquee-effect'),
-                '
-
-label_off' => __('No', 'advanced-marquee-effect'),
+                'label_off' => __('No', 'advanced-marquee-effect'),
                 'return_value' => 'yes',
                 'default' => 'no',
             ]
@@ -331,6 +352,7 @@ label_off' => __('No', 'advanced-marquee-effect'),
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__item' => 'background-color: {{VALUE}};',
                 ],
+                'default' => '#fafafa',
             ]
         );
 
@@ -499,9 +521,31 @@ label_off' => __('No', 'advanced-marquee-effect'),
         $this->add_control(
             'ame_cta_icon_style',
             [
-                'label' => esc_html__('Icon/Image Style', 'advanced-marquee-effect'),
+                'label' => esc_html__('Icon Style', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'ame_cta_icon_size',
+            [
+                'label' => esc_html__('Icon Size', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 10,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 42,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
             ]
         );
 
@@ -510,46 +554,76 @@ label_off' => __('No', 'advanced-marquee-effect'),
             [
                 'label' => esc_html__('Icon Color', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#000000',
                 'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__cta-icon i' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .ame-icon svg' => 'fill: {{VALUE}};',
                 ],
-                'condition' => [
-                    'ame_cta_icon_type' => 'icon',
+            ]
+        );
+
+        $this->add_control(
+            'ame_cta_icon_background',
+            [
+                'label' => esc_html__('Background', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ame-icon svg' => 'background: {{VALUE}};',
                 ],
             ]
         );
 
         $this->add_responsive_control(
-            'ame_cta_icon_size',
+            'ame_cta_icon_padding',
             [
-                'label' => esc_html__('Icon Size', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['px', 'em', 'rem'],
-                'range' => [
-                    'px' => [
-                        'min' => 10,
-                        'max' => 100,
-                    ],
-                    'em' => [
-                        'min' => 0.5,
-                        'max' => 5,
-                    ],
-                    'rem' => [
-                        'min' => 0.5,
-                        'max' => 5,
-                    ],
-                ],
+                'label' => esc_html__('Icon Padding', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
                 'default' => [
+                    'top' => 8,
+                    'right' => 8,
+                    'bottom' => 8,
+                    'left' => 8,
                     'unit' => 'px',
-                    'size' => 24,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__cta-icon i' => 'font-size: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .ame-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'condition' => [
-                    'ame_cta_icon_type' => 'icon',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_cta_icon_border_radius',
+            [
+                'label' => esc_html__('Icon Border Radius', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => 50,
+                    'right' => 50,
+                    'bottom' => 50,
+                    'left' => 50,
+                    'unit' => 'px',
                 ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-icon svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'ame_cta_icon_border',
+                'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
+                'selector' => '{{WRAPPER}} .ame-icon svg',
+            ]
+        );
+
+        $this->add_control(
+            'ame_cta_image_style',
+            [
+                'label' => esc_html__('Image Style', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
             ]
         );
 
@@ -576,14 +650,11 @@ label_off' => __('No', 'advanced-marquee-effect'),
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__cta-icon img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
-                'condition' => [
-                    'ame_cta_icon_type' => 'image',
-                ],
             ]
         );
 
         $this->add_responsive_control(
-            'ame_cta_icon_spacing',
+            'ame_cta_image_icon_spacing',
             [
                 'label' => esc_html__('Icon/Image Spacing', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
@@ -613,9 +684,15 @@ label_off' => __('No', 'advanced-marquee-effect'),
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__cta-icon img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'condition' => [
-                    'ame_cta_icon_type' => 'image',
-                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'ame_cta_image_border',
+                'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
+                'selector' => '{{WRAPPER}} .ame-marquee__cta-icon img',
             ]
         );
 
@@ -669,6 +746,28 @@ label_off' => __('No', 'advanced-marquee-effect'),
             ]
         );
 
+        $this->add_responsive_control(
+            'ame_cta_description_spacing',
+            [
+                'label' => esc_html__('Description Spacing', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 8,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__cta-description' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -698,6 +797,28 @@ label_off' => __('No', 'advanced-marquee-effect'),
             ]
         );
 
+        $this->add_responsive_control(
+            'ame_button_spacing',
+            [
+                'label' => esc_html__('Button Spacing', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 16,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__cta-button' => 'margin-top: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
@@ -706,6 +827,17 @@ label_off' => __('No', 'advanced-marquee-effect'),
                 'selector' => '{{WRAPPER}} .ame-marquee__cta-button',
             ]
         );
+
+        $this->start_controls_tabs(
+            'style_tabs'
+        );
+
+        $this->start_controls_tab(
+			'ame_cta_button_normal',
+            [
+                'label' => esc_html__( 'Normal', 'advanced-marquee-effect' ),
+            ]
+		);
 
         $this->add_control(
             'ame_cta_button_color',
@@ -728,6 +860,37 @@ label_off' => __('No', 'advanced-marquee-effect'),
                 ],
             ]
         );
+        $this->end_controls_tab();
+        $this->start_controls_tab(
+			'ame_cta_button_hover',
+            [
+                'label' => esc_html__( 'Hover', 'advanced-marquee-effect' ),
+            ]
+		);
+
+        $this->add_control(
+            'ame_cta_button_color_hover',
+            [
+                'label' => esc_html__('Text Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__cta-button:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_cta_button_bg_colo_hover',
+            [
+                'label' => esc_html__('Background Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__cta-button:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
 
         $this->add_responsive_control(
             'ame_cta_button_padding',
@@ -781,6 +944,8 @@ label_off' => __('No', 'advanced-marquee-effect'),
         $item_spacing         = $settings['ame_marquee_item_spacing'] ?? '10';
         $pause_on_hover       = $settings['ame_marquee_stop_on_hover'] === 'yes' ? 'true' : 'false';
         $aliment_item         = $settings['ame_marquee_alignment'] ?? 'top';
+        $show_button         = $settings['ame_marquee_show_button'] === 'yes' ? 'true' : 'false';
+        $show_icon_image      = $settings['ame_marquee_show_icon_image'] === 'yes' ? 'true' : 'false';
 
         if (empty($cta_cards)) {
             return;
@@ -810,18 +975,20 @@ label_off' => __('No', 'advanced-marquee-effect'),
 
                     <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>" role="listitem">
                         <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
-                            <?php if ($icon_type === 'icon' && !empty($icon['value'])) : ?>
-                                <div class="ame-marquee__cta-icon">
-                                    <i class="<?php echo esc_attr($icon['value']); ?>" aria-hidden="true"></i>
-                                </div>
-                            <?php elseif ($icon_type === 'image' && !empty($image_url)) : ?>
-                                <div class="ame-marquee__cta-icon">
-                                    <img src="<?php echo esc_url($image_url); ?>"
-                                        alt="<?php echo esc_attr($image_alt); ?>"
-                                        <?php echo $enable_lazy_load ? 'loading="lazy"' : ''; ?> />
-                                </div>
+                            <?php if ($show_icon_image === 'true') : ?>
+                                <?php if ($icon_type === 'icon' && !empty($icon['value'])) : ?>
+                                    <div class="ame-marquee__cta-icon ame-icon">
+                                        <?php \Elementor\Icons_Manager::render_icon($icon, ['aria-hidden' => 'true']); ?>
+                                    </div>
+                                <?php elseif ($icon_type === 'image' && !empty($image_url)) : ?>
+                                    <div class="ame-marquee__cta-icon">
+                                        <img src="<?php echo esc_url($image_url); ?>"
+                                            alt="<?php echo esc_attr($image_alt); ?>"
+                                            <?php echo $enable_lazy_load ? 'loading="lazy"' : ''; ?> />
+                                    </div>
+                                <?php endif; ?>
                             <?php endif; ?>
-
+                            
                             <div class="ame-marquee__cta-content">
                                 <?php if (!empty($title)) : ?>
                                     <h4 class="ame-marquee__cta-title">
@@ -834,11 +1001,12 @@ label_off' => __('No', 'advanced-marquee-effect'),
                                         <?php echo wp_kses_post($description); ?>
                                     </p>
                                 <?php endif; ?>
-
-                                <?php if (!empty($button_text)) : ?>
-                                    <a href="<?php echo esc_url($button_link); ?>" class="ame-marquee__cta-button">
-                                        <?php echo esc_html($button_text); ?>
-                                    </a>
+                                <?php if ($show_button === 'true') : ?>
+                                    <?php if (!empty($button_text)) : ?>
+                                        <a href="<?php echo esc_url($button_link); ?>" class="ame-marquee__cta-button">
+                                            <?php echo esc_html($button_text); ?>
+                                        </a>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>
