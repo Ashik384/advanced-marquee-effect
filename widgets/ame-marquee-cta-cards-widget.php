@@ -127,6 +127,8 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'placeholder' => esc_html__('https://your-link.com', 'advanced-marquee-effect'),
                 'default' => [
                     'url' => '#',
+                    'is_external' => true,
+                    'nofollow' => true,
                 ],
             ]
         );
@@ -143,7 +145,7 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
         );
 
         $repeater->add_control(
-            'ame_cta_card_image',
+            'ame_cta_card_bg_image',
             [
                 'label' => esc_html__('Card Background Image', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
@@ -384,39 +386,6 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
             ]
         );
 
-        $this->add_responsive_control(
-            'ame_marquee_container_height',
-            [
-                'label' => esc_html__('Container Height', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SLIDER,
-                'size_units' => ['%', 'px', 'em', 'vw'],
-                'range' => [
-                    '%' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                    'px' => [
-                        'min' => 1,
-                        'max' => 400,
-                    ],
-                    'em' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                    'vw' => [
-                        'min' => 1,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => 'px',
-                    'size' => 260,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__item' => 'height: {{SIZE}}{{UNIT}}!important;',
-                ],
-            ]
-        );
 
         $this->add_control(
             'ame_marquee_background_color',
@@ -432,80 +401,6 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 ],
             ]
         );
-
-        $this->add_control(
-            'ame_cta_card_image_style',
-            [
-                'label' => esc_html__('Card Background Image', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::HEADING,
-                'separator' => 'before',
-                'condition' => [
-                    'ame_marquee_show_card_image' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'ame_marquee_background_color_before',
-            [
-                'label' => esc_html__('Background Color', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .ame-cta-marquee .ame-marquee__item:before' => 'background-color: {{VALUE}};',
-                ],
-                'default' => '#0000001F',
-                'condition' => [
-                    'ame_marquee_show_card_image' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'ame_cta_card_image_position',
-            [
-                'label' => esc_html__('Background Position', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'center center' => esc_html__('Center Center', 'advanced-marquee-effect'),
-                    'center top' => esc_html__('Center Top', 'advanced-marquee-effect'),
-                    'center bottom' => esc_html__('Center Bottom', 'advanced-marquee-effect'),
-                    'left top' => esc_html__('Left Top', 'advanced-marquee-effect'),
-                    'left center' => esc_html__('Left Center', 'advanced-marquee-effect'),
-                    'left bottom' => esc_html__('Left Bottom', 'advanced-marquee-effect'),
-                    'right top' => esc_html__('Right Top', 'advanced-marquee-effect'),
-                    'right center' => esc_html__('Right Center', 'advanced-marquee-effect'),
-                    'right bottom' => esc_html__('Right Bottom', 'advanced-marquee-effect'),
-                ],
-                'default' => 'center center',
-                'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__item' => 'background-position: {{VALUE}};',
-                ],
-                'condition' => [
-                    'ame_marquee_show_card_image' => 'yes',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'ame_cta_card_image_size',
-            [
-                'label' => esc_html__('Background Size', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'options' => [
-                    'cover' => esc_html__('Cover', 'advanced-marquee-effect'),
-                    'contain' => esc_html__('Contain', 'advanced-marquee-effect'),
-                    'auto' => esc_html__('Auto', 'advanced-marquee-effect'),
-                ],
-                'default' => 'cover',
-                'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__item' => 'background-size: {{VALUE}};',
-                ],
-                'condition' => [
-                    'ame_marquee_show_card_image' => 'yes',
-                ],
-            ]
-        );
-
 
         $this->add_control(
             'ame_marquee_horizontal_align',
@@ -670,11 +565,101 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'ame_cta_icon_style',
+            'ame_cta_card_image_style',
             [
-                'label' => esc_html__('Icon Style', 'advanced-marquee-effect'),
+                'label' => esc_html__('Card Background Image', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
+                'condition' => [
+                    'ame_marquee_show_card_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_marquee_background_color_before',
+            [
+                'label' => esc_html__('Background Color', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .ame-cta-marquee .ame-marquee__item:before' => 'background-color: {{VALUE}};',
+                ],
+                'default' => '#0000001F',
+                'condition' => [
+                    'ame_marquee_show_card_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_cta_card_image_position',
+            [
+                'label' => esc_html__('Background Position', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'center center' => esc_html__('Center Center', 'advanced-marquee-effect'),
+                    'center top' => esc_html__('Center Top', 'advanced-marquee-effect'),
+                    'center bottom' => esc_html__('Center Bottom', 'advanced-marquee-effect'),
+                    'left top' => esc_html__('Left Top', 'advanced-marquee-effect'),
+                    'left center' => esc_html__('Left Center', 'advanced-marquee-effect'),
+                    'left bottom' => esc_html__('Left Bottom', 'advanced-marquee-effect'),
+                    'right top' => esc_html__('Right Top', 'advanced-marquee-effect'),
+                    'right center' => esc_html__('Right Center', 'advanced-marquee-effect'),
+                    'right bottom' => esc_html__('Right Bottom', 'advanced-marquee-effect'),
+                ],
+                'default' => 'center center',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item' => 'background-position: {{VALUE}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_card_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'ame_cta_card_image_size',
+            [
+                'label' => esc_html__('Background Size', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'options' => [
+                    'cover' => esc_html__('Cover', 'advanced-marquee-effect'),
+                    'contain' => esc_html__('Contain', 'advanced-marquee-effect'),
+                    'auto' => esc_html__('Auto', 'advanced-marquee-effect'),
+                ],
+                'default' => 'cover',
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__item' => 'background-size: {{VALUE}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_card_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs(
+            'ame_icon_image_style_tabs',
+        );
+
+        $this->start_controls_tab(
+            'ame_cta_icon_style_tab',
+            [
+                'label' => esc_html__( 'Icon Style', 'advanced-marquee-effect' ),
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'ame_cta_icon_style',
+            [
+                'label' => esc_html__('Card Icon Style', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
 
@@ -686,16 +671,19 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'size_units' => ['px'],
                 'range' => [
                     'px' => [
-                        'min' => 10,
-                        'max' => 50,
+                        'min' => 1,
+                        'max' => 100,
                     ],
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 42,
+                    'size' => 48,
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-icon svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
                 ],
             ]
         );
@@ -708,16 +696,22 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .ame-icon svg' => 'fill: {{VALUE}};',
                 ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
 
         $this->add_control(
             'ame_cta_icon_background',
             [
-                'label' => esc_html__('Background', 'advanced-marquee-effect'),
+                'label' => esc_html__('Icon Background', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .ame-icon svg' => 'background: {{VALUE}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
                 ],
             ]
         );
@@ -729,14 +723,17 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'default' => [
-                    'top' => 8,
-                    'right' => 8,
-                    'bottom' => 8,
-                    'left' => 8,
+                    'top' => 12,
+                    'right' => 12,
+                    'bottom' => 12,
+                    'left' => 12,
                     'unit' => 'px',
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-icon svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
                 ],
             ]
         );
@@ -757,6 +754,9 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .ame-icon svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
 
@@ -766,22 +766,40 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'name' => 'ame_cta_icon_border',
                 'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
                 'selector' => '{{WRAPPER}} .ame-icon svg',
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'ame_cta_image_style_tab',
+            [
+                'label' => esc_html__( 'Image Style', 'advanced-marquee-effect' ),
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
 
         $this->add_control(
             'ame_cta_image_style',
             [
-                'label' => esc_html__('Image Style', 'advanced-marquee-effect'),
+                'label' => esc_html__('Card Image Style', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::HEADING,
                 'separator' => 'before',
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
 
         $this->add_responsive_control(
             'ame_cta_image_width',
             [
-                'label' => esc_html__('Image Size', 'advanced-marquee-effect'),
+                'label' => esc_html__('Image Width', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -801,13 +819,16 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__cta-icon img' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
 
         $this->add_responsive_control(
             'ame_cta_image_height',
             [
-                'label' => esc_html__('Image Size', 'advanced-marquee-effect'),
+                'label' => esc_html__('Image Height', 'advanced-marquee-effect'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px', '%'],
                 'range' => [
@@ -827,8 +848,52 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__cta-icon img' => 'height: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
             ]
         );
+
+        $this->add_responsive_control(
+            'ame_cta_image_border_radius',
+            [
+                'label' => esc_html__('Image Border Radius', 'advanced-marquee-effect'),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .ame-marquee__cta-icon img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'ame_cta_image_border',
+                'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
+                'selector' => '{{WRAPPER}} .ame-marquee__cta-icon img',
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'ame_cta_image_border',
+                'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
+                'selector' => '{{WRAPPER}} .ame-marquee__cta-icon img',
+                'condition' => [
+                    'ame_marquee_show_icon_image' => 'yes',
+                ],
+            ]
+        );
+        $this->end_controls_tab();
+        $this->end_controls_tabs();
 
         $this->add_responsive_control(
             'ame_cta_image_icon_spacing',
@@ -848,39 +913,6 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .ame-marquee__cta-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'ame_cta_image_border_radius',
-            [
-                'label' => esc_html__('Image Border Radius', 'advanced-marquee-effect'),
-                'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__cta-icon img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            [
-                'name' => 'ame_cta_image_border',
-                'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
-                'selector' => '{{WRAPPER}} .ame-marquee__cta-icon img',
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Border::get_type(),
-            [
-                'name' => 'ame_cta_image_border',
-                'label' => esc_html__('Image Border', 'advanced-marquee-effect'),
-                'selector' => '{{WRAPPER}} .ame-marquee__cta-icon img',
-                'condition' => [
-                    'ame_cta_icon_type' => 'image',
                 ],
             ]
         );
@@ -1141,21 +1173,26 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
             <div class="swiper-wrapper ame-marquee__items <?php echo esc_attr("{$scroll_direction} ame-align-v-{$vertical_alignment} ame-align-h-{$horizontal_alignment}"); ?>">
                 <?php foreach ($cta_cards as $cta) :
                     $enable_card_image = $cta['ame_cta_enable_card_image'] === 'yes';
-                    $card_image       = $cta['ame_cta_card_image'] ?? [];
+                    $card_bg_image    = $cta['ame_cta_card_bg_image'] ?? [];
+                    $card_bg_image_url   = $card_bg_image['url'] ?? '';
+
                     $icon_type        = $cta['ame_cta_icon_type'] ?? 'icon';
                     $icon             = $cta['ame_cta_icon'] ?? [];
                     $image            = $cta['ame_cta_image'] ?? [];
+
                     $title            = $cta['ame_cta_title'] ?? '';
                     $description      = $cta['ame_cta_description'] ?? '';
                     $button_text      = $cta['ame_cta_button_text'] ?? '';
                     $button_link      = $cta['ame_cta_button_link']['url'] ?? '#';
+                    $button_link_target = $cta['ame_cta_button_link']['is_external'] ? 'target="_blank"' : '';
+                    $button_link_nofollow = $cta['ame_cta_button_link']['nofollow'] ? 'rel="nofollow"' : '';
+                    
                     $image_url        = $image['url'] ?? '';
                     $image_alt        = $image['alt'] ?? $title;
-                    $card_image_url   = $card_image['url'] ?? '';
                     ?>
 
                     <div class="swiper-slide ame-marquee__item <?php echo esc_attr("ame-aliment-{$aliment_item}"); ?>"
-                        style="<?php echo ($show_card_image === 'true' && $enable_card_image && $card_image_url) ? 'background-image: url(' . esc_url($card_image_url) . ');' : ''; ?>"
+                        style="<?php echo ($show_card_image === 'true' && $enable_card_image && $card_bg_image_url) ? 'background-image: url(' . esc_url($card_bg_image_url) . ');' : ''; ?>"
                         role="listitem">
                         <div class="ame-marquee__item_inner ame-align-<?php echo esc_attr($content_alignment); ?>">
                             <?php if ($show_icon_image === 'true') : ?>
@@ -1186,7 +1223,11 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                                 <?php endif; ?>
                                 <?php if ($show_button === 'true') : ?>
                                     <?php if (!empty($button_text)) : ?>
-                                        <a href="<?php echo esc_url($button_link); ?>" class="ame-marquee__cta-button">
+                                        <a 
+                                            href="<?php echo esc_url($button_link); ?>" 
+                                            <?php echo $button_link_target; ?> 
+                                            <?php echo $button_link_nofollow; ?> 
+                                            class="ame-marquee__cta-button">
                                             <?php echo esc_html($button_text); ?>
                                         </a>
                                     <?php endif; ?>
