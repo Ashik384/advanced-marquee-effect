@@ -436,5 +436,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+}
+.ame-cta-marquee .ame-marquee__cta-content {
+    z-index: 999;
+    position: relative;
+}
+.ame-cta-marquee .ame-marquee__cta-icon {
+    z-index: 999;
+    position: relative;
 }
