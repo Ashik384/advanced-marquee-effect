@@ -4,7 +4,7 @@ Tags: elementor marquee, scrolling text, logo slider, testimonial carousel, news
 Requires at least: 5.0  
 Tested up to: 6.8 
 Requires PHP: 7.0  
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -66,6 +66,18 @@ Built with performance and flexibility in mind, it gives you full control over a
 * Align content and adjust spacing for professional presentation
 * Ideal for showcasing teams, contributors, or professional profiles
 
+= CTA Cards Marquee Effect / Continuous Scrolling CTA Cards / CTA Carousel Loop =
+* Smooth scrolling CTA card carousel with Elementor repeater
+* Add icons/images, titles, descriptions, and buttons per card
+* Button links with dofollow/nofollow options
+* Card background image or color with position, size, opacity controls
+* Adjustable scroll speed, direction (horizontal/vertical), reverse, pause-on-hover
+* Lazy loading for images to boost performance
+* Responsive card width, height, padding, and spacing
+* Customizable typography for titles, descriptions, buttons
+* Button styling for normal and hover states
+* Ideal for promotions, services, or product showcases
+
 
 == Installation ==  
 1. Upload the plugin files to the `/wp-content/plugins/advanced-marquee-effect/` directory, or install the plugin directly from the WordPress plugin repository.  
@@ -114,8 +126,12 @@ Yes, the **pause on hover** feature is available. When users hover over the marq
 8. Post Marquee Style Settings
 9. Testimonial Marquee Style Settings
 10. Team Members Marquee Settings
+11. CTA Cards Marquee Settings
 
 == Changelog ==  
+
+= 1.0.7 =  
+* Introduced: CTA cards marquee widget
 
 = 1.0.6 =  
 * Introduced: Team members marquee widget
