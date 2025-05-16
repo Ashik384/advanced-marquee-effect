@@ -131,7 +131,7 @@ Yes, the **pause on hover** feature is available. When users hover over the marq
 == Changelog ==  
 
 = 1.0.7 =  
-* Introduced: CTA Cards Marquee
+* Introduced: CTA cards marquee widget
 
 = 1.0.6 =  
 * Introduced: Team members marquee widget
