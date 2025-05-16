@@ -10,7 +10,7 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('AME CTA Marquee', 'advanced-marquee-effect');
+        return __('AME CTA Cards Marquee', 'advanced-marquee-effect');
     }
 
     public function get_icon()
@@ -526,7 +526,8 @@ class AME_CTA_Cards_Marquee_Widget extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .ame-marquee__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ame-cta-marquee .ame-marquee__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .ame-cta-marquee .ame-marquee__item:before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
