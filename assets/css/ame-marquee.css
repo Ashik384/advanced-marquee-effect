@@ -429,3 +429,12 @@
 .ame-marquee__cta-content h4, .ame-marquee__cta-content p {
     margin: 0;
 }
+.ame-cta-marquee .ame-marquee__item:before{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
