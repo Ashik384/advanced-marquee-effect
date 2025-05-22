@@ -1,161 +1,186 @@
-=== Advanced Marquee Effect For Elementor Plugin ===
-Contributors: mdashikul  
-Tags: elementor marquee, scrolling text, logo slider, testimonial carousel, news ticker
-Requires at least: 5.0  
-Tested up to: 6.8 
-Requires PHP: 7.0  
-Stable tag: 1.0.7
-License: GPLv2 or later  
-License URI: https://www.gnu.org/licenses/gpl-2.0.html  
+=== Advanced Marquee Effect for Elementor ===
+Contributors: mdashikul
+Tags: logo slider, post slider, testimonial carousel, Elementor marquee, news ticker
+Requires at least: 5.0
+Tested up to: 6.8
+Requires PHP: 7.0
+Stable tag: 1.0.8
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create smooth, customizable scrolling marquees in Elementor with options for speed, direction, style, and icons.
+Create smooth logo sliders, post sliders, and testimonial carousels in Elementor. No coding required.
 
-== Description ==  
-Marquee Effects is a powerful, lightweight Elementor-compatible plugin that helps you add smooth, continuous scrolling effects to your website – without any coding required! Whether you're displaying text marquees, image/logo sliders, blog post tickers, or testimonial carousels, this plugin makes it effortless to create engaging, dynamic content for promotions, announcements, and brand showcases.
+== Description ==
 
-Built with performance and flexibility in mind, it gives you full control over animation speed, direction, alignment, lazy-load, pause on hover, spacing, and styling—all within Elementor's visual builder.
+Advanced Marquee Effect is a lightweight Elementor plugin for creating smooth, continuous sliders and marquees. Build engaging logo sliders, post sliders, testimonial carousels, team member sliders, and CTA card sliders with full control over speed, direction, and responsive styling—no coding needed.
 
-= Marquee Text Effect / Continuous Scrolling Text / Continuous Carousel Loop = 
-* Create smooth scrolling text, HTML, or icons
-* Customize speed, direction, and style of your marquee
-* Fully responsive design that adapts to all screen sizes
-* Easy integration with Elementor, no coding required
-* Add multiple marquee effects to your page with various styles
-* Works great for announcements, promotions, and news ticker effects
-* Create News Ticker and customize settings.
+== Continuous Text Slider & News Ticker ==
 
-= Image & Logo Marquee Effect / Continuous Scrolling Image Carousel Loop =
-* Create image carousels or logo sliders with smooth horizontal or vertical scrolling
-* Upload multiple images or brand logos using a simple repeater field
-* Add custom links, alt tags, and lazy loading for SEO and performance optimization
-* Control scrolling speed, direction (left, right, up, down), reverse scrolling and pause-on-hover behavior
-* Responsive support for different heights on desktop, tablet, and mobile views
-* Display image captions and descriptions with full styling control
-* Easily customize card layout, image styling, hover effects, and spacing using Elementor controls
-* Perfect for showcasing partner logos, client brands, press features, sponsor carousels, or product highlights
+Create smooth, continuous text sliders and news tickers in Elementor with customizable styles.
 
-= Post Marquee Effect / Continuous Scrolling Post / Post Carousel Loop =
-* Create smooth, scrolling post post marquee
-* Select custom post types and order for targeted content display
-* Add concise titles and excerpts with SEO-friendly styling
-* Enable lazy loading for images to boost page speed and SEO
-* Control scrolling speed, direction, reverse, and pause-on-hover
-* Responsive design with adjustable container/image sizes and vertical scroll heights
-* Style typography, colors, alignment, and spacing for readability
-* Perfect for showcasing blog posts, news, or portfolio highlights
+=== Text Slider Features ===
+Add scrolling text, HTML, or icons with Elementor’s visual builder.
 
-= Testimonial Marquee Effect / Continuous Testimonial Scrolling / Testimonial Carousel Loop =
-* Create smooth, scrolling testimonial carousels
-* Add testimonials with author names, titles, and images via repeater field
-* Enable lazy loading for images to enhance page speed and SEO
-* Control scrolling speed, direction, reverse, and pause-on-hover
-* Responsive design with adjustable container sizes and vertical scroll heights
-* Style star ratings, typography, colors, and alignment for readability
-* Customize card spacing, padding, borders, and image styling for visual appeal
-* Perfect for showcasing client feedback, reviews, or endorsements
+=== News Ticker Customization ===
+Create responsive news tickers with adjustable speed and direction.
 
-= Team Members Marquee Effect / Continuous Scrolling Team Members / Team Members Carousel Loop =
-* Smooth scrolling team member carousel with Elementor repeater field
-* Add names, designations, bios, images, and past experience details
-* Customizable social media links (LinkedIn, Twitter, etc.) with icons, target (_blank/_self), and rel attributes (nofollow, noopener)
-* Control scrolling speed, direction (horizontal/vertical), reverse, and pause-on-hover
-* Lazy loading for images to boost page speed and SEO
-* Responsive design with adjustable heights, widths, and layouts for all devices
-* Style cards with padding, spacing, borders, and background colors
-* Typography customization for all text elements
-* Align content and adjust spacing for professional presentation
-* Ideal for showcasing teams, contributors, or professional profiles
+=== Scrolling Options ===
+Control speed, direction (left, right), and pause-on-hover for dynamic displays.
 
-= CTA Cards Marquee Effect / Continuous Scrolling CTA Cards / CTA Carousel Loop =
-* Smooth scrolling CTA card carousel with Elementor repeater
-* Add icons/images, titles, descriptions, and buttons per card
-* Button links with dofollow/nofollow options
-* Card background image or color with position, size, opacity controls
-* Adjustable scroll speed, direction (horizontal/vertical), reverse, pause-on-hover
-* Lazy loading for images to boost performance
-* Responsive card width, height, padding, and spacing
-* Customizable typography for titles, descriptions, buttons
-* Button styling for normal and hover states
-* Ideal for promotions, services, or product showcases
+=== Use Cases ===
+Perfect for announcements, promotions, or scrolling headlines.
 
+== Continuous Logo & Image Slider ==
 
-== Installation ==  
-1. Upload the plugin files to the `/wp-content/plugins/advanced-marquee-effect/` directory, or install the plugin directly from the WordPress plugin repository.  
-2. Activate the plugin through the â€˜Pluginsâ€™ screen in WordPress.  
-3. Add the **Advanced Marquee Effect** widget in Elementor and customize the settings.  
+Create continuous logo and image sliders with smooth scrolling in Elementor.
+
+=== Logo Slider Features ===
+Upload logos, add custom links, and optimize with alt tags for SEO.
+
+=== Image Slider Controls ===
+Enable lazy loading, style captions, and adjust responsive heights.
+
+=== Scrolling Options ===
+Control speed, direction (left, right, up, down), reverse, and pause-on-hover.
+
+=== Use Cases ===
+Ideal for partner logos, client brands, sponsor carousels, or product highlights.
+
+== Continuous Post Slider & Scroller ==
+
+Create smooth, continuous post sliders and scrollers for blog posts or custom post types.
+
+=== Post Slider Customization ===
+Select custom post types, display SEO-friendly titles and excerpts, and style with Elementor.
+
+=== Continuous Scroller Features ===
+Enable smooth scrolling with lazy loading and responsive design.
+
+=== Scrolling Controls ===
+Adjust speed, direction (left, right, up, down), reverse, and pause-on-hover.
+
+=== Use Cases ===
+Showcase blog posts, news tickers, portfolio highlights, or custom post types.
+
+== Testimonial Carousel ==
+
+Create continuous testimonial carousels with customizable styling.
+
+=== Testimonial Features ===
+Add author names, titles, images, and star ratings via repeater.
+
+=== Performance Options ===
+Enable lazy loading and responsive layouts for faster load times.
+
+=== Styling Controls ===
+Customize typography, colors, spacing, and hover effects.
+
+=== Use Cases ===
+Showcase client feedback, reviews, or endorsements.
+
+== Team Member Slider ==
+
+Display smooth, continuous team member sliders with Elementor.
+
+=== Team Member Features ===
+Add names, bios, images, and social media links (LinkedIn, Twitter).
+
+=== Responsive Design ===
+Adjust layouts, heights, and widths for all devices.
+
+=== Scrolling and Styling ===
+Control speed, direction, and style cards with padding and borders.
+
+=== Use Cases ===
+Ideal for teams, contributors, or professional profiles.
+
+== CTA Card Slider ==
+
+Create continuous CTA card sliders for promotions and services.
+
+=== CTA Card Features ===
+Add icons, titles, descriptions, and buttons with dofollow/nofollow links.
+
+=== Styling Options ===
+Customize backgrounds, typography, and button hover states.
+
+=== Performance and Scrolling ===
+Enable lazy loading and control speed, direction, and pause-on-hover.
+
+=== Use Cases ===
+Perfect for product showcases, services, or promotions.
+
+== Installation ==
+
+1. Upload the plugin to `/wp-content/plugins/advanced-marquee-effect/`, or install from the WordPress repository.
+2. Activate via the 'Plugins' screen in WordPress.
+3. Use the **Advanced Marquee Effect** widget in Elementor to customize settings.
 
 == Frequently Asked Questions ==
 
-= Does this plugin require Elementor? =  
-Yes, this plugin is an addon for Elementor and requires Elementor to work.
+= Does this plugin require Elementor? =
+Yes, it’s an Elementor addon and requires Elementor to function.
 
-= Can I use custom icons in the marquee? =  
-Yes, you can easily add custom icons using Elementor’s built-in icon picker.
+= How do I create a logo slider in Elementor? =
+Use the Continuous Logo & Image Slider widget, upload logos via the repeater field, and customize links, speed, and styling.
 
-= Is the marquee responsive? =  
-Yes, the marquee is fully responsive and adapts seamlessly to all screen sizes, including mobile devices.
+= How do I build a post slider with custom post types? =
+Use the Continuous Post Slider & Scroller widget to select post types, display titles, excerpts, and style with Elementor.
 
-= Can I add images to the marquee? =  
-Yes, you can add images or logos to the marquee. You can also link these images to external URLs, perfect for displaying promotions or branding.
+= How do I add testimonials in a carousel? =
+Use the Testimonial Carousel widget to add author details, images, and star ratings via Elementor’s repeater field.
 
-= Can I display blog posts or custom post types in the marquee? =  
-Yes, the Post Marquee widget supports WordPress blog posts and custom post types. You can choose specific post, control ordering, and display featured images, titles, and excerpts.
+= Does it support lazy loading for SEO? =
+Yes, lazy loading is supported for images in all sliders to boost page speed and SEO.
 
-= Can I show testimonials with author details in a marquee? =  
-Yes, the Testimonial Marquee widget lets you display testimonials with author names, titles, images, and star ratings using a repeater field. All content is fully customizable via Elementor.
+= Can I control scrolling speed and direction? =
+Yes, adjust speed, direction (left, right, up, down), reverse, and pause-on-hover in all widgets.
 
-= Can I control the speed and direction of the marquee? =  
-Yes, the plugin offers full control over the scrolling speed and direction. You can set the marquee to scroll horizontally or vertically, and you can reverse the direction if needed.
-
-= Does the plugin support lazy loading for images? =  
-Yes, lazy loading is supported to improve performance by loading images only when they come into view.
-
-= Can I pause the marquee on hover? =  
-Yes, the **pause on hover** feature is available. When users hover over the marquee, the scrolling effect will stop, allowing them to focus on the content.
-
+= Is the plugin responsive? =
+Yes, all sliders are fully responsive, adapting to desktop, tablet, and mobile devices.
 
 == Screenshots ==
 
-1. Marquee Elementor Widget
-2. Marquee Style Settings
-3. Marquee Content Settings
-4. Marquee Control Settings
-5. Logo / Image Marquee Preview
-6. Logo / Image Marquee Control Settings
-7. Logo / Image Marquee Style Settings
-8. Post Marquee Style Settings
-9. Testimonial Marquee Style Settings
-10. Team Members Marquee Settings
-11. CTA Cards Marquee Settings
+1. Logo Slider Preview
+2. Post Slider Settings
+3. Testimonial Carousel Styling
+4. Team Member Slider Controls
+5. CTA Card Slider Design
+6. Text Slider & News Ticker
+7. Scrolling Speed Settings
+8. Responsive Layout Options
 
-== Changelog ==  
+== Changelog ==
 
-= 1.0.7 =  
-* Introduced: CTA cards marquee widget
+= 1.0.8 =
+* Improved: System stability has been enhanced.
 
-= 1.0.6 =  
-* Introduced: Team members marquee widget
-* New settings to hide the image in the post marquee
+= 1.0.7 =
+* Added CTA Card Slider widget.
 
-= 1.0.5 =  
-* Improved: Text marquee feature, introduced news ticker
+= 1.0.6 =
+* Added Team Member Slider widget.
+* Added option to hide images in Post Slider.
 
-= 1.0.4 =  
-* Introduced: Post Marquee Scrolling Effect widget.
-* Introduced: Testimonial Marquee Scrolling Effect widget.
+= 1.0.5 =
+* Enhanced Text Slider with news ticker functionality.
 
-= 1.0.3 =  
-* Introduced: Image/Logo Marquee Scrolling Effect widget.
+= 1.0.4 =
+* Added Post Slider and Testimonial Carousel widgets.
 
-= 1.0.2 =  
-* Readme.txt info updated.
+= 1.0.3 =
+* Added Logo & Image Slider widget.
 
-= 1.0.1 =  
-* Added: Marquee direction option to scroll from left to right or right to left.
+= 1.0.2 =
+* Updated readme.txt content.
 
-= 1.0.0 =  
-* Initial release.  
+= 1.0.1 =
+* Added marquee direction options (left-to-right, right-to-left).
 
-== Upgrade Notice ==  
-= 1.0.0 =  
-First release â€“ enjoy smooth scrolling marquees in Elementor!  
+= 1.0.0 =
+* Initial release.
+
+== Upgrade Notice ==
+
+= 1.0.7 =
+Upgrade for the new CTA Card Slider widget and enhanced features.
