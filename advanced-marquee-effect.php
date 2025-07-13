@@ -44,6 +44,7 @@ final class Advanced_Marquee_Effect {
 
         // Shortcode Based
         require_once( __DIR__ . '/inc/shortcode-base.php' );
+        require_once( __DIR__ . '/inc/shortcode-generator.php');
 
         // Load Text Domain
         add_action( 'plugins_loaded', [ $this, 'ame_load_textdomain' ] );
