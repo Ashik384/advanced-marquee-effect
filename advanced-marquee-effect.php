@@ -41,6 +41,10 @@ final class Advanced_Marquee_Effect {
      * Constructor - Hooks into WordPress
      */
     private function __construct() {
+
+        // Shortcode Based
+        require_once( __DIR__ . '/inc/shortcode-base.php' );
+
         // Load Text Domain
         add_action( 'plugins_loaded', [ $this, 'ame_load_textdomain' ] );
 
