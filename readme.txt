@@ -2,9 +2,9 @@
 Contributors: mdashikul
 Tags: logo slider, post slider, testimonial carousel, Elementor marquee, news ticker
 Requires at least: 5.0
-Tested up to: 6.8
+Tested up to: 7.0
 Requires PHP: 7.0
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,10 @@ Yes, all sliders are fully responsive, adapting to desktop, tablet, and mobile d
 8. Responsive Layout Options
 
 == Changelog ==
+
+= 1.0.9 =
+* Improved: System stability has been enhanced.
+* Compatibility: Fully compatible with WordPress v7.0.
 
 = 1.0.8 =
 * Improved: System stability has been enhanced.
