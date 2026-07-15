@@ -52,6 +52,11 @@ final class Advanced_Marquee_Effect {
 
         // Add Elementor Category
         add_action('elementor/elements/categories_registered', array($this, 'ame_widget_category'));
+
+        // Load Promo and extra features in Admin Context
+        if ( is_admin() ) {
+            require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
+        }
     }
 
     /**
