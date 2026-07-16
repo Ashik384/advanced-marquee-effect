@@ -188,3 +188,318 @@
 .ame-gatepass-promo-notice .notice-dismiss:hover {
     color: #ef4444 !important;
 }
+
+/* === Elementor Editor Panel PRO Badges === */
+.elementor-element[class*="ame-marquee-woocommerce"],
+.elementor-element[class*="ame-marquee-woo-recent-orders"] {
+    position: relative;
+}
+
+.elementor-element[class*="ame-marquee-woocommerce"]::after,
+.elementor-element[class*="ame-marquee-woo-recent-orders"]::after {
+    content: "PRO";
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: #7209b7;
+    color: #ffffff;
+    font-size: 8px;
+    font-weight: 800;
+    padding: 2px 5px;
+    border-radius: 3px;
+    line-height: 1;
+    z-index: 99;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(114, 9, 183, 0.25);
+    pointer-events: none;
+}
+
+/* === Dashboard Settings Page Styling === */
+.ame-settings-wrap {
+    margin: 20px 20px 0 0;
+    max-width: 1100px;
+}
+
+.ame-settings-header {
+    margin-bottom: 24px;
+}
+
+.ame-settings-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+}
+
+.ame-settings-header .description {
+    font-size: 13.5px;
+    color: #64748b;
+}
+
+.ame-settings-main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 850px) {
+    .ame-settings-main-container {
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+.ame-settings-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+}
+
+.ame-settings-card-header {
+    border-bottom: 1px solid #f1f5f9;
+    padding: 16px 24px;
+    background: #fafafb;
+}
+
+.ame-settings-card-header h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.ame-settings-card-body {
+    padding: 24px;
+}
+
+.ame-settings-card-footer {
+    border-top: 1px solid #f1f5f9;
+    padding: 16px 24px;
+    background: #fafafb;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Widgets Toggles Grid */
+.ame-widgets-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 580px) {
+    .ame-widgets-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+.ame-widget-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #f1f5f9;
+    border-radius: 6px;
+    padding: 16px;
+    background: #fdfdfd;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    gap: 12px;
+}
+
+.ame-widget-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-color: #e2e8f0;
+}
+
+.ame-widget-meta {
+    flex-grow: 1;
+}
+
+.ame-widget-name {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ame-widget-desc {
+    font-size: 11.5px;
+    color: #64748b;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Badging */
+.ame-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.ame-badge-free {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+.ame-badge-pro {
+    background-color: #f5f3ff;
+    color: #7209b7;
+    border: 1.5px solid rgba(114, 9, 183, 0.1);
+}
+
+/* Switches Logic */
+.ame-widget-toggle-wrapper {
+    flex-shrink: 0;
+}
+
+.ame-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.ame-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ame-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: .3s;
+    border-radius: 24px;
+}
+
+.ame-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+.ame-switch input:checked + .ame-slider {
+    background-color: #7209b7;
+}
+
+.ame-switch input:focus + .ame-slider {
+    box-shadow: 0 0 1px #7209b7;
+}
+
+.ame-switch input:checked + .ame-slider:before {
+    transform: translateX(20px);
+}
+
+/* Sidebar Pro Promo Card */
+.ame-settings-sidebar-promo {
+    display: flex;
+    flex-direction: column;
+}
+
+.ame-promo-sidebar-card {
+    background: linear-gradient(135deg, #7209b7 0%, #5b0796 100%);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 15px -3px rgba(114, 9, 183, 0.25);
+    text-align: center;
+}
+
+.ame-promo-sidebar-card .ame-promo-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.ame-promo-sidebar-card h3 {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+.ame-promo-sidebar-card p {
+    font-size: 12px;
+    color: #e9d5ff;
+    line-height: 1.5;
+    margin: 0 0 18px 0;
+}
+
+.ame-sidebar-promo-cta {
+    background-color: #ffffff !important;
+    color: #7209b7 !important;
+    border: none !important;
+    font-weight: 700 !important;
+    padding: 10px 16px !important;
+    font-size: 12.5px !important;
+    line-height: 1.5 !important;
+    height: auto !important;
+    border-radius: 6px !important;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease, transform 0.15s ease !important;
+}
+
+.ame-sidebar-promo-cta:hover {
+    background-color: #fdfdfd !important;
+    transform: translateY(-1px);
+}
+
+/* Settings button styling */
+.ame-save-btn {
+    background-color: #7209b7 !important;
+    border: none !important;
+    border-radius: 4px !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    height: auto !important;
+    padding: 8px 16px !important;
+    line-height: 1.5 !important;
+    box-shadow: 0 2px 4px rgba(114, 9, 183, 0.1) !important;
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+    text-shadow: none !important;
+}
+
+.ame-save-btn:hover {
+    background-color: #5b0796 !important;
+    transform: translateY(-0.5px);
+}
+
+/* Disabled Widget Item States */
+.ame-widget-item.ame-widget-disabled {
+    opacity: 0.65;
+    background: #f8fafc;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+}
+
+.ame-widget-item.ame-widget-disabled:hover {
+    box-shadow: none;
+    border-color: #e2e8f0;
+}
+
+.ame-widget-item.ame-widget-disabled .ame-slider {
+    background-color: #cbd5e1 !important;
+    cursor: not-allowed;
+}
+
+.ame-widget-item.ame-widget-disabled .ame-slider:before {
+    background-color: #94a3b8 !important;
+}
