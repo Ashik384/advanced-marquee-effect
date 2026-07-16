@@ -110,6 +110,14 @@ Enable lazy loading and control speed, direction, and pause-on-hover.
 === Use Cases ===
 Perfect for product showcases, services, or promotions.
 
+== External Services ==
+
+Freemius SDK (For license activation, pricing checks, automatic updates, and billing support)
+* Service Link: https://freemius.com
+* Terms of Use: https://freemius.com/terms/
+* Privacy Policy: https://freemius.com/privacy/
+
+
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/advanced-marquee-effect/`, or install from the WordPress repository.
@@ -151,6 +159,11 @@ Yes, all sliders are fully responsive, adapting to desktop, tablet, and mobile d
 8. Responsive Layout Options
 
 == Changelog ==
+
+= 1.1.0 =
+* Improved: System stability has been enhanced.
+* Added: WooCommerce Recent Orders Marquee.
+* Added: WooCommerce Product Marquee.
 
 = 1.0.9 =
 * Improved: System stability has been enhanced.

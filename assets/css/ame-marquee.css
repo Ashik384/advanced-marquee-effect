@@ -86,7 +86,7 @@
     justify-content: center;
 }
 
-.ame-aliment-bottom {    
+.ame-aliment-bottom {
     justify-content: flex-end;
 }
 
@@ -114,6 +114,7 @@
 .horizontal.ame-align-h-bottom {
     align-items: flex-end;
 }
+
 .horizontal.ame-align-h-stretch {
     align-items: stretch;
 }
@@ -186,12 +187,15 @@
 .ame-marquee__author-image {
     margin-bottom: 8px;
 }
+
 .ame-marquee__testimonial-content .ame-marquee__testimonial-text {
     margin-bottom: 8px;
 }
+
 .ame-marquee__testimonial-content .ame-marquee__author-name {
     margin-bottom: 8px;
 }
+
 .ame-marquee__testimonial-content .ame-marquee__author-title {
     margin-bottom: 0;
 }
@@ -305,13 +309,15 @@
     align-items: center;
     justify-content: center;
 }
-.ame-ticker-inner{
+
+.ame-ticker-inner {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0px 8px;
     gap: 8px;
 }
+
 .ame-ticker-label p {
     margin: 0;
     padding: 0;
@@ -327,6 +333,7 @@
     from {
         transform: translateX(-100%);
     }
+
     to {
         transform: translateX(0);
     }
@@ -342,6 +349,7 @@
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-100%);
     }
@@ -353,9 +361,12 @@
 
 
 /* === Marquee Team Members Widget Specific Styles === */
-.ame-marquee__member-content h2, .ame-marquee__member-content h5, .ame-marquee__member-content p {
+.ame-marquee__member-content h2,
+.ame-marquee__member-content h5,
+.ame-marquee__member-content p {
     margin-bottom: 4px;
 }
+
 .ame-team-marquee .ame-marquee__member-name {
     font-size: 24px;
 }
@@ -363,12 +374,15 @@
 .ame-team-marquee .ame-marquee__member-designation {
     font-size: 16px;
 }
+
 .ame-team-marquee .ame-marquee__past-exp h5 {
     font-size: 16px;
 }
+
 .ame-team-marquee .ame-marquee__past-exp {
     margin-top: 16px;
 }
+
 .ame-team-marquee .ame-marquee__member-image img {
     object-fit: cover;
 }
@@ -391,19 +405,23 @@
     justify-content: center;
     border-radius: 4px;
 }
+
 .ame-team-marquee .social-icons .social-icon svg {
     transition: all 0.3s ease-in-out;
 }
-.ame-team-marquee .social-icons .social-icon:hover svg{
+
+.ame-team-marquee .social-icons .social-icon:hover svg {
     transform: scale(1.1);
 }
 
 .ame-align-left .social-icons {
     justify-content: flex-start;
 }
+
 .ame-align-center .social-icons {
     justify-content: center;
 }
+
 .ame-align-right .social-icons {
     justify-content: flex-end;
 }
@@ -418,18 +436,22 @@
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
+
 .ame-marquee__cta-icon img {
     object-fit: cover;
 }
+
 .ame-marquee__cta-icon.ame-icon svg {
     border: 1px solid #878787;
     border-radius: 50px;
 }
 
-.ame-marquee__cta-content h4, .ame-marquee__cta-content p {
+.ame-marquee__cta-content h4,
+.ame-marquee__cta-content p {
     margin: 0;
 }
-.ame-cta-marquee .ame-marquee__item:before{
+
+.ame-cta-marquee .ame-marquee__item:before {
     position: absolute;
     content: '';
     top: 0;
@@ -437,11 +459,232 @@
     width: 100%;
     height: 100%;
 }
+
 .ame-cta-marquee .ame-marquee__cta-content {
     z-index: 999;
     position: relative;
 }
+
 .ame-cta-marquee .ame-marquee__cta-icon {
     z-index: 999;
     position: relative;
+}
+
+/* === WooCommerce Product Marquee Specific Styles === */
+.ame-woocommerce-marquee .ame-marquee__item {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 240px;
+}
+
+.ame-woo-product-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #f1f5f9;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.ame-woo-product-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.horizontal.ame-align-h-stretch .ame-marquee__item_inner {
+    height: 100%;
+}
+
+.horizontal.ame-align-h-stretch .ame-woo-product-card {
+    height: 100%;
+}
+
+.ame-woo-product-image {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.ame-woo-product-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.ame-woo-product-card:hover .ame-woo-product-thumbnail {
+    transform: scale(1.05);
+}
+
+.ame-woo-sale-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: #ef4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.ame-woo-product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ame-woo-product-title {
+    margin: 0;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.ame-woo-product-title a {
+    color: #1e293b;
+    transition: color 0.15s ease;
+    text-decoration: none !important;
+}
+
+.ame-woo-product-title a:hover {
+    color: #7209b7;
+}
+
+.ame-woo-product-rating {
+    font-size: 11px;
+    margin: 2px 0;
+}
+
+.ame-woo-product-price {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ame-woo-product-price del {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-right: 4px;
+    font-weight: 400;
+}
+
+.ame-woo-low-stock-alert {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: #ef4444;
+    background-color: #fef2f2;
+    padding: 2px 6px;
+    border-radius: 3px;
+    align-self: flex-start;
+    margin: 2px 0;
+}
+
+.ame-woo-product-btn {
+    display: inline-block;
+    text-align: center;
+    background-color: #0f172a;
+    color: #fff;
+    text-decoration: none !important;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-top: auto;
+    transition: background-color 0.15s ease;
+}
+
+.ame-woo-product-btn:hover {
+    background-color: #334155;
+    color: #fff;
+}
+
+/* === WooCommerce Recent Orders Marquee Specific Styles === */
+.ame-woo-recent-orders-marquee .ame-marquee__item {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 320px;
+}
+
+.ame-order-marquee-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 30px;
+    padding: 6px 14px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin: 4px 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.ame-order-marquee-pill:hover {
+    box-shadow: 0 8px 12px -3px rgba(0, 0, 0, 0.08);
+}
+
+.horizontal.ame-align-h-stretch .ame-woo-recent-orders-marquee .ame-marquee__item_inner {
+    height: 100%;
+}
+
+.horizontal.ame-align-h-stretch .ame-order-marquee-pill {
+    height: 100%;
+}
+
+.ame-order-product-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.ame-order-details {
+    font-size: 12px;
+    color: #475569;
+    text-align: left;
+}
+
+.ame-order-details p {
+    margin: 0;
+    line-height: 1.3;
+}
+
+.ame-order-product-link {
+    color: #7209b7;
+    text-decoration: none !important;
+}
+
+.ame-order-product-link:hover {
+    text-decoration: underline !important;
+}
+
+.ame-order-time {
+    font-size: 10.5px;
+    color: #94a3b8;
+    display: block;
+    margin-top: 1px;
+}
+
+.ame-marquee-error {
+    color: #ef4444;
+    padding: 8px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
 }
