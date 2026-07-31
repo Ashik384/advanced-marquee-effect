@@ -151,6 +151,18 @@ final class Advanced_Marquee_Effect {
             $widgets_manager->register( new \AME_CTA_Cards_Marquee_Widget() );
         }
 
+        // Register Image Box Marquee
+        if ( ame_is_widget_enabled( 'ame-marquee-image-box' ) ) {
+            require_once( __DIR__ . '/widgets/ame-marquee-image-box-widget.php' );
+            $widgets_manager->register( new \AME_Marquee_Image_Box_Widget() );
+        }
+
+        // Register Icon Box Marquee
+        if ( ame_is_widget_enabled( 'ame-marquee-icon-box' ) ) {
+            require_once( __DIR__ . '/widgets/ame-marquee-icon-box-widget.php' );
+            $widgets_manager->register( new \AME_Marquee_Icon_Box_Widget() );
+        }
+
         // Register WooCommerce Product Marquee and Recent Orders if Pro is NOT active
         if ( ! class_exists( 'AME_Marquee_Pro' ) ) {
             // Register WooCommerce Product Marquee (Locked/Promo)

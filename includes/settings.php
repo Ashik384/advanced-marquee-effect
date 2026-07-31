@@ -88,6 +88,16 @@ class AME_Marquee_Settings {
                 'desc' => esc_html__( 'Increase engagement using horizontal scrolls of content highlight cards.', 'advanced-marquee-effect' ),
                 'is_pro' => false,
             ],
+            'ame-marquee-image-box' => [
+                'name' => esc_html__( 'Image Box Marquee', 'advanced-marquee-effect' ),
+                'desc' => esc_html__( 'Display stylish scrolling image box cards with title, description, and link features.', 'advanced-marquee-effect' ),
+                'is_pro' => false,
+            ],
+            'ame-marquee-icon-box' => [
+                'name' => esc_html__( 'Icon Box Marquee', 'advanced-marquee-effect' ),
+                'desc' => esc_html__( 'Create continuous icon box streams with stacked, framed, or default icons and details.', 'advanced-marquee-effect' ),
+                'is_pro' => false,
+            ],
             'ame-marquee-woocommerce' => [
                 'name' => esc_html__( 'WooCommerce Product Marquee', 'advanced-marquee-effect' ),
                 'desc' => esc_html__( 'Feature dynamic query loops of store products with prices, ratings, and instant purchase triggers.', 'advanced-marquee-effect' ),

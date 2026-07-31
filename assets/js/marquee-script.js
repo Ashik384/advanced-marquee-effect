@@ -156,6 +156,38 @@ function AmeMarqueeWooRecentOrders($scope) {
     initializeMarqueeSwiper($marquee, settings);
 }
 
+function AmeMarqueeImageBox($scope) {
+    var $marquee = $scope.find('.ame-image-box-marquee');
+
+    var settings = {
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
+function AmeMarqueeIconBox($scope) {
+    var $marquee = $scope.find('.ame-icon-box-marquee');
+
+    var settings = {
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
 $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-image.default',
@@ -181,6 +213,16 @@ $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-cta-marquee.default',
         AmeMarqueeCTA
+    );
+
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-marquee-image-box.default',
+        AmeMarqueeImageBox
+    );
+
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-marquee-icon-box.default',
+        AmeMarqueeIconBox
     );
 
     elementorFrontend.hooks.addAction(
