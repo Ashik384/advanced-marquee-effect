@@ -4,7 +4,7 @@ Tags: Elementor marquee, marquee text, logo slider, news ticker, icon box marque
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -159,6 +159,9 @@ Yes, the Pro version includes dedicated WooCommerce Product Marquee and Recent O
 ---
 
 == Changelog ==
+
+= 1.1.2 =
+* Added: System stability improvement.
 
 = 1.1.1 =
 * Added: Image Box Marquee slider.
