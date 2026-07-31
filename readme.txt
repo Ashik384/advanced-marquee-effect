@@ -143,20 +143,27 @@ Yes, the Pro version includes dedicated WooCommerce Product Marquee and Recent O
 
 == Screenshots ==
 
-1. Image Box & Icon Box Marquee Widgets
-2. Logo Slider & Image Marquee Preview
-3. News Ticker & Announcement Bar Settings
-4. Blog Post Marquee Feed
-5. Customer Testimonial & Star Rating Carousel
-6. Team Member Showcase Marquee
-7. CTA Cards Marquee Design
-8. Admin Widget Enabler / Disabler Settings
-9. WooCommerce Product Marquee (Pro)
-10. WooCommerce Recent Orders Sales Proof Marquee (Pro)
+1. Logo Slider Preview
+2. Post Slider Settings
+3. Testimonial Carousel Styling
+4. Team Member Slider Controls
+5. CTA Card Slider Design
+6. Text Slider & News Ticker
+7. Scrolling Speed Settings
+8. Responsive Layout Options
+9. Image Box Marquee Slider
+10. Icon Box Marquee Slider
+11. WooCommerce Product Marquee (Pro)
+12. WooCommerce Recent Orders Marquee (Pro)
 
 ---
 
 == Changelog ==
+
+= 1.1.1 =
+* Added: Image Box Marquee slider.
+* Added: Icon Box Marquee slider.
+* Added: System stability improvement and bug fixes.
 
 = 1.1.0 =
 * Added: Image Box Marquee widget with Top/Left/Right image positions, Flex alignment, and CSS filters.
