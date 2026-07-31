@@ -1,264 +1,197 @@
-=== Advanced Marquee Effect for Elementor ===
-Contributors: mdashikul
-Tags: logo slider, post slider, testimonial carousel, Elementor marquee, news ticker
+=== Advanced Marquee Effect for Elementor - Smooth Marquee, News Ticker, Image Box & Icon Box Marquee ===
+Contributors: mdashikul, ashik384
+Tags: Elementor marquee, marquee text, logo slider, news ticker, icon box marquee
 Requires at least: 5.0
 Tested up to: 7.0
-Requires PHP: 7.0
+Requires PHP: 7.4
 Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create smooth Elementor marquee sliders, logo sliders, post sliders, testimonials, news tickers, and WooCommerce sliders.
+Create smooth Elementor marquee sliders, logo marquees, news tickers, image box & icon box marquees, post scrollers, testimonials & WooCommerce marquees.
 
 == Description ==
 
-Advanced Marquee Effect is a lightweight Elementor addon for creating smooth, continuous marquee sliders and scrolling content. Build engaging logo sliders, image sliders, post sliders, testimonial carousels, team member sliders, CTA card sliders, and WooCommerce marquee sliders directly in Elementor.
+**Advanced Marquee Effect** is the ultimate lightweight, high-performance Elementor addon designed to create smooth, continuous scrolling marquee animations and infinite carousels on your WordPress website.
 
-Create eye-catching scrolling content with full control over animation speed, scrolling direction, reverse scrolling, pause-on-hover, responsive layouts, and styling options—without writing any code.
+Effortlessly build eye-catching **Marquee Text & News Tickers**, **Continuous Logo Sliders**, **Image Box Marquees**, **Icon Box Marquees**, **Blog Post Marquees**, **Testimonial Review Carousels**, **Team Member Marquees**, **CTA Highlight Cards**, and **WooCommerce Product & Sales Proof Marquees** directly within Elementor—without writing a single line of code!
 
-Use Advanced Marquee Effect to create an Elementor logo slider, continuous image slider, post slider, testimonial carousel, team member slider, CTA card slider, news ticker, or WooCommerce product marquee.
+Powered by Swiper JS for silky-smooth 60fps hardware-accelerated animations, full responsiveness, vertical/horizontal scrolling, pause-on-hover, custom speed, reverse direction, and lazy loading for top-tier SEO performance.
 
-== Continuous Text Slider & News Ticker ==
+### 🚀 Key Features at a Glance:
+* ⚡ **Silky Smooth 60fps Animation:** Hardware-accelerated Swiper scroll engine for zero-lag performance.
+* ↔️ **Horizontal & Vertical Scrolling:** Scroll content left-to-right, right-to-left, top-to-bottom, or bottom-to-top.
+* ⏸️ **Pause-on-Hover:** Automatically pause continuous scrolling when visitors hover over your marquee items.
+* 🖼️ **Image Box & Icon Box Marquees:** Create modern feature cards with stacked/framed icons, images, headings, and descriptions.
+* 📰 **News Ticker & Announcement Bar:** Build breaking news tickers with custom icons, badge labels, and text streams.
+* 🤝 **Logo Carousel & Partner Streams:** Showcase client logos, sponsor ribbons, and brand carousels with custom links.
+* ✍️ **Blog Post Marquee:** Display dynamic blog post feeds with featured images, titles, excerpts, and post metadata.
+* ⭐ **Testimonial & Review Marquee:** Highlight customer reviews with avatars, star ratings, author titles, and custom layouts.
+* 👥 **Team Showcase Marquee:** Introduce team members with photo frames, designation titles, and social link ribbons.
+* 📢 **Call to Action (CTA) Cards:** Boost conversions with scrolling promotional cards, action buttons, and background images.
+* 🛒 **WooCommerce Product Marquee (Pro):** Feature store products in continuous marquee loops with prices, sales badges, and add-to-cart triggers.
+* 🔔 **WooCommerce Recent Orders Marquee (Pro):** Boost sales proof by showing live scrolling customer order notifications.
+* 🎨 **Deep Elementor Styling:** Full control over typography, text stroke, text shadow, flex alignment, CSS filters, borders, padding, and hover states.
+* 📱 **100% Responsive & SEO Friendly:** Mobile-optimized, HTML5 semantic code with built-in lazy loading.
 
-Create smooth, continuous text sliders and news tickers in Elementor with customizable styles.
+---
 
-=== Text Slider Features ===
-Add scrolling text, HTML, or icons with Elementor's visual builder.
+== Included Free & Pro Widgets ==
 
-=== News Ticker Customization ===
-Create responsive news tickers and scrolling announcements with adjustable speed and direction.
+### 1. Marquee Text & News Ticker
+Create continuous scrolling headline banners, announcement bars, and breaking news tickers in Elementor.
+* **Features:** Add customizable text, separator icons, action links, and custom ticker badges.
+* **Scrolling Controls:** Speed, reverse direction, pause-on-hover, and horizontal/vertical direction.
+* **Use Cases:** Breaking news, sales announcements, promotional bar updates, site notices, and site-wide highlights.
 
-=== Scrolling Options ===
-Control speed, direction (left, right), reverse scrolling, and pause-on-hover for dynamic displays.
+### 2. Marquee Image & Logo Slider
+Display endless logo carousels, client streams, and continuous image Marquees.
+* **Features:** Upload logos, attach custom links (dofollow/nofollow), and enable image lazy loading.
+* **Scrolling Controls:** Speed (ms), reverse direction, pause-on-hover, vertical marquee height, and responsive spacing.
+* **Use Cases:** Client brand ribbons, partner logos, sponsor banners, product galleries, and portfolio showcases.
 
-=== Use Cases ===
-Perfect for announcements, promotions, offers, breaking news, scrolling headlines, and important website updates.
+### 3. Image Box Marquee
+Build stunning scrolling feature cards combining images, titles, descriptions, and call-to-action links.
+* **Features:** Custom image position (Top, Left, Right), image width/height, title HTML tags (H1-H6, div, p), and link targets.
+* **Flex Alignment:** Position-synced flex alignment (Top, Center, Bottom) and Justify Content (Start, Center, End, Space Between).
+* **Styling Options:** Typography, text stroke, text shadow, CSS filters, opacity, box background (#FAFAFA default), container width (default 400px), and hover effects.
+* **Use Cases:** Feature highlights, product benefits, service cards, portfolio previews, and step-by-step process streams.
 
-== Continuous Logo & Image Slider ==
+### 4. Icon Box Marquee
+Create continuous scrolling icon feature streams with Elementor icon libraries, titles, and descriptions.
+* **Features:** Choose FontAwesome/custom SVG icons, 3 Icon Views (Default, Stacked, Framed), Shapes (Circle, Square), and links.
+* **Icon Styling:** Primary & secondary colors (Normal & Hover), icon size, rotate angle, padding, border radius, and box shadow.
+* **Layout & Alignment:** Top/Left/Right icon placement with synced flex item alignment and justify-content text alignment.
+* **Use Cases:** Service highlights, technology stacks, feature lists, key takeaways, and trust badge scrollers.
 
-Create smooth, continuous logo sliders and image marquees with flexible scrolling options in Elementor.
+### 5. Post Marquee & Content Scroller
+Showcase WordPress blog posts and custom post types in an infinite scrolling marquee stream.
+* **Features:** Display post titles, featured thumbnails, post excerpts, dates, and author meta.
+* **Query & Controls:** Query by post categories, limit post counts, set marquee direction, and customize typography.
+* **Use Cases:** Trending articles, blog highlights, portfolio posts, podcast feeds, and recent news feeds.
 
-=== Logo Slider Features ===
-Upload logos, add custom links, and optimize images with alt text for SEO and accessibility.
+### 6. Testimonial & Review Marquee
+Display social proof customer reviews, star ratings, and client feedback in a smooth sliding banner.
+* **Features:** Add author avatars, reviewer names, designations, review quotes, and 5-star ratings.
+* **Styling Presets:** Default, Modern, and Bubble review card presets with customizable border shadows and background colors.
+* **Use Cases:** Customer reviews, G2/Trustpilot feedback, client testimonials, and trust-building banners.
 
-=== Image Slider Controls ===
-Enable lazy loading, style captions, and adjust responsive heights.
+### 7. Team Marquee
+Introduce team members, staff, and contributors with interactive sliding avatar cards.
+* **Features:** Member photo frames, names, job titles, bio excerpts, and social link ribbons (LinkedIn, Twitter, GitHub).
+* **Use Cases:** Agency team ribbons, company staff highlights, conference speaker marquees, and advisor rows.
 
-=== Scrolling Options ===
-Control speed, direction (left, right, up, down), reverse scrolling, and pause-on-hover.
+### 8. CTA Cards Marquee
+Drive user engagement with continuous horizontal scrolling Call-To-Action highlight cards.
+* **Features:** Custom icons/images, bold headings, descriptions, background cards, and action buttons.
+* **Use Cases:** Special offers, deal banners, marketing campaigns, service callouts, and landing page highlights.
 
-=== Use Cases ===
-Ideal for partner logos, client brands, sponsor logos, customer logos, product highlights, and portfolio showcases.
+### 9. WooCommerce Product Marquee (Pro)
+Display store products in dynamic query marquee loops.
+* **Features:** Product images, titles, regular/sale prices, ratings, and instant add-to-cart buttons.
+* **Use Cases:** Featured store products, flash sale marquees, best sellers, and new arrival carousels.
 
-== Continuous Post Slider & Scroller ==
+### 10. WooCommerce Recent Orders Marquee (Pro)
+Display live customer sales proof notifications in a smooth scrolling banner.
+* **Features:** Real-time customer order notifications, purchaser locations, product thumbnail, and purchase time.
+* **Use Cases:** Sales proof, FOMO notification banners, recent store activity, and conversion boosters.
 
-Create smooth, continuous post sliders and content scrollers for blog posts and custom post types.
-
-=== Post Slider Customization ===
-Select custom post types, display SEO-friendly titles and excerpts, and style your content with Elementor.
-
-=== Continuous Scroller Features ===
-Enable smooth scrolling with lazy loading and responsive design.
-
-=== Scrolling Controls ===
-Adjust speed, direction (left, right, up, down), reverse scrolling, and pause-on-hover.
-
-=== Use Cases ===
-Showcase blog posts, news articles, portfolio projects, featured content, or custom post types.
-
-== Testimonial Carousel ==
-
-Create continuous testimonial carousels and customer review sliders with customizable styling.
-
-=== Testimonial Features ===
-Add author names, titles, images, testimonials, and star ratings via repeater fields.
-
-=== Performance Options ===
-Enable lazy loading and responsive layouts for faster load times.
-
-=== Styling Controls ===
-Customize typography, colors, spacing, backgrounds, borders, and hover effects.
-
-=== Use Cases ===
-Showcase client feedback, customer reviews, testimonials, ratings, or endorsements.
-
-== Team Member Slider ==
-
-Display smooth, continuous team member sliders with Elementor.
-
-=== Team Member Features ===
-Add names, bios, images, and social media links such as LinkedIn and Twitter.
-
-=== Responsive Design ===
-Adjust layouts, heights, and widths for desktop, tablet, and mobile devices.
-
-=== Scrolling and Styling ===
-Control speed and direction, and style team member cards with padding, borders, backgrounds, and more.
-
-=== Use Cases ===
-Ideal for teams, staff members, contributors, agencies, and professional profiles.
-
-== CTA Card Slider ==
-
-Create continuous CTA card sliders for promotions, services, products, and marketing campaigns.
-
-=== CTA Card Features ===
-Add icons, titles, descriptions, and buttons with dofollow or nofollow links.
-
-=== Styling Options ===
-Customize backgrounds, typography, spacing, buttons, borders, and hover states.
-
-=== Performance and Scrolling ===
-Enable lazy loading and control speed, direction, reverse scrolling, and pause-on-hover.
-
-=== Use Cases ===
-Perfect for product showcases, service promotions, marketing campaigns, announcements, and call-to-action sections.
-
-== WooCommerce Product Marquee (Pro) ==
-
-Create smooth, continuous WooCommerce product marquees and product sliders with Elementor.
-
-=== Product Marquee Features ===
-Display WooCommerce products in an engaging, continuously scrolling layout.
-
-=== Product Information ===
-Showcase product images, product names, prices, sale prices, and other product information.
-
-=== Scrolling Options ===
-Control speed, direction, reverse scrolling, and pause-on-hover.
-
-=== Use Cases ===
-Ideal for featured products, latest products, best-selling products, sale items, product collections, and WooCommerce store promotions.
-
-== WooCommerce Recent Orders Marquee (Pro) ==
-
-Display recent WooCommerce orders in a smooth, continuously scrolling marquee.
-
-=== Recent Order Features ===
-Create dynamic scrolling content based on recent WooCommerce order activity.
-
-=== Social Proof ===
-Show recent purchases and store activity to create engaging social proof for your WooCommerce store.
-
-=== Scrolling Options ===
-Control speed, direction, reverse scrolling, and pause-on-hover.
-
-=== Use Cases ===
-Perfect for displaying recent purchases, live sales activity, customer order updates, and social proof.
+---
 
 == External Services ==
 
-Freemius SDK (For license activation, pricing checks, automatic updates, and billing support)
+This plugin utilizes the Freemius SDK to handle opt-in telemetry, license activation, Pro upgrades, automatic security updates, and billing support.
+* **Service Link:** https://freemius.com
+* **Terms of Service:** https://freemius.com/terms/
+* **Privacy Policy:** https://freemius.com/privacy/
 
-* Service Link: https://freemius.com
-* Terms of Use: https://freemius.com/terms/
-* Privacy Policy: https://freemius.com/privacy/
+---
 
 == Installation ==
 
-1. Upload the plugin to `/wp-content/plugins/advanced-marquee-effect/`, or install from the WordPress repository.
-2. Activate via the 'Plugins' screen in WordPress.
-3. Use the **Advanced Marquee Effect** widgets in Elementor to create smooth sliders and scrolling content.
+1. Upload the plugin files to the `/wp-content/plugins/advanced-marquee-effect/` directory, or install directly via the WordPress Admin > **Plugins > Add New** screen.
+2. Activate **Advanced Marquee Effect** through the 'Plugins' screen in WordPress.
+3. Open any page in Elementor, search for "AME" or "Marquee", and drag any marquee widget into your layout!
+4. Optional: Visit **AME Marquee > Settings** in your WordPress admin dashboard to enable or disable specific marquee widgets.
+
+---
 
 == Frequently Asked Questions ==
 
 = Does this plugin require Elementor? =
-Yes, it’s an Elementor addon and requires Elementor to function.
+Yes, Advanced Marquee Effect is a dedicated Elementor addon and requires the free or Pro version of Elementor to function.
+
+= How do I create a news ticker in Elementor? =
+Add the **Marquee Text** widget, enable the Ticker Label option, customize your announcement text and separator icons, and set your desired scroll speed.
+
+= How do I create an Image Box Marquee or Icon Box Marquee? =
+Drag the **Image Box Marquee** or **Icon Box Marquee** widget into Elementor, add items via the repeater, select your images or FontAwesome icons, pick your position (Left, Top, Right), and adjust alignment, width, and colors in the Style tab.
+
+= Can I hide empty title or description containers? =
+Yes! If no title or description is provided for an item, the content HTML container wrapper is automatically omitted for clean layout rendering.
+
+= Does it support vertical scrolling? =
+Yes, all marquee widgets support both horizontal (left-to-right, right-to-left) and vertical (top-to-bottom, bottom-to-top) scrolling with customizable height and alignment settings.
+
+= Is lazy loading supported for image marquees? =
+Yes! Image lazy loading is built-in across supported image marquee widgets to maximize speed and Google PageSpeed Insights scores.
 
 = Does it support WooCommerce? =
-Yes. The Pro version includes WooCommerce widgets for creating product marquees and recent order marquees.
+Yes, the Pro version includes dedicated WooCommerce Product Marquee and Recent Orders Marquee widgets to display store items and live purchase proof notifications.
 
-= How do I create a WooCommerce product marquee? =
-The WooCommerce Product Marquee widget is available in the Pro version and lets you display WooCommerce products in a smooth, continuous scrolling layout.
-
-= How do I display recent WooCommerce orders? =
-The WooCommerce Recent Orders Marquee widget is available in the Pro version and lets you create a continuously scrolling display of recent WooCommerce order activity.
-
-= How do I create a logo slider in Elementor? =
-Use the Continuous Logo & Image Slider widget, upload logos via the repeater field, and customize links, speed, direction, and styling.
-
-= How do I build a post slider with custom post types? =
-Use the Continuous Post Slider & Scroller widget to select post types, display titles, excerpts, and style content with Elementor.
-
-= How do I add testimonials in a carousel? =
-Use the Testimonial Carousel widget to add author details, images, testimonials, and star ratings via Elementor's repeater field.
-
-= Does it support lazy loading for SEO? =
-Yes, lazy loading is supported for images in supported sliders to help improve page performance.
-
-= Can I control scrolling speed and direction? =
-Yes, adjust speed, direction (left, right, up, down), reverse scrolling, and pause-on-hover options in supported widgets.
-
-= Is the plugin responsive? =
-Yes, all sliders and marquee widgets are designed to work across desktop, tablet, and mobile devices.
+---
 
 == Screenshots ==
 
-1. Logo Slider Preview
-2. Post Slider Settings
-3. Testimonial Carousel Styling
-4. Team Member Slider Controls
-5. CTA Card Slider Design
-6. Text Slider & News Ticker
-7. Scrolling Speed Settings
-8. Responsive Layout Options
+1. Image Box & Icon Box Marquee Widgets
+2. Logo Slider & Image Marquee Preview
+3. News Ticker & Announcement Bar Settings
+4. Blog Post Marquee Feed
+5. Customer Testimonial & Star Rating Carousel
+6. Team Member Showcase Marquee
+7. CTA Cards Marquee Design
+8. Admin Widget Enabler / Disabler Settings
 9. WooCommerce Product Marquee (Pro)
-10. WooCommerce Recent Orders Marquee (Pro)
+10. WooCommerce Recent Orders Sales Proof Marquee (Pro)
+
+---
 
 == Changelog ==
 
 = 1.1.0 =
-
-* Added: WooCommerce Recent Orders Marquee (Pro).
-* Added: WooCommerce Product Marquee (Pro).
-* Improved: System stability has been enhanced.
+* Added: Image Box Marquee widget with Top/Left/Right image positions, Flex alignment, and CSS filters.
+* Added: Icon Box Marquee widget with FontAwesome icons, Stacked/Framed views, and shape options.
+* Added: WooCommerce Recent Orders Marquee widget (Pro).
+* Added: WooCommerce Product Marquee widget (Pro).
+* Improved: Automatic text-alignment sync for Justify Content settings.
+* Improved: Performance enhancements and full compatibility with WordPress 7.0 and Elementor 4.1.
 
 = 1.0.9 =
-
-* Improved: System stability has been enhanced.
-* Compatibility: Fully compatible with WordPress v7.0.
+* Improved: System stability and Swiper JS smooth loop initialization.
+* Compatibility: Tested and verified up to WordPress 7.0.
 
 = 1.0.8 =
-
-* Improved: System stability has been enhanced.
+* Improved: Code optimization and admin settings interface updates.
 
 = 1.0.7 =
-
-* Added CTA Card Slider widget.
+* Added: CTA Card Marquee widget.
 
 = 1.0.6 =
-
-* Added Team Member Slider widget.
-* Added option to hide images in Post Slider.
+* Added: Team Member Marquee widget.
 
 = 1.0.5 =
-
-* Enhanced Text Slider with news ticker functionality.
+* Enhanced: Text Marquee with ticker badge label functionality.
 
 = 1.0.4 =
-
-* Added Post Slider and Testimonial Carousel widgets.
+* Added: Post Marquee and Testimonial Marquee widgets.
 
 = 1.0.3 =
-
-* Added Logo & Image Slider widget.
-
-= 1.0.2 =
-
-* Updated readme.txt content.
-
-= 1.0.1 =
-
-* Added marquee direction options (left-to-right, right-to-left).
+* Added: Logo & Image Marquee widget.
 
 = 1.0.0 =
-
 * Initial release.
 
 == Upgrade Notice ==
 
 = 1.1.0 =
-Upgrade to unlock the new WooCommerce Product Marquee and WooCommerce Recent Orders Marquee Pro widgets, along with improved system stability.
-
-= 1.0.7 =
-Upgrade for the new CTA Card Slider widget and enhanced features.
+Update now to enjoy the new Image Box Marquee and Icon Box Marquee widgets, along with enhanced Swiper loop performance and WordPress 7.0 compatibility.
