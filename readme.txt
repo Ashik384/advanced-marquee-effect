@@ -1,14 +1,14 @@
 === Advanced Marquee Effect for Elementor - Smooth Marquee, News Ticker, Image Box & Icon Box Marquee ===
-Contributors: mdashikul, ashik384
+Contributors: mdashikul
 Tags: Elementor marquee, marquee text, logo slider, news ticker, icon box marquee
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create smooth Elementor marquee sliders, logo marquees, news tickers, image box & icon box marquees, post scrollers, testimonials & WooCommerce marquees.
+Create smooth Elementor marquee sliders, logo marquees, news tickers, image box & icon box, post scrollers, testimonials & WooCommerce marquees.
 
 == Description ==
 
@@ -159,6 +159,9 @@ Yes, the Pro version includes dedicated WooCommerce Product Marquee and Recent O
 ---
 
 == Changelog ==
+
+= 1.1.3 =
+* Added: System stability improvement.
 
 = 1.1.2 =
 * Added: System stability improvement.
