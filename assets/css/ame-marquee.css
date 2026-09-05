@@ -939,3 +939,788 @@
 .ame-icon-box__item:not(:has(.ame-icon-box__content)) .ame-icon-box__icon {
     margin: 0 !important;
 }
+
+/* === Video & Reels Marquee === */
+.ame-video-marquee .ame-marquee__item {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ame-video-marquee .ame-marquee__item:hover {
+    transform: translateY(-5px);
+}
+
+.ame-video-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #070a13;
+    border-radius: inherit;
+}
+
+/* Subtle cinematic gradient vignette over video preview */
+.ame-video-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, transparent 28%, transparent 65%, rgba(0, 0, 0, 0.55) 100%);
+    border-radius: inherit;
+    z-index: 1;
+}
+
+/* Aspect Ratio presets */
+.ame-video-ratio-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+.ame-video-ratio-9-16 {
+    aspect-ratio: 9 / 16;
+}
+
+.ame-video-ratio-1-1 {
+    aspect-ratio: 1 / 1;
+}
+
+.ame-video-ratio-4-3 {
+    aspect-ratio: 4 / 3;
+}
+
+.ame-video-wrapper video,
+.ame-video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.ame-video-wrapper .ame-video-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ame-video-link-wrap {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* === Top Ribbon / Badge === */
+.ame-video-badge {
+    position: absolute;
+    top: 12px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.ame-badge-pos-left {
+    left: 12px;
+}
+
+.ame-badge-pos-right {
+    right: 12px;
+}
+
+.ame-badge-style-gradient {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.ame-badge-style-dark_glass {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    color: #f8fafc;
+}
+
+.ame-marquee__item:hover .ame-video-badge {
+    transform: scale(1.06);
+}
+
+/* Views / Duration Tag on Card */
+.ame-video-views-tag {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f8fafc;
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ame-marquee__item:hover .ame-video-views-tag {
+    transform: scale(1.05);
+}
+
+/* Creator / Author UGC Badge on Card */
+.ame-video-author-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 12;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: calc(100% - 24px);
+    pointer-events: auto;
+    text-decoration: none;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+a.ame-video-author-badge,
+a.ame-video-author-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ame-marquee__item:hover .ame-video-author-badge {
+    transform: translateY(-2px);
+}
+
+a.ame-video-author-badge:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+a.ame-video-author-badge:hover .ame-video-author-avatar {
+    border-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65);
+}
+
+a.ame-video-author-badge:hover .ame-video-author-name {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.ame-video-author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+    flex-shrink: 0;
+}
+
+.ame-video-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow: hidden;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.ame-video-author-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ame-video-author-handle {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* === Play Button Overlay === */
+.ame-video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background: transparent !important;
+    background-color: transparent !important;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 6;
+}
+
+/* Always Visible */
+.ame-video-overlay-always,
+.ame-play-vis-always .ame-video-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) !important;
+}
+
+/* Visible on Hover Only - Hidden by default */
+.ame-video-overlay-hover,
+.ame-play-vis-hover .ame-video-overlay {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: scale(0.9) !important;
+}
+
+/* Visible on Hover Only - Shown on hover */
+.ame-marquee__item:hover .ame-video-overlay-hover,
+.ame-marquee__item_inner:hover .ame-video-overlay-hover,
+.ame-video-wrapper:hover .ame-video-overlay-hover,
+.swiper-slide:hover .ame-video-overlay-hover,
+.has-popup-trigger:hover .ame-video-overlay-hover,
+.ame-play-vis-hover .ame-marquee__item:hover .ame-video-overlay,
+.ame-play-vis-hover .ame-marquee__item_inner:hover .ame-video-overlay,
+.ame-play-vis-hover .ame-video-wrapper:hover .ame-video-overlay,
+.ame-play-vis-hover .swiper-slide:hover .ame-video-overlay,
+.ame-play-vis-hover .has-popup-trigger:hover .ame-video-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) !important;
+}
+
+.ame-video-play-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    box-sizing: border-box;
+    transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), height 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.ame-video-play-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    margin-left: 2px;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.6));
+    transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), height 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
+}
+
+.ame-marquee__item:hover .ame-video-play-btn,
+.ame-video-play-btn:hover {
+    width: 42px;
+    height: 42px;
+    border-color: #ffffff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.ame-marquee__item:hover .ame-video-play-btn svg,
+.ame-video-play-btn:hover svg {
+    width: 22px;
+    height: 22px;
+    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.85));
+}
+
+/* Play Button Positions */
+.ame-video-overlay.ame-play-pos-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.ame-video-overlay.ame-play-pos-bottom_left {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.ame-video-overlay.ame-play-pos-bottom_right {
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+/* Play Button Pulse Animation */
+@keyframes amePlayPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.14);
+    }
+}
+
+.ame-play-pulse .ame-video-play-btn {
+    animation: amePlayPulse 2.4s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.ame-video-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 6px 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ame-video-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+    transition: color 0.2s ease;
+}
+
+.ame-marquee__item:hover .ame-video-title {
+    color: inherit;
+}
+
+.ame-video-caption {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Click layer over video preview to ensure clicks are never swallowed by iframe or video */
+.ame-video-click-layer,
+.ame-video-click-layer:hover,
+.ame-video-click-layer:focus,
+.ame-video-click-layer:active,
+div.ame-video-click-layer,
+div.ame-video-click-layer:hover,
+div.ame-video-click-layer:focus,
+div.ame-video-click-layer:active,
+button.ame-video-click-layer,
+button.ame-video-click-layer:hover,
+button.ame-video-click-layer:focus,
+button.ame-video-click-layer:active {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.ame-marquee__item.has-popup-trigger {
+    cursor: pointer;
+}
+
+/* Performance freeze when modal is open */
+.ame-video-marquee.ame-marquee-is-frozen .ame-marquee__items,
+.ame-video-marquee.ame-marquee-is-frozen .swiper-wrapper {
+    animation-play-state: paused !important;
+}
+
+/* === Video Lightbox Modal (Cinematic Reels Edition) === */
+.ame-video-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 24px 16px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ame-video-modal-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Lightbox Reels Navigation Arrows */
+.ame-video-modal-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000000;
+    padding: 0;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.ame-video-modal-nav:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateY(-50%) scale(1.12);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.ame-video-modal-prev {
+    left: 28px;
+}
+
+.ame-video-modal-next {
+    right: 28px;
+}
+
+.ame-video-modal-nav svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@media (max-width: 768px) {
+    .ame-video-modal-nav {
+        width: 42px;
+        height: 42px;
+    }
+    .ame-video-modal-prev {
+        left: 10px;
+    }
+    .ame-video-modal-next {
+        right: 10px;
+    }
+    .ame-video-modal-nav svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.ame-video-modal-container {
+    position: relative;
+    width: auto;
+    max-width: 94vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-top: 46px;
+    box-sizing: border-box;
+    transform: scale(0.94) translateY(12px);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.ame-video-modal-backdrop.is-active .ame-video-modal-container {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* Modal Top Bar (Close) */
+.ame-video-modal-topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    z-index: 10;
+}
+
+.ame-video-modal-close {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ame-video-modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.32);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25);
+}
+
+.ame-video-modal-close svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Modal Video Content Box */
+.ame-video-modal-content {
+    position: relative;
+    background-color: #000000;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.14), 0 0 45px rgba(114, 9, 183, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: min(calc(78vh - 120px), 680px);
+    aspect-ratio: 9 / 16;
+    width: auto;
+    max-width: 90vw;
+}
+
+/* Responsive aspect-ratio calculations guaranteeing 100% visibility without cropping */
+.ame-video-modal-content.ame-modal-ratio-9-16 {
+    height: min(calc(78vh - 120px), 680px);
+    aspect-ratio: 9 / 16;
+    width: auto;
+    max-width: 90vw;
+}
+
+.ame-video-modal-content.ame-modal-ratio-16-9 {
+    width: min(860px, 90vw);
+    aspect-ratio: 16 / 9;
+    height: auto;
+    max-height: calc(78vh - 120px);
+}
+
+.ame-video-modal-content.ame-modal-ratio-1-1 {
+    height: min(calc(78vh - 120px), 520px);
+    aspect-ratio: 1 / 1;
+    width: auto;
+    max-width: 90vw;
+}
+
+.ame-video-modal-content.ame-modal-ratio-4-3 {
+    height: min(calc(78vh - 120px), 560px);
+    aspect-ratio: 4 / 3;
+    width: auto;
+    max-width: 90vw;
+}
+
+/* TikTok & Vertical Player sizing to ensure full player controls and video fit */
+.ame-video-modal-container.is-type-tiktok .ame-video-modal-content,
+.ame-video-modal-container.is-type-reels .ame-video-modal-content {
+    width: min(420px, 92vw);
+    min-width: 320px;
+    height: min(calc(84vh - 80px), 680px);
+    min-height: 520px;
+    aspect-ratio: 9 / 16;
+}
+
+.ame-video-modal-content video,
+.ame-video-modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    object-fit: contain;
+    background: #000;
+}
+
+.ame-video-modal-footer {
+    width: 100%;
+    padding-top: 14px;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.ame-video-modal-tags {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.ame-video-modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(255, 65, 108, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ame-video-modal-views {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f1f5f9;
+}
+
+.ame-video-modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.ame-video-modal-caption {
+    font-size: 13px;
+    font-weight: 500;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ame-video-modal-author {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ame-video-modal-author.has-author-link {
+    cursor: pointer;
+}
+
+.ame-video-modal-author.has-author-link:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.32);
+    transform: translateY(-1px);
+}
+
+.ame-video-modal-author.has-author-link:hover .ame-video-modal-author-avatar {
+    border-color: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ame-video-modal-author.has-author-link:hover .ame-video-modal-author-name {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.ame-video-modal-author-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    flex-shrink: 0;
+}
+
+.ame-video-modal-author-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.ame-video-modal-author-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.ame-video-modal-author-handle {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    line-height: 1.2;
+}

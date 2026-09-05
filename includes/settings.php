@@ -108,6 +108,11 @@ class AME_Marquee_Settings {
                 'desc' => esc_html__( 'Present real-time customer sales proof notifications in a smooth sliding banner.', 'advanced-marquee-effect' ),
                 'is_pro' => true,
             ],
+            'ame-marquee-video-reels' => [
+                'name' => esc_html__( 'Video & Reels Marquee', 'advanced-marquee-effect' ),
+                'desc' => esc_html__( 'Showcase self-hosted videos, YouTube/Vimeo streams, and TikTok Videos in a dynamic continuous marquee.', 'advanced-marquee-effect' ),
+                'is_pro' => true,
+            ],
         ];
     }
 
