@@ -629,6 +629,134 @@ $(document).on('click', '.ame-video-author-link', function (e) {
     e.stopPropagation();
 });
 
+function AmeMarqueeReviews($scope) {
+    var $marquee = $scope.find('.ame-reviews-marquee');
+
+    var settings = {
+        autoplay: {
+            delay: 0,
+            reverseDirection: $marquee.data('marquee-reverse')
+        },
+        spaceBetween: $marquee.data('marquee-image-space'),
+        speed: $marquee.data('marquee-speed'),
+        direction: $marquee.data('marquee-direction'),
+    };
+
+    initializeMarqueeSwiper($marquee, settings);
+}
+
+/* === Reviews Lightbox Reader Modal === */
+function getOrCreateAmeReviewModal() {
+    var $modal = $('#ame-review-modal');
+    if ($modal.length) {
+        return $modal;
+    }
+
+    var modalHtml = 
+        '<div class="ame-review-modal-backdrop" id="ame-review-modal" role="dialog" aria-modal="true">' +
+            '<div class="ame-review-modal-card">' +
+                '<div class="ame-review-modal-header">' +
+                    '<div class="ame-review-modal-user">' +
+                        '<div class="ame-review-modal-avatar-box"></div>' +
+                        '<div>' +
+                            '<div class="ame-review-modal-author"></div>' +
+                            '<div class="ame-review-modal-date" style="font-size: 12px; color: #94a3b8;"></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<button type="button" class="ame-review-modal-close" aria-label="Close" title="Close (Esc)">' +
+                        '<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>' +
+                    '</button>' +
+                '</div>' +
+                '<div class="ame-review-modal-body">' +
+                    '<div class="ame-review-modal-stars" style="margin-bottom: 8px;"></div>' +
+                    '<h3 class="ame-review-modal-title"></h3>' +
+                    '<p class="ame-review-modal-text"></p>' +
+                '</div>' +
+                '<div class="ame-review-modal-footer">' +
+                    '<div class="ame-review-modal-platform"></div>' +
+                    '<div class="ame-review-modal-verified" style="display: inline-flex; align-items: center; gap: 4px; color: #10b981; font-weight: 600; font-size: 12px;">' +
+                        '<svg viewBox="0 0 20 20" width="14" height="14" fill="#10b981"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>' +
+                        '<span>Verified Customer</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+
+    $('body').append(modalHtml);
+    $modal = $('#ame-review-modal');
+
+    $modal.on('click', '.ame-review-modal-close', function (e) {
+        e.preventDefault();
+        closeAmeReviewModal();
+    });
+
+    $modal.on('click', function (e) {
+        if ($(e.target).closest('.ame-review-modal-card').length === 0) {
+            closeAmeReviewModal();
+        }
+    });
+
+    $(document).on('keydown', function (e) {
+        if (!$modal.hasClass('is-active')) return;
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            closeAmeReviewModal();
+        }
+    });
+
+    return $modal;
+}
+
+function closeAmeReviewModal() {
+    var $modal = $('#ame-review-modal');
+    if ($modal.length) {
+        $modal.removeClass('is-active');
+        $('body').css('overflow', '');
+    }
+}
+
+$(document).on('click', '.ame-review-read-more-btn', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var $btn = $(this);
+    var author = $btn.data('author') || 'Customer';
+    var title = $btn.data('title') || '';
+    var text = $btn.data('text') || '';
+    var date = $btn.data('date') || '';
+
+    var $card = $btn.closest('.ame-review-card-inner');
+    var $avatar = $card.find('.ame-reviewer-avatar-wrap').clone();
+    var $platformLogo = $card.find('.ame-review-badge-corner').clone();
+    var $stars = $card.find('.ame-review-stars').clone();
+
+    var $modal = getOrCreateAmeReviewModal();
+    $modal.find('.ame-review-modal-author').text(author);
+    $modal.find('.ame-review-modal-date').text(date).toggle(!!date);
+    $modal.find('.ame-review-modal-title').text(title).toggle(!!title);
+    $modal.find('.ame-review-modal-text').text(text);
+
+    var $avatarBox = $modal.find('.ame-review-modal-avatar-box');
+    $avatarBox.empty();
+    if ($avatar.length) {
+        $avatarBox.append($avatar.html());
+    }
+
+    var $starsBox = $modal.find('.ame-review-modal-stars');
+    $starsBox.empty();
+    if ($stars.length) {
+        $starsBox.append($stars);
+    }
+
+    var $platformBox = $modal.find('.ame-review-modal-platform');
+    $platformBox.empty();
+    if ($platformLogo.length) {
+        $platformBox.append($platformLogo.html());
+    }
+
+    $('body').css('overflow', 'hidden');
+    $modal.addClass('is-active');
+});
+
 $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-image.default',
@@ -679,6 +807,11 @@ $(window).on('elementor/frontend/init', function () {
     elementorFrontend.hooks.addAction(
         'frontend/element_ready/ame-marquee-video-reels.default',
         AmeMarqueeVideoReels
+    );
+
+    elementorFrontend.hooks.addAction(
+        'frontend/element_ready/ame-marquee-reviews.default',
+        AmeMarqueeReviews
     );
 
 });

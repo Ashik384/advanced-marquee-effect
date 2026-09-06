@@ -1283,9 +1283,12 @@ a.ame-video-author-badge:hover .ame-video-author-name {
 
 /* Play Button Pulse Animation */
 @keyframes amePlayPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.14);
     }
@@ -1448,12 +1451,15 @@ button.ame-video-click-layer:active {
         width: 42px;
         height: 42px;
     }
+
     .ame-video-modal-prev {
         left: 10px;
     }
+
     .ame-video-modal-next {
         right: 10px;
     }
+
     .ame-video-modal-nav svg {
         width: 20px;
         height: 20px;
@@ -1723,4 +1729,502 @@ button.ame-video-click-layer:active {
     font-weight: 500;
     color: #94a3b8;
     line-height: 1.2;
+}
+
+/* ==========================================================================
+   Reviews Marquee & Social Proof Ticker Widget
+   ========================================================================== */
+
+.ame-reviews-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    box-sizing: border-box;
+}
+
+/* --- Trust Summary Bar --- */
+.ame-reviews-summary-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.ame-reviews-summary-bar a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.ame-reviews-summary-bar a:hover {
+    transform: translateY(-1px);
+}
+
+.ame-reviews-summary-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 50px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.05);
+    font-size: 13.5px;
+    color: #1e293b;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (max-width: 640px) {
+    .ame-reviews-summary-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding: 8px 14px;
+        gap: 6px;
+    }
+}
+
+.ame-summary-adjective {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ame-summary-score {
+    font-weight: 800;
+    padding: 2px 7px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-size: 12.5px;
+    color: #0f172a;
+}
+
+.ame-summary-count {
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* --- Review Item / Swiper Slide --- */
+.ame-reviews-marquee .swiper-slide,
+.ame-reviews-marquee .ame-marquee__item,
+.ame-review-card-item {
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: auto !important;
+    display: flex !important;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.horizontal.ame-align-h-stretch .ame-review-card-item,
+.horizontal.ame-align-h-stretch .ame-review-card-inner {
+    height: 100%;
+}
+
+/* Layout 1: Modern Card (Default) */
+.is-layout-card .ame-review-card-item {
+    width: 350px;
+    max-width: 90vw;
+}
+
+.is-layout-card .ame-review-card-inner {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+}
+
+.is-layout-card .ame-review-card-inner:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 8px -2px rgba(15, 23, 42, 0.06);
+    border-color: #cbd5e1;
+}
+
+/* Layout 2: Compact Ticker Strip */
+.is-layout-compact .ame-review-card-item {
+    width: auto;
+    max-width: 520px;
+}
+
+.is-layout-compact .ame-review-card-inner {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    padding: 8px 18px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.is-layout-compact .ame-review-card-inner:hover {
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.09);
+    border-color: #cbd5e1;
+}
+
+.is-layout-compact .ame-review-header {
+    margin-bottom: 0;
+}
+
+.is-layout-compact .ame-review-body {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Layout 3: Floating Bubble */
+.is-layout-bubble .ame-review-card-item {
+    width: 330px;
+    max-width: 88vw;
+}
+
+.is-layout-bubble .ame-review-card-inner {
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid #f1f5f9;
+    border-radius: 20px 20px 20px 4px;
+    padding: 22px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.is-layout-bubble .ame-review-card-inner:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -5px rgba(15, 23, 42, 0.13);
+}
+
+/* --- Card Header & Reviewer Details --- */
+.ame-review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    width: 100%;
+    position: relative;
+}
+
+.ame-reviewer-avatar-wrap {
+    flex-shrink: 0;
+}
+
+.ame-reviewer-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    display: block;
+}
+
+.ame-avatar-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.ame-reviewer-meta {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.ame-reviewer-name-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+}
+
+.ame-reviewer-name {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+a.ame-reviewer-name:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.ame-review-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #059669;
+    background: rgba(16, 185, 129, 0.12);
+    padding: 2px 7px;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.ame-review-verified svg {
+    flex-shrink: 0;
+}
+
+.ame-review-date {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+.ame-review-badge-corner {
+    margin-left: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ame-review-platform-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.ame-review-platform-logo svg {
+    display: block;
+}
+
+/* --- Star Ratings --- */
+.ame-review-stars-wrap {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.ame-review-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.5px;
+}
+
+.ame-review-stars svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.ame-review-star-filled {
+    fill: #f59e0b;
+    color: #f59e0b;
+}
+
+.ame-review-star-empty {
+    fill: #e2e8f0;
+    color: #e2e8f0;
+}
+
+/* --- Review Content --- */
+.ame-review-headline {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+    letter-spacing: -0.1px;
+}
+
+.ame-review-body-wrap {
+    flex-grow: 1;
+}
+
+.ame-review-body {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #475569;
+    margin: 0;
+    font-style: normal;
+    word-break: break-word;
+}
+
+.ame-review-read-more-btn {
+    background: none;
+    border: none;
+    padding: 0 4px;
+    margin: 0;
+    color: #475569;
+    font-size: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s ease;
+}
+
+
+/* ==========================================================================
+   Reviews Lightbox Modal (Full Reader Dialog)
+   ========================================================================== */
+.ame-review-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.ame-review-modal-backdrop.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ame-review-modal-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(15, 23, 42, 0.05);
+    width: 100%;
+    max-width: 540px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.92) translateY(16px);
+    opacity: 0;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease;
+}
+
+.ame-review-modal-backdrop.is-active .ame-review-modal-card {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.ame-review-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px 16px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ame-review-modal-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ame-review-modal-author {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ame-review-modal-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: none;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.ame-review-modal-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: rotate(90deg);
+}
+
+.ame-review-modal-close svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.ame-review-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ame-review-modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 12px 0 10px;
+    line-height: 1.3;
+}
+
+.ame-review-modal-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #334155;
+    margin: 0;
+    white-space: pre-line;
+}
+
+.ame-review-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #f8fafc;
+    border-top: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #64748b;
 }

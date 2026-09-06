@@ -113,6 +113,11 @@ class AME_Marquee_Settings {
                 'desc' => esc_html__( 'Showcase self-hosted videos, YouTube/Vimeo streams, and TikTok Videos in a dynamic continuous marquee.', 'advanced-marquee-effect' ),
                 'is_pro' => true,
             ],
+            'ame-marquee-reviews' => [
+                'name' => esc_html__( 'Social Proof & Reviews Marquee', 'advanced-marquee-effect' ),
+                'desc' => esc_html__( 'Showcase verified Google, Trustpilot, Yelp, Facebook, and store customer review cards in an engaging stream.', 'advanced-marquee-effect' ),
+                'is_pro' => true,
+            ],
         ];
     }
 
